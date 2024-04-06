@@ -8,15 +8,18 @@ import RegisterWorker from './pages/Auth/Worker/RegisterWorker'
 import RequestReset from './pages/Auth/ResetPassword.jsx/RequestReset'
 import InputOtp from './pages/Auth/ResetPassword.jsx/InputOtp'
 import InputNewPassword from './pages/Auth/ResetPassword.jsx/InputNewPassword'
+import HomeRecruiter from './pages/Recruiter/HomeRecruiter'
 
 function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes >
         {/* Route placement */}
+        {/* Home */}
+        <Route path='/' exact element={<HomeRecruiter />} />
+
         {/* Login */}
-        <Route path='/' exact element={<LoginRecruiter />} />
         <Route path='/login/recruiter' element={<LoginRecruiter />} />
         <Route path='/login/worker' element={<LoginWorker />} />
         {/* Register */}

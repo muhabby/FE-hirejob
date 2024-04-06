@@ -1,9 +1,12 @@
-const Button = ({ text }) => {
+const ButtonPurple = ({ text }) => {
   return (
     <div>
-      <div className="w-full p-3 bg-primary rounded-md md:w-48">
-        <p className="font-semibold text-white text-center">{text}</p>
-      </div>
+      <button
+        type="submit"
+        className="md:min-w-24 w-full p-3 bg-primary font-semibold text-white rounded-md hover:bg-[#483d7e] transition duration-300 ease-in-out active:scale-75"
+      >
+        {text}
+      </button>
     </div>
   );
 };
@@ -20,4 +23,4 @@ const ButtonYellow = ({ text }) => {
   );
 };
 
-export { Button, ButtonYellow };
+export { ButtonPurple, ButtonYellow };
