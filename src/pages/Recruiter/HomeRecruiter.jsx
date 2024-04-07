@@ -1,17 +1,41 @@
 import { FiSearch } from "react-icons/fi";
 import { MdArrowDropDown } from "react-icons/md";
-import { HiOutlineLocationMarker } from "react-icons/hi";
 import { ButtonPurple } from "../../components/Button";
 import Navbar from "../../components/Navbar";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
-import PhotoProfile from "../../assets/photo-profile.svg"
 import HomeCard from "../../components/HomeCard";
 import LogoWhite from "../../assets/logo-white.svg"
+import Pagination from "../../components/Pagination";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 const HomeRecruiter = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 10;
+
+  const handlePageChange = page => {
+    setCurrentPage(page);
+    // Tambahkan logika untuk memuat data sesuai halaman yang dipilih
+  };
+
+  const handlePagePrev = () => {
+    if (currentPage == 1) {
+      setCurrentPage(currentPage);
+    } else {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  
+  const handlePageNext = () => {
+    if (currentPage == 10) { // ubah 10 ini jadi total page 
+      setCurrentPage(currentPage);
+    } else {
+      setCurrentPage(currentPage + 1);
+    }
+  }
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -26,6 +50,7 @@ const HomeRecruiter = () => {
     <div>
       {/* Navbar  */}
       <Navbar />
+      <Header />
       <div className="flex flex-col items-center bg-grey-white gap-10 px-5 py-8 lg:px-16 md:py-16 2xl:px-48">
         <div className="w-full flex flex-col md:flex-row gap-2 items-center bg-white shadow p-2 rounded-lg">
           {/* input search  */}
@@ -110,34 +135,19 @@ const HomeRecruiter = () => {
             <HomeCard />
             <div className="w-full border border-light-grey"></div>
           </div>
-          <div>
-            <HomeCard />
-            <div className="w-full border border-light-grey"></div>
-          </div>
-          <div>
-            <HomeCard />
-            <div className="w-full border border-light-grey"></div>
-          </div>
         </div>
+
+        {/* Pagination  */}
+        <Pagination 
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          handlePagePrev={handlePagePrev}
+          handlePageNext={handlePageNext}
+        />
       </div>
 
-      {/* Footer  */}
-      <div className="flex flex-col bg-primary text-white gap-10 px-5 pt-8 pb-4 lg:px-16 md:pt-16 md:pb-6 2xl:px-48">
-        <div className="w-full md:w-1/4">
-          <img src={LogoWhite} className="w-40" />
-          <div className="text-md mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</div>
-        </div>
-        <div className="w-full border border-white rounded-full"></div>
-        <div className="flex flex-row justify-between">
-          <div className="w-1/2">
-            <p>2020 Pewworld. All right reserved</p>
-          </div>
-          <div className="flex flex-col gap-4 md:flex-row md:gap-10 lg:gap-24">
-            <p>Telepon</p>
-            <p>Email</p>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };

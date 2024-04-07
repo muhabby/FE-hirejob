@@ -14,28 +14,43 @@ const HomeCard = () => {
             <h1 className="text-2xl font-semibold">Louis Tomlinson</h1>
             <p className="text-grey">Web developer</p>
             <div className="flex flex-row items-center gap-3 text-grey">
-              <HiOutlineLocationMarker />
+              <HiOutlineLocationMarker size={25} />
               <p>Lorem ipsum</p>
             </div>
             <div className="hidden md:flex flex-row gap-3">
-              <label className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-center rounded-lg py-1 px-8">
+              <label className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-center rounded-lg py-1 px-5">
                 PHP
               </label>
-              <label className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-center rounded-lg py-1 px-8">
+              <label className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-center rounded-lg py-1 px-5">
                 PHP
               </label>
-              <label className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-center rounded-lg py-1 px-8">
+              <label className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-center rounded-lg py-1 px-5">
                 PHP
               </label>
-              <label className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-center rounded-lg py-1 px-8">
-                PHP
+              <label className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-center rounded-lg py-1 px-5">
+                5+
               </label>
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-4 auto-cols-max gap-4 md:hidden">
-          <label className="min-w-14 bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-1 px-4 md:w-auto md:text-base md:border-2 md:px-8">
+        <div className="flex flex-wrap gap-2 items-cecnter md:hidden">
+          <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-1 px-4">
             PHP
+          </label>
+          <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-1 px-4">
+            Javascript
+          </label>
+          <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-1 px-4">
+            React
+          </label>
+          <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-1 px-4">
+            Tailwind
+          </label>
+          <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-1 px-4">
+            PostgreSQL
+          </label>
+          <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-1 px-4">
+            5+
           </label>
         </div>
         <div className="mr-14 w-full md:w-40">

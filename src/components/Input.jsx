@@ -70,4 +70,23 @@ const EmailInput = ({ text, name, placeholder, onChange, autoComplete }) => {
   );
 };
 
-export { TextInput, PasswordInput, EmailInput };
+const BoxInput = ({ text, name, placeholder, onChange, autoComplete }) => {
+  return (
+    <div className="flex flex-col gap-1">
+      <label htmlFor={name} className="pl-1 text-grey text-sm">{text}</label>
+      <textarea
+        rows="4" 
+        cols="50"
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        className="bg-white border border-light-grey rounded-md p-3 placeholder:text-[#858D96] active:border focus:border-dark-grey"
+        onChange={onChange}
+        autoComplete={autoComplete}
+        required
+      />
+    </div>
+  );
+};
+
+export { TextInput, PasswordInput, EmailInput, BoxInput };
