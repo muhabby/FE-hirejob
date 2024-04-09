@@ -2,4 +2,11 @@
   max-width: 1920px;
   margin: 0 auto;
   padding: 0 0rem;
+  color: #1F2A36;
+}
+input:focus {
+  outline: none;
+}
+textarea:focus {
+  outline: none;
 }
