@@ -5,12 +5,47 @@ import Navbar from "../../components/Navbar";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import HomeCard from "../../components/HomeCard";
-import LogoWhite from "../../assets/logo-white.svg"
 import Pagination from "../../components/Pagination";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import PhotoProfile from "../../assets/photo-profile.svg";
 
 const HomeRecruiter = () => {
+  const user_worker = [
+    {
+      image: PhotoProfile,
+      name: 'Louis Tomlinson',
+      position: 'Web developer',
+      province: 'Jawa Tengah',
+      city: 'Purwokerto',
+      skill: 'PHP, Javascript, React, NextJS, Tailwind, PostgreSQL, MySQL'
+    },
+    {
+      image: PhotoProfile,
+      name: 'Kijaru',
+      position: 'Front-End Web',
+      province: 'DKI Jakarta',
+      city: 'Jakarta Timur',
+      skill: 'Javascript, React, NextJS, Tailwind, PostgreSQL'
+    },
+    {
+      image: PhotoProfile,
+      name: 'Tom Holland',
+      position: 'Full-stack Developer',
+      province: 'DKI Jakarta',
+      city: 'Jakarta Barat',
+      skill: 'PHP, Javascript, React, Tailwind, PostgreSQL'
+    },
+    {
+      image: PhotoProfile,
+      name: 'Viky Ranbasi',
+      position: 'Back-end Developer',
+      province: 'Jawa Barat',
+      city: 'Bandung',
+      skill: 'PHP, Tailwind, PostgreSQL'
+    },
+  ]
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -132,8 +167,19 @@ const HomeRecruiter = () => {
         {/* Content  */}
         <div className="w-full bg-white shadow rounded-lg">
           <div>
-            <HomeCard />
-            <div className="w-full border border-light-grey"></div>
+            {user_worker.map((item, index) => (
+              <div key={index}>
+                <HomeCard 
+                  photo={item.image}
+                  name={item.name}
+                  position={item.position}
+                  province={item.province}
+                  city={item.city}
+                  skill={item.skill}
+                />
+                <div className="w-full border border-light-grey"></div>
+              </div>
+            ))}
           </div>
         </div>
 

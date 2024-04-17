@@ -5,51 +5,52 @@ import Footer from "../../components/Footer";
 import { BoxInput, TextInput } from "../../components/Input";
 import { ButtonYellow } from "../../components/Button";
 
-const ProfileRecruiter = () => {
+const Hire = () => {
+  const profile_worker = {
+    image: PhotoProfile,
+    name: 'Louis Tomlinson',
+    position: 'Web developer',
+    province: 'Jawa Tengah',
+    city: 'Purwokerto',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.'
+  }
+  const skill = [
+    "PHP",
+    "Javascript",
+    "React",
+    "NextJS",
+    "Tailwind",
+    "PostgreSQL"
+  ];
+
   return (
     <div>
       <Navbar />
       <div className="flex flex-col md:flex-row bg-grey-white gap-28 px-5 pt-8 pb-[200px] lg:px-16 md:pt-16 md:pb-[700px] 2xl:px-48">
         <div className="w-full md:w-1/3 bg-white rounded-md p-6 flex flex-col gap-8 ">
           <div className="w-full flex flex-row justify-center">
-            <img src={PhotoProfile} className="w-28 h-28 rounded-full" />
+            <img src={[profile_worker.image]} className="w-28 h-28 rounded-full" />
           </div>
           <div className="flex flex-col items-start gap-4">
-            <h1 className="text-2xl font-semibold">Louis Tomlinson</h1>
-            <p className="text-grey">Web developer</p>
+            <h1 className="text-2xl font-semibold">{profile_worker.name}</h1>
+            <p className="text-grey">{profile_worker.position}</p>
             <div className="flex flex-row items-center gap-3 text-grey">
               <HiOutlineLocationMarker size={25} />
-              <p>Purwokerto, Jawa Tengah</p>
+              <p>{profile_worker.city}, {profile_worker.province}</p>
             </div>
-            <p className="text-grey" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
+            <p className="text-grey" >{profile_worker.description}</p>
           </div>
           <div className="flex flex-col gap-4">
             <h1 className="text-2xl font-semibold">Skill</h1>
             <div className="flex flex-wrap gap-4 items-center">
-              <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
-                PHP
-              </label>
-              <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
-                Javascript
-              </label>
-              <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
-                React
-              </label>
-              <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
-                Tailwind
-              </label>
-              <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
-                PostgreSQL
-              </label>
-              <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
-                PostgreSQL
-              </label>
-              <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
-                PostgreSQL
-              </label>
-              <label className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
-                PostgreSQL
-              </label>
+              {skill.map((item, index) => (
+                <label
+                  key={index}
+                  className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5"
+                >
+                  {item}
+                </label>
+              ))}
             </div>
           </div>
         </div>
@@ -85,4 +86,4 @@ const ProfileRecruiter = () => {
   )
 }
 
-export default ProfileRecruiter
+export default Hire
