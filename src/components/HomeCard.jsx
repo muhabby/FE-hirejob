@@ -1,4 +1,4 @@
-import { ButtonPurple } from "../components/Button";
+import { Button } from "../components/Button";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
 const HomeCard = ({ photo, name, position, province, city, skill }) => {
@@ -43,7 +43,7 @@ const HomeCard = ({ photo, name, position, province, city, skill }) => {
           ))}
         </div>
         <div className="mr-14 w-full md:w-40">
-          <ButtonPurple text="Lihat Profile" />
+          <Button className="bg-primary hover:bg-[#483d7e]">Lihat Profile</Button>
         </div>
       </div>
     </div>

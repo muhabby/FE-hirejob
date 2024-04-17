@@ -3,7 +3,7 @@ import PhotoProfile from "../../assets/photo-profile.svg";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import Footer from "../../components/Footer";
 import { BoxInput, TextInput } from "../../components/Input";
-import { ButtonYellow } from "../../components/Button";
+import { Button } from "../../components/Button";
 
 const Hire = () => {
   const profile_worker = {
@@ -75,7 +75,7 @@ const Hire = () => {
               autoComplete="current-position"
             />
             <div className="mt-10">
-              <ButtonYellow text="Hire" />
+              <Button className="bg-yellow hover:bg-[#db9709]">Hire</Button>
             </div>
           </form>
         </div>

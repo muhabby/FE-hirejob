@@ -1,6 +1,6 @@
 import { FiSearch } from "react-icons/fi";
 import { MdArrowDropDown } from "react-icons/md";
-import { ButtonPurple } from "../../components/Button";
+import { Button } from "../../components/Button";
 import Navbar from "../../components/Navbar";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
@@ -161,7 +161,7 @@ const HomeRecruiter = () => {
                 </div>
               </Transition>
             </div>
-            <ButtonPurple text="Search" />
+            <Button className="bg-primary hover:bg-[#483d7e]">Search</Button>
           </div>
         </div>
         {/* Content  */}

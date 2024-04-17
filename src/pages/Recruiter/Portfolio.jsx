@@ -4,7 +4,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FiInstagram, FiGithub, FiGitlab, FiMail } from "react-icons/fi";
 import Footer from "../../components/Footer";
 // import { BoxInput, TextInput } from "../../components/Input";
-import { ButtonPurple } from "../../components/Button";
+import { Button } from "../../components/Button";
 import Portfolio1 from '../../assets/portfolio1.svg'
 import Tokped from '../../assets/tokped.svg'
 
@@ -148,7 +148,7 @@ const Portfolio = () => {
               <p>{contact.gitlab}</p>
             </div>
           </div>
-          <ButtonPurple text="Hire"  />
+          <Button className="bg-primary hover:bg-[#483d7e]">Hire</Button>
         </div>
         {/* Content Right  */}
         <div className="w-full bg-white rounded-md px-6 py-10 flex flex-col gap-20">
