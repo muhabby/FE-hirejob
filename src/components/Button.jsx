@@ -1,3 +1,17 @@
+
+const Button = ({ children, className }) => {
+  return (
+    <div>
+      <button
+        type="submit"
+        className={`md:min-w-24 w-full p-3 font-semibold text-white rounded-md transition duration-300 ease-in-out active:scale-75 ${className}`}
+      >
+        {children}
+      </button>
+    </div>
+  );
+};
+
 const ButtonPurple = ({ text }) => {
   return (
     <div>
@@ -23,4 +37,4 @@ const ButtonYellow = ({ text }) => {
   );
 };
 
-export { ButtonPurple, ButtonYellow };
+export { Button,ButtonPurple, ButtonYellow };
