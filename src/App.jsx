@@ -9,10 +9,10 @@ import RequestReset from './pages/Auth/ResetPassword.jsx/RequestReset'
 import InputOtp from './pages/Auth/ResetPassword.jsx/InputOtp'
 import InputNewPassword from './pages/Auth/ResetPassword.jsx/InputNewPassword'
 import HomeRecruiter from './pages/Recruiter/HomeRecruiter'
-import ProfileRecruiter from './pages/Recruiter/ProfileRecruiter'
 // import Notification from './components/Notification'
 import Notifikasipage from './components/Notifikasipage'
-import ProfilePortfolio from './pages/Recruiter/ProfilePortfolio'
+import Hire from './pages/Recruiter/Hire'
+import Portfolio from './pages/Recruiter/Portfolio'
 
 function App() {
 
@@ -36,8 +36,8 @@ function App() {
         
         {/* Perusahaan / Recruiter  */}
         <Route path='/home' element={<HomeRecruiter />} />
-        <Route path='/profile/recruiter' exact element={<ProfileRecruiter />} />
-        <Route path='/portfolio' element={<ProfilePortfolio />} />
+        <Route path='/Hire' exact element={<Hire />} />
+        <Route path='/portfolio' element={<Portfolio />} />
 
         <Route path='/notification' element={<Notifikasipage />} />
       </Routes>

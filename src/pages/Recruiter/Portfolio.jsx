@@ -8,7 +8,7 @@ import { ButtonPurple } from "../../components/Button";
 import Portfolio1 from '../../assets/portfolio1.svg'
 import Tokped from '../../assets/tokped.svg'
 
-const ProfilePortfolio = () => {
+const Portfolio = () => {
   // Dummy Data 
   const skill = [
     "PHP",
@@ -200,4 +200,4 @@ const ProfilePortfolio = () => {
   );
 };
 
-export default ProfilePortfolio;
+export default Portfolio;
