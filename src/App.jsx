@@ -10,8 +10,9 @@ import InputOtp from './pages/Auth/ResetPassword.jsx/InputOtp'
 import InputNewPassword from './pages/Auth/ResetPassword.jsx/InputNewPassword'
 import HomeRecruiter from './pages/Recruiter/HomeRecruiter'
 import ProfileRecruiter from './pages/Recruiter/ProfileRecruiter'
-import Notification from './components/Notification'
+// import Notification from './components/Notification'
 import Notifikasipage from './components/Notifikasipage'
+import ProfilePortfolio from './pages/Recruiter/ProfilePortfolio'
 
 function App() {
 
@@ -33,10 +34,12 @@ function App() {
         <Route path='/otp' element={<InputOtp />} />
         <Route path='/newpassword' element={<InputNewPassword />} />
         
-        {/* Perusahaan  */}
+        {/* Perusahaan / Recruiter  */}
+        <Route path='/home' element={<HomeRecruiter />} />
         <Route path='/profile/recruiter' exact element={<ProfileRecruiter />} />
-        
-        <Route path='/notification' exact element={<Notifikasipage />} />
+        <Route path='/portfolio' element={<ProfilePortfolio />} />
+
+        <Route path='/notification' element={<Notifikasipage />} />
       </Routes>
     </BrowserRouter>
   )
