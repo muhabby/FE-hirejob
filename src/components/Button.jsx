@@ -1,14 +1,4 @@
-const ButtonPurple = ({ text, className }) => {
-    return (
-        <div>
-            <button
-                type="submit"
-                className={`md:min-w-24 w-full p-3 bg-primary font-semibold text-white rounded-md hover:bg-[#483d7e] transition duration-300 ease-in-out active:scale-75 ${className}`}
-            >
-                {text}
-            </button>
-        </div>
-    );
+
 };
 const ButtonYellow = ({ text, className }) => {
     return (
@@ -34,5 +24,3 @@ const ButtonWhite = ({ text, className }) => {
         </div>
     );
 };
-
-export { ButtonPurple, ButtonYellow, ButtonWhite };
