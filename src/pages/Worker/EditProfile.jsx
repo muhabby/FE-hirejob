@@ -192,7 +192,7 @@ const EditProfileWorker = () => {
                         {/*  End Skill */}
 
                         {/*  Pengalaman Kerja */}
-                        <div className="w-full lg:h-[872px] 2xl:h-[900px] shadow-md bg-white mt-48 rounded-md">
+                        <div className="w-full lg:h-[872px] 2xl:h-[900px] shadow-md  mt-48 rounded-md">
                             <div className="mx-10 py-5 ">
                                 <h1 className="font-semibold text-2xl text-[#1F2A36]">
                                     Pengalaman Kerja
@@ -241,7 +241,7 @@ const EditProfileWorker = () => {
                         {/* End Pengalaman Kerja */}
 
                         {/* Portofolio */}
-                        <div className="w-full lg:h-[102vw] 2xl:h-auto shadow-md bg-white mt-48 rounded-md py-5">
+                        <div className="w-full lg:h-auto 2xl:h-auto shadow-md mt-48 rounded-md py-5">
                             <div className="mx-10 py-5 ">
                                 <h1 className="font-semibold text-2xl text-[#1F2A36]">
                                     Portofolio
