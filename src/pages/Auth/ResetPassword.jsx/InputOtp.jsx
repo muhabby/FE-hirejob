@@ -1,6 +1,6 @@
 import { useState } from "react";
 import photoAuth from "../../../assets/photo-auth.svg";
-import { ButtonYellow } from "../../../components/Button";
+import { Button } from "../../../components/Button";
 import { EmailInput, TextInput } from "../../../components/Input";
 import Alert from "../../../components/Alert";
 
@@ -64,7 +64,7 @@ const InputOtp = () => {
             autoComplete="current-confirmOtp"
           />
           <div>
-            <ButtonYellow text="Go To Change Password" />
+            <Button className="bg-yellow hover:bg-[#db9709]">Go To Change Password</Button>
           </div>
         </form>
       </div>
