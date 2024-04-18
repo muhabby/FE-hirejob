@@ -1,12 +1,12 @@
 #root {
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: 0 0rem;
-  color: #1F2A36;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 0rem;
+    color: #1f2a36;
 }
 input:focus {
-  outline: none;
+    outline: none;
 }
 textarea:focus {
-  outline: none;
+    outline: none;
 }
