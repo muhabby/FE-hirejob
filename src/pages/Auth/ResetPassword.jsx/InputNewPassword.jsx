@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import photoAuth from '../../../assets/photo-auth.svg'
-import { ButtonYellow } from '../../../components/Button'
+import { Button } from '../../../components/Button'
 import { PasswordInput } from "../../../components/Input";
 import Alert from "../../../components/Alert";
 
@@ -60,7 +60,7 @@ const InputNewPassword = () => {
             autoComplete="current-confirmPassword"
           />
           <div>
-            <ButtonYellow text="Reset Password" />
+            <Button className="bg-yellow hover:bg-[#db9709]">Reset Password</Button>
           </div>
         </form>
       </div>

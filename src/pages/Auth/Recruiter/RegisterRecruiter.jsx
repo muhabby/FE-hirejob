@@ -1,6 +1,6 @@
 import photoAuth from "../../../assets/photo-auth.svg";
 import { Link } from "react-router-dom";
-import { ButtonYellow } from "../../../components/Button";
+import { Button } from "../../../components/Button";
 import { EmailInput, PasswordInput, TextInput } from "../../../components/Input";
 
 const RegisterRecruiter = () => {
@@ -69,7 +69,7 @@ const RegisterRecruiter = () => {
             </Link>
           </div>
           <div className="">
-            <ButtonYellow text="Daftar" />
+            <Button className="bg-yellow hover:bg-[#db9709]">Daftar</Button>
           </div>
         </form>
         <div className="text-center">

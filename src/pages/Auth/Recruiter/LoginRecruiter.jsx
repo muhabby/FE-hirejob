@@ -1,6 +1,6 @@
 import photoAuth from '../../../assets/photo-auth.svg'
 import { Link } from 'react-router-dom'
-import { ButtonYellow } from '../../../components/Button'
+import { Button } from '../../../components/Button'
 import { EmailInput, PasswordInput } from "../../../components/Input";
 
 const LoginRecruiter = () => {
@@ -31,7 +31,7 @@ const LoginRecruiter = () => {
             <Link to='/' className='hover:text-primary'>Lupa kata sandi ?</Link>
           </div>
           <div className=''>
-            <ButtonYellow text="Masuk" />
+            <Button className="bg-yellow hover:bg-[#db9709]">Masuk</Button>
           </div>
         </form>
         <div className='text-center'>
