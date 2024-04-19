@@ -5,7 +5,8 @@ import company from "../assets/image/company.jpeg";
 import { ButtonWhite } from "../components/Button";
 import { TextInput } from "../components/Input";
 import { BsSend } from "react-icons/bs";
-const Chat = () => {
+const Chat = () =>
+{
     return (
         <main>
             <Navbar />
@@ -20,9 +21,9 @@ const Chat = () => {
                         <div className="flex items-center bg-white px-5 w-full h-[75px] space-x-5 hover:bg-light-grey cursor-pointer ">
                             <div>
                                 <img
-                                    src={company}
+                                    src={ company }
                                     alt=""
-                                    width={60}
+                                    width={ 60 }
                                     className="rounded-full"
                                 />
                             </div>
@@ -36,9 +37,9 @@ const Chat = () => {
                         <div className="flex items-center bg-white px-5 w-full h-[75px] space-x-5 hover:bg-light-grey cursor-pointer ">
                             <div>
                                 <img
-                                    src={company}
+                                    src={ company }
                                     alt=""
-                                    width={60}
+                                    width={ 60 }
                                     className="rounded-full"
                                 />
                             </div>
@@ -55,9 +56,9 @@ const Chat = () => {
                     <div className="flex justify-between items-center px-3 bg-white h-[75px] border-b-[1px] border-yellow shadow-md">
                         <div className="flex items-center space-x-3">
                             <img
-                                src={company}
+                                src={ company }
                                 alt=""
-                                width={55}
+                                width={ 55 }
                                 className="rounded-full"
                             />
                             <h1>PT Softhouse</h1>
@@ -66,14 +67,14 @@ const Chat = () => {
                             Fulltime Frontend Developer
                         </h1>
                         <ButtonWhite
-                            className={"outline-none hover:bg-grey-white"}
-                            text={"Detail Profile"}
+                            className={ "outline-none hover:bg-grey-white" }
+                            text={ "Detail Profile" }
                         />
                     </div>
 
-                    {/* {Message layout} */}
+                    {/* {Message layout} */ }
                     <div className=" h-4/5 flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
-                        {/* {First Message} */}
+                        {/* {First Message} */ }
                         <div className="flex h-full">
                             <div className="flex items-end">
                                 <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
@@ -94,22 +95,22 @@ const Chat = () => {
                                     </div>
                                 </div>
                                 <img
-                                    src={company}
+                                    src={ company }
                                     alt=""
-                                    width={40}
+                                    width={ 40 }
                                     className="rounded-full order-1"
                                 />
                             </div>
                         </div>
 
-                        {/* {Second Message} */}
+                        {/* {Second Message} */ }
                         <div className="flex items-end  justify-end">
                             <div className="flex items-end justify-end w-6/12">
                                 <div className="flex text-xs gap-2 mx-2 order-2 items-end ">
                                     <img
-                                        src={company}
+                                        src={ company }
                                         alt=""
-                                        width={40}
+                                        width={ 40 }
                                         className="rounded-full order-1"
                                     />
                                     <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-grey-white text-grey">
@@ -129,8 +130,8 @@ const Chat = () => {
                     <div className="flex h-[80px] items-center space-x-3 border-t-[1px] border-yellow pt-5 pb-5 rounded-b-md">
                         <div className=" w-11/12">
                             <TextInput
-                                className={"rounded-3xl ml-3 pl-7"}
-                                placeholder={"type message..."}
+                                className={ "rounded-3xl ml-3 pl-7" }
+                                placeholder={ "type message..." }
                             />
                         </div>
                         <div className="flex items-center">
@@ -139,7 +140,7 @@ const Chat = () => {
                                 className="rounded-full bg-[#5E50A1] w-[50px] h-[50px] flex justify-center items-center hover:bg-yellow"
                             >
                                 <BsSend
-                                    style={{ fontSize: 25, color: "white" }}
+                                    style={ { fontSize: 25, color: "white" } }
                                 />
                             </button>
                         </div>
