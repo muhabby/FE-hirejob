@@ -1,9 +1,52 @@
+import { useState, useEffect } from 'react';
 import photoAuth from '../../../assets/photo-auth.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/Button';
 import { EmailInput, PasswordInput, TextInput } from '../../../components/Input';
+import { useDispatch, useSelector } from 'react-redux';
+import { authRegister } from '../../../redux/action/auth';
+import Alert from '../../../components/Alert';
 
 const RegisterRecruiter = () => {
+  const rolePage = 'recruiter';
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.register);
+  const [formData, setFormData] = useState({
+    name:"",
+    phone:"",
+    email:"",
+    password:"",
+    confirmPassword:"",
+    role: rolePage,
+    company_name:"",
+    position: "" 
+  })
+  const [error, setError] = useState();
+  
+  const onChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  useEffect(() => {
+    if (formData.password !== '' && formData.confirmPassword !== '') {
+      if (formData.password !== formData.confirmPassword) {
+        setError(true);
+      } else {
+        setError(false);
+      }
+    }
+  }, [formData]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData)
+    dispatch(authRegister(formData))
+  }
+
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
       <div className="w-auto hidden md:flex md:justify-center fixed top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-50">
@@ -18,48 +61,56 @@ const RegisterRecruiter = () => {
             auctor.
           </p>
         </div>
-        <form id="formSubmit" className="flex flex-col gap-8">
+        <form id="formSubmit" onSubmit={handleSubmit} className="flex flex-col gap-8">
           <TextInput
             text="Name"
             name="name"
             placeholder="Masukan nama anda"
             autoComplete="current-name"
+            onChange={onChange}
           />
           <EmailInput
             text="Email"
             name="email"
             placeholder="Masukan alamat email"
             autoComplete="current-email"
+            onChange={onChange}
           />
           <TextInput
             text="Perusahaan"
-            name="perusahaan"
+            name="company_name"
             placeholder="Masukan nama perusahaan"
-            autoComplete="current-perusahaan"
+            autoComplete="current-company_name"
+            onChange={onChange}
           />
           <TextInput
             text="Jabatan"
-            name="jabatan"
+            name="position"
             placeholder="Posisi di perusahaan anda"
-            autoComplete="current-jabatan"
+            autoComplete="current-position"
+            onChange={onChange}
           />
           <TextInput
             text="No. Handphone"
-            name="no_hp"
+            name="phone"
             placeholder="Masukan nomor handphone"
-            autoComplete="current-no_hp"
+            autoComplete="current-phone"
+            onChange={onChange}
           />
+          <Alert error={error} isError="Password tidak sama !" isSuccess="Password sama !" />
           <PasswordInput
             text="Kata Sandi"
             name="password"
             placeholder="Masukan kata sandi"
             autoComplete="current-password"
+            onChange={onChange}
           />
           <PasswordInput
             text="Konfirmasi Kata Sandi"
-            name="password_confirm"
+            name="confirmPassword"
             placeholder="Masukan konfirmasi kata sandi"
-            autoComplete="current-password-confirm"
+            autoComplete="current-confirmPassword"
+            onChange={onChange}
           />
           <div className="text-end min-w-0">
             <Link to="/" className="hover:text-primary">

@@ -87,7 +87,8 @@ const Chat = () => {
             <div className="flex items-center">
               <button
                 type="submit"
-                className="rounded-full bg-[#5E50A1] w-[50px] h-[50px] flex justify-center items-center hover:bg-yellow">
+                className="rounded-full bg-[#5E50A1] w-[50px] h-[50px] flex justify-center items-center hover:bg-yellow"
+              >
                 <BsSend
                   style={{
                     fontSize: 25,

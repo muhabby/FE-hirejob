@@ -1,9 +1,37 @@
+import { useState, useEffect } from 'react';
 import photoAuth from '../../../assets/photo-auth.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/Button';
 import { EmailInput, PasswordInput } from '../../../components/Input';
+import { useDispatch, useSelector } from 'react-redux';
+import { authLogin, authRegister } from '../../../redux/action/auth';
+import Alert from '../../../components/Alert';
 
 const LoginRecruiter = () => {
+  const rolePage = 'recruiter';
+  const dispatch = useDispatch();
+  const errorData = useSelector((state) => state.login.error);
+  const [formData, setFormData] = useState({
+    email:"",
+    password:""
+  })
+  const [error, setError] = useState();
+
+  const onChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData)
+    dispatch(authLogin(formData))
+  }
+  console.log(errorData)
+
   return (
     <div className="h-auto flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
       <div className="w-1/2 hidden md:flex md:justify-center">
@@ -17,18 +45,21 @@ const LoginRecruiter = () => {
             auctor.
           </p>
         </div>
-        <form id="formSubmit" className="flex flex-col gap-8">
+        
+        <form id="formSubmit" onSubmit={handleSubmit} className="flex flex-col gap-8">
           <EmailInput
             text="Email"
             name="email"
             placeholder="Masukan alamat email"
             autoComplete="current-email"
+            onChange={onChange}
           />
           <PasswordInput
             text="Kata Sandi"
             name="password"
             placeholder="Masukan kata sandi"
             autoComplete="current-password"
+            onChange={onChange}
           />
           <div className="text-end min-w-0">
             <Link to="/" className="hover:text-primary">
