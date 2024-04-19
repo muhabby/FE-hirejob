@@ -2,7 +2,7 @@ const initialState = {
   isLoggedIn: false,
   data: null,
   loading: false,
-  error: null,
+  error: null
 };
 
 const register = (state = initialState, action) => {

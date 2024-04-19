@@ -2,7 +2,7 @@ const initialState = {
   isLoggedIn: false,
   data: null,
   loading: false,
-  error: null,
+  error: null
 };
 
 const inputOTP = (state = initialState, action) => {

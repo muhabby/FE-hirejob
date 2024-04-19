@@ -1,14 +1,14 @@
-import { useState } from "react";
-import photoAuth from "../../../assets/photo-auth.svg";
-import { Button } from "../../../components/Button";
-import { EmailInput, TextInput } from "../../../components/Input";
-import Alert from "../../../components/Alert";
+import { useState } from 'react';
+import photoAuth from '../../../assets/photo-auth.svg';
+import { Button } from '../../../components/Button';
+import { EmailInput, TextInput } from '../../../components/Input';
+import Alert from '../../../components/Alert';
 
 const InputOtp = () => {
   const [formData, setFormData] = useState({
-    email: "",
-    otp: "1234",
-    confirmOtp: "",
+    email: '',
+    otp: '1234',
+    confirmOtp: ''
   });
   const [error, setError] = useState();
 
@@ -16,7 +16,7 @@ const InputOtp = () => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -26,7 +26,7 @@ const InputOtp = () => {
     if (formData.otp !== formData.confirmOtp) {
       setError(true);
     } else {
-      setError(false)
+      setError(false);
     }
   };
 
@@ -39,15 +39,11 @@ const InputOtp = () => {
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl text-dark ">Halo, Pewpeople</h1>
           <p className="text-xl text-dark-grey tracking-wide ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-            ipsum et dui rhoncus auctor.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus
+            auctor.
           </p>
         </div>
-        <Alert 
-          error={error}
-          isError="Kode otp salah !"
-          isSuccess="Kode otp benar !"
-        />
+        <Alert error={error} isError="Kode otp salah !" isSuccess="Kode otp benar !" />
         <form onSubmit={handleSubmit} id="formSubmit" className="flex flex-col gap-14">
           <EmailInput
             text="Email"

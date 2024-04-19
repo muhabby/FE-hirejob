@@ -1,7 +1,7 @@
 const initialState = {
   data: null,
   loading: false,
-  error: null,
+  error: null
 };
 
 const setPassword = (state = initialState, action) => {

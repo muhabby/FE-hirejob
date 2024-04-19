@@ -1,4 +1,4 @@
-import { GrFormPrevious, GrFormNext } from "react-icons/gr";
+import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
 
 const Pagination = ({ currentPage, totalPages, onPageChange, handlePagePrev, handlePageNext }) => {
   const maxPagesToShow = window.innerWidth >= 1024 ? 5 : 3; // Jumlah maksimum halaman yang ditampilkan di sekitar currentPage
@@ -12,26 +12,27 @@ const Pagination = ({ currentPage, totalPages, onPageChange, handlePagePrev, han
   }
 
   // Fungsi untuk membuat array dari halaman yang akan ditampilkan
-  const pages = [...Array(Math.min(maxPagesToShow, totalPages)).keys()].map(
-    i => startPage + i
-  );
-  console.log(currentPage)
+  const pages = [...Array(Math.min(maxPagesToShow, totalPages)).keys()].map((i) => startPage + i);
+  console.log(currentPage);
 
   return (
     <nav className="flex justify-center my-4">
       <ul className="pagination flex space-x-2 items-center">
         {currentPage == 1 ? null : (
-          <button 
-            className="px-3 py-3 rounded-md text-dark-grey bg-white border-2 border-light-grey hover:bg-primary hover:text-white" 
+          <button
+            className="px-3 py-3 rounded-md text-dark-grey bg-white border-2 border-light-grey hover:bg-primary hover:text-white"
             onClick={handlePagePrev}
           >
             <GrFormPrevious size={23} />
-          </button>)}
-        {pages.map(page => (
+          </button>
+        )}
+        {pages.map((page) => (
           <li key={page}>
             <button
               className={`px-5 py-3 rounded-md text-dark-grey ${
-                currentPage === page ? 'bg-primary text-white border-2 border-primary' : 'bg-white border-2 border-light-grey hover:bg-primary hover:text-white'
+                currentPage === page
+                  ? 'bg-primary text-white border-2 border-primary'
+                  : 'bg-white border-2 border-light-grey hover:bg-primary hover:text-white'
               }`}
               onClick={() => onPageChange(page)}
             >
@@ -41,7 +42,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, handlePagePrev, han
         ))}
         {currentPage == 10 ? null : ( // ubah angka 10 nanti menjadi total page
           <button
-            className="px-3 py-3 rounded-md text-dark-grey bg-white border-2 border-light-grey hover:bg-primary hover:text-white" 
+            className="px-3 py-3 rounded-md text-dark-grey bg-white border-2 border-light-grey hover:bg-primary hover:text-white"
             onClick={handlePageNext}
           >
             <GrFormNext size={23} />
@@ -49,7 +50,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, handlePagePrev, han
         )}
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Pagination
+export default Pagination;
