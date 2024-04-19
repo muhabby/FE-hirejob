@@ -1,5 +1,4 @@
-
-const Alert = ({error, isError, isSuccess}) => {
+const Alert = ({ error, isError, isSuccess }) => {
   return (
     <div>
       {error === false ? (

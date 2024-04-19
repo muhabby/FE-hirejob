@@ -1,8 +1,8 @@
-import { Button } from "../components/Button";
-import { HiOutlineLocationMarker } from "react-icons/hi";
+import { Button } from '../components/Button';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
 
 const HomeCard = ({ photo, name, position, province, city, skill }) => {
-  const skillData = skill.split(", ");
+  const skillData = skill.split(', ');
   console.log(skillData);
   return (
     <div>

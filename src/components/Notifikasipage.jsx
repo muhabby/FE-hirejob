@@ -8,13 +8,13 @@ const Notifikasipage = () => {
   ]);
 
   const handleShowUnreadMessages = () => {
-    const unreadMessages = messages.filter(message => !message.read);
-    alert(`Pesan yang belum dibaca: ${unreadMessages.map(message => message.title).join(', ')}`);
+    const unreadMessages = messages.filter((message) => !message.read);
+    alert(`Pesan yang belum dibaca: ${unreadMessages.map((message) => message.title).join(', ')}`);
   };
 
   return (
     <div className="container mx-auto">
-      <button 
+      <button
         className="bg-blue-500 text-white px-4 py-2 rounded-md"
         onClick={handleShowUnreadMessages}
       >

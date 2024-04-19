@@ -1,7 +1,7 @@
-import photoAuth from "../../../assets/photo-auth.svg";
-import { Link } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { EmailInput, PasswordInput, TextInput } from "../../../components/Input";
+import photoAuth from '../../../assets/photo-auth.svg';
+import { Link } from 'react-router-dom';
+import { Button } from '../../../components/Button';
+import { EmailInput, PasswordInput, TextInput } from '../../../components/Input';
 
 const RegisterWorker = () => {
   return (
@@ -13,8 +13,8 @@ const RegisterWorker = () => {
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl text-dark ">Halo, Pewpeople</h1>
           <p className="text-xl text-dark-grey tracking-wide ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-            ipsum et dui rhoncus auctor.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus
+            auctor.
           </p>
         </div>
         <form id="formSubmit" className="flex flex-col gap-8">
@@ -59,7 +59,10 @@ const RegisterWorker = () => {
         </form>
         <div className="text-center">
           Anda sudah punya akun?
-          <Link to="/login/worker" className="text-yellow hover:text-primary"> Masuk disini</Link>
+          <Link to="/login/worker" className="text-yellow hover:text-primary">
+            {' '}
+            Masuk disini
+          </Link>
         </div>
       </div>
     </div>

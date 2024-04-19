@@ -1,55 +1,48 @@
-import Navbar from "../../components/Navbar";
-import PhotoProfile from "../../assets/photo-profile.svg";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import { FiInstagram, FiGithub, FiGitlab, FiMail } from "react-icons/fi";
-import Footer from "../../components/Footer";
+import Navbar from '../../components/Navbar';
+import PhotoProfile from '../../assets/photo-profile.svg';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { FiInstagram, FiGithub, FiGitlab, FiMail } from 'react-icons/fi';
+import Footer from '../../components/Footer';
 // import { BoxInput, TextInput } from "../../components/Input";
-import { Button } from "../../components/Button";
-import Portfolio1 from '../../assets/portfolio1.svg'
-import Tokped from '../../assets/tokped.svg'
+import { Button } from '../../components/Button';
+import Portfolio1 from '../../assets/portfolio1.svg';
+import Tokped from '../../assets/tokped.svg';
 
 const Portfolio = () => {
-  // Dummy Data 
-  const skill = [
-    "PHP",
-    "Javascript",
-    "React",
-    "NextJS",
-    "Tailwind",
-    "PostgreSQL",
-  ];
+  // Dummy Data
+  const skill = ['PHP', 'Javascript', 'React', 'NextJS', 'Tailwind', 'PostgreSQL'];
   const contact = {
     email: 'Louistommo@gmail.com',
     instagram: '@Louist91',
     github: '@Louistommo',
-    gitlab: '@Louistommo91',
-  }
+    gitlab: '@Louistommo91'
+  };
   const portfolio = [
     {
       image: Portfolio1,
-      name: "Reminder app"
+      name: 'Reminder app'
     },
     {
       image: Portfolio1,
-      name: "Consider app"
+      name: 'Consider app'
     },
     {
       image: Portfolio1,
-      name: "Jobless app"
+      name: 'Jobless app'
     },
     {
       image: Portfolio1,
-      name: "Parameter app"
+      name: 'Parameter app'
     },
     {
       image: Portfolio1,
-      name: "Cincai app"
+      name: 'Cincai app'
     },
     {
       image: Portfolio1,
-      name: "Toko app"
-    },
-  ]
+      name: 'Toko app'
+    }
+  ];
   const experience = [
     {
       image: Tokped,
@@ -57,7 +50,8 @@ const Portfolio = () => {
       job_place: 'Tokopedia',
       start_work: '1561939200',
       end_work: '1577836800',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.'
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.'
     },
     {
       image: Tokped,
@@ -65,26 +59,30 @@ const Portfolio = () => {
       job_place: 'Toko Biru',
       start_work: '1561939200',
       end_work: '1577836800',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.'
-    },
-  ]
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.'
+    }
+  ];
 
-  const experiencesWithDates = experience.map(exp => {
+  const experiencesWithDates = experience.map((exp) => {
     const startDate = new Date(Number(exp.start_work) * 1000);
     const endDate = new Date(Number(exp.end_work) * 1000);
-  
+
     const options = {
       year: 'numeric',
       month: 'long'
     };
-  
-    const startDateFormat = startDate.toLocaleDateString("en-US", options);
-    const endDateFormat = endDate.toLocaleDateString("en-US", options);
-  
-    const diffInMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 + endDate.getMonth() - startDate.getMonth();
-    
+
+    const startDateFormat = startDate.toLocaleDateString('en-US', options);
+    const endDateFormat = endDate.toLocaleDateString('en-US', options);
+
+    const diffInMonths =
+      (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+      endDate.getMonth() -
+      startDate.getMonth();
+
     const duration = diffInMonths > 1 ? `${diffInMonths} months` : `1 month`;
-  
+
     return {
       ...exp,
       start_work: startDateFormat,
@@ -92,8 +90,8 @@ const Portfolio = () => {
       duration: duration
     };
   });
-  // Dummy Data 
-  
+  // Dummy Data
+
   return (
     <div className="relative">
       <Navbar />
@@ -112,9 +110,8 @@ const Portfolio = () => {
               <p>Purwokerto, Jawa Tengah</p>
             </div>
             <p className="text-grey">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Vestibulum erat orci, mollis nec gravida sed, ornare quis urna.
-              Curabitur eu lacus fringilla, vestibulum risus at.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis
+              nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.
             </p>
           </div>
           <div className="flex flex-col gap-4">
@@ -159,7 +156,7 @@ const Portfolio = () => {
               <hr className="bg-primary h-1 rounded-full mt-2" />
             </h1>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-4">
-              {portfolio.map((item, index)=>(
+              {portfolio.map((item, index) => (
                 <div key={index} className="flex flex-col items-center gap-2">
                   <img src={item.image} alt="..." className="w-80 rounded-md" />
                   <p>{item.name}</p>
@@ -174,7 +171,7 @@ const Portfolio = () => {
               <hr className="bg-primary h-1 rounded-full mt-2" />
             </h1>
             <div className="flex flex-col gap-4 mt-8">
-              {experiencesWithDates.map((item, index)=>(
+              {experiencesWithDates.map((item, index) => (
                 <div key={index} className="flex flex-col gap-4 md:flex-row md:gap-8">
                   <div className="min-w-32">
                     <img src={item.image} alt="..." className="w-20 md:w-28 ml-2" />
@@ -183,7 +180,9 @@ const Portfolio = () => {
                     <div className="flex flex-col gap-2">
                       <h1 className="font-semibold text-xl md:text-2xl">{item.position}</h1>
                       <p className="font-base text-lg md:text-xl">{item.job_place}</p>
-                      <label className="font-base text-base md:text-lg text-grey flex flex-col md:flex-row gap-2 md:gap-8">{item.start_work} - {item.end_work}  <p>{item.duration}</p></label>
+                      <label className="font-base text-base md:text-lg text-grey flex flex-col md:flex-row gap-2 md:gap-8">
+                        {item.start_work} - {item.end_work} <p>{item.duration}</p>
+                      </label>
                     </div>
                     <p className="text-base md:text-lg">{item.description}</p>
                     <div className="w-full bg-[#E2E5ED] h-[1px]"></div>

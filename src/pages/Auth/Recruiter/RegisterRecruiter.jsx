@@ -1,7 +1,7 @@
-import photoAuth from "../../../assets/photo-auth.svg";
-import { Link } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { EmailInput, PasswordInput, TextInput } from "../../../components/Input";
+import photoAuth from '../../../assets/photo-auth.svg';
+import { Link } from 'react-router-dom';
+import { Button } from '../../../components/Button';
+import { EmailInput, PasswordInput, TextInput } from '../../../components/Input';
 
 const RegisterRecruiter = () => {
   return (
@@ -9,15 +9,13 @@ const RegisterRecruiter = () => {
       <div className="w-auto hidden md:flex md:justify-center fixed top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-50">
         <img src={photoAuth} className="md:w-2/3 lg:w-4/5 2xl:w-auto" />
       </div>
-      <div className="w-1/2 hidden md:flex">
-
-      </div>
+      <div className="w-1/2 hidden md:flex"></div>
       <div className="w-full md:w-1/2 flex flex-col gap-10">
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl text-dark ">Halo, Pewpeople</h1>
           <p className="text-xl text-dark-grey tracking-wide ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-            ipsum et dui rhoncus auctor.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus
+            auctor.
           </p>
         </div>
         <form id="formSubmit" className="flex flex-col gap-8">
@@ -74,7 +72,10 @@ const RegisterRecruiter = () => {
         </form>
         <div className="text-center">
           Anda sudah punya akun?
-          <Link to="/login/recruiter" className="text-yellow hover:text-primary"> Masuk disini</Link>
+          <Link to="/login/recruiter" className="text-yellow hover:text-primary">
+            {' '}
+            Masuk disini
+          </Link>
         </div>
       </div>
     </div>

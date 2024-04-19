@@ -5,7 +5,6 @@ export const putData = (dataType, id, data) => {
   return async (dispatch) => {
     dispatch({ type: 'PUT_DATA_REQUEST' });
     try {
-
       const bodyData = new FormData();
 
       Object.entries(data).forEach(([key, value]) => {

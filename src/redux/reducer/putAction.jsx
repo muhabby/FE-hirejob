@@ -4,7 +4,7 @@ const initialState = {
   portfolioData: null,
   skillsData: null,
   loading: false,
-  error: null,
+  error: null
 };
 
 const putReducer = (state = initialState, action) => {

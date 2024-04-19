@@ -1,14 +1,14 @@
-import { FiSearch } from "react-icons/fi";
-import { MdArrowDropDown } from "react-icons/md";
-import { Button } from "../../components/Button";
-import Navbar from "../../components/Navbar";
-import { useState } from "react";
-import { Transition } from "@headlessui/react";
-import HomeCard from "../../components/HomeCard";
-import Pagination from "../../components/Pagination";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import PhotoProfile from "../../assets/photo-profile.svg";
+import { FiSearch } from 'react-icons/fi';
+import { MdArrowDropDown } from 'react-icons/md';
+import { Button } from '../../components/Button';
+import Navbar from '../../components/Navbar';
+import { useState } from 'react';
+import { Transition } from '@headlessui/react';
+import HomeCard from '../../components/HomeCard';
+import Pagination from '../../components/Pagination';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import PhotoProfile from '../../assets/photo-profile.svg';
 
 const HomeRecruiter = () => {
   const user_worker = [
@@ -43,15 +43,15 @@ const HomeRecruiter = () => {
       province: 'Jawa Barat',
       city: 'Bandung',
       skill: 'PHP, Tailwind, PostgreSQL'
-    },
-  ]
+    }
+  ];
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 10;
 
-  const handlePageChange = page => {
+  const handlePageChange = (page) => {
     setCurrentPage(page);
     // Tambahkan logika untuk memuat data sesuai halaman yang dipilih
   };
@@ -62,15 +62,16 @@ const HomeRecruiter = () => {
     } else {
       setCurrentPage(currentPage - 1);
     }
-  }
-  
+  };
+
   const handlePageNext = () => {
-    if (currentPage == 10) { // ubah 10 ini jadi total page 
+    if (currentPage == 10) {
+      // ubah 10 ini jadi total page
       setCurrentPage(currentPage);
     } else {
       setCurrentPage(currentPage + 1);
     }
-  }
+  };
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -109,7 +110,7 @@ const HomeRecruiter = () => {
                   type="button"
                   onClick={toggleDropdown}
                   aria-haspopup="true"
-                  aria-expanded={isOpen ? "true" : "false"}
+                  aria-expanded={isOpen ? 'true' : 'false'}
                   className="w-full md:w-28 py-2 flex flex-row items-center justify-center gap-1 text-grey"
                 >
                   <MdArrowDropDown size={25} />
@@ -137,7 +138,7 @@ const HomeRecruiter = () => {
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-light-grey"
                       role="menuitem"
-                      onClick={() => handleOptionSelect("Pilihan 1")}
+                      onClick={() => handleOptionSelect('Pilihan 1')}
                     >
                       Pilihan 1
                     </a>
@@ -145,7 +146,7 @@ const HomeRecruiter = () => {
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-light-grey"
                       role="menuitem"
-                      onClick={() => handleOptionSelect("Pilihan 2")}
+                      onClick={() => handleOptionSelect('Pilihan 2')}
                     >
                       Pilihan 2
                     </a>
@@ -153,7 +154,7 @@ const HomeRecruiter = () => {
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-light-grey"
                       role="menuitem"
-                      onClick={() => handleOptionSelect("Pilihan 3")}
+                      onClick={() => handleOptionSelect('Pilihan 3')}
                     >
                       Pilihan 3
                     </a>
@@ -169,7 +170,7 @@ const HomeRecruiter = () => {
           <div>
             {user_worker.map((item, index) => (
               <div key={index}>
-                <HomeCard 
+                <HomeCard
                   photo={item.image}
                   name={item.name}
                   position={item.position}
@@ -184,7 +185,7 @@ const HomeRecruiter = () => {
         </div>
 
         {/* Pagination  */}
-        <Pagination 
+        <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}

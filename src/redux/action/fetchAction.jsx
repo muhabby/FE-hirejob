@@ -6,7 +6,7 @@ export const fetchData = (dataType, params) => {
     dispatch({ type: 'FETCH_DATA_REQUEST' });
     try {
       const response = await axios.get(`/api/${dataType}`, {
-        params:params
+        params: params
       });
       dispatch({ type: 'FETCH_DATA_ALL_SUCCESS', payload: { dataType, data: response.data } });
     } catch (error) {

@@ -1,23 +1,23 @@
-import { useState } from "react";
-import photoAuth from '../../../assets/photo-auth.svg'
-import { Button } from '../../../components/Button'
-import { EmailInput } from "../../../components/Input";
-import Alert from "../../../components/Alert";
+import { useState } from 'react';
+import photoAuth from '../../../assets/photo-auth.svg';
+import { Button } from '../../../components/Button';
+import { EmailInput } from '../../../components/Input';
+import Alert from '../../../components/Alert';
 
 const RequestReset = () => {
   const [formData, setFormData] = useState({
-    email: "",
+    email: ''
   });
-  const users = { 
-    email: 'rikiprimus33@gmail.com',
-  }
+  const users = {
+    email: 'rikiprimus33@gmail.com'
+  };
   const [error, setError] = useState();
 
   const onChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -27,7 +27,7 @@ const RequestReset = () => {
     if (formData.email !== users.email) {
       setError(true);
     } else {
-      setError(false)
+      setError(false);
     }
   };
 
@@ -37,30 +37,33 @@ const RequestReset = () => {
         <img src={photoAuth} />
       </div>
       <div className="w-full md:w-1/2 flex flex-col gap-5">
-        <div className='flex flex-col gap-4'>
-          <h1 className='text-4xl text-dark '>Halo, Pewpeople</h1>
-          <p className='text-xl text-dark-grey tracking-wide '>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+        <div className="flex flex-col gap-4">
+          <h1 className="text-4xl text-dark ">Halo, Pewpeople</h1>
+          <p className="text-xl text-dark-grey tracking-wide ">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus
+            auctor.
+          </p>
         </div>
-        <Alert 
+        <Alert
           error={error}
           isError="Data email tidak terdaftar !"
           isSuccess="Data OTP sudah dikirim !"
         />
-        <form onSubmit={handleSubmit} id='formSubmit' className='flex flex-col gap-14'>
+        <form onSubmit={handleSubmit} id="formSubmit" className="flex flex-col gap-14">
           <EmailInput
             text="Email"
-            name='email'
-            placeholder='Masukan alamat email'
+            name="email"
+            placeholder="Masukan alamat email"
             onChange={onChange}
             autoComplete="current-email"
           />
-          <div className=''>
+          <div className="">
             <Button className="bg-yellow hover:bg-[#db9709]">Send password reset email</Button>
           </div>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RequestReset
+export default RequestReset;

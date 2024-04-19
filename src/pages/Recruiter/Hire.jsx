@@ -1,9 +1,9 @@
-import Navbar from "../../components/Navbar"
-import PhotoProfile from "../../assets/photo-profile.svg";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import Footer from "../../components/Footer";
-import { BoxInput, TextInput } from "../../components/Input";
-import { Button } from "../../components/Button";
+import Navbar from '../../components/Navbar';
+import PhotoProfile from '../../assets/photo-profile.svg';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
+import Footer from '../../components/Footer';
+import { BoxInput, TextInput } from '../../components/Input';
+import { Button } from '../../components/Button';
 
 const Hire = () => {
   const profile_worker = {
@@ -12,16 +12,10 @@ const Hire = () => {
     position: 'Web developer',
     province: 'Jawa Tengah',
     city: 'Purwokerto',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.'
-  }
-  const skill = [
-    "PHP",
-    "Javascript",
-    "React",
-    "NextJS",
-    "Tailwind",
-    "PostgreSQL"
-  ];
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.'
+  };
+  const skill = ['PHP', 'Javascript', 'React', 'NextJS', 'Tailwind', 'PostgreSQL'];
 
   return (
     <div>
@@ -36,9 +30,11 @@ const Hire = () => {
             <p className="text-grey">{profile_worker.position}</p>
             <div className="flex flex-row items-center gap-3 text-grey">
               <HiOutlineLocationMarker size={25} />
-              <p>{profile_worker.city}, {profile_worker.province}</p>
+              <p>
+                {profile_worker.city}, {profile_worker.province}
+              </p>
             </div>
-            <p className="text-grey" >{profile_worker.description}</p>
+            <p className="text-grey">{profile_worker.description}</p>
           </div>
           <div className="flex flex-col gap-4">
             <h1 className="text-2xl font-semibold">Skill</h1>
@@ -57,10 +53,13 @@ const Hire = () => {
         <div className="w-full md:w-2/4 flex flex-col gap-16 p-4 ">
           <div className="flex flex-col gap-5">
             <h1 className="text-4xl font-semibold">Hubungi Lous Tomlinson</h1>
-            <p className="text-xl text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+            <p className="text-xl text-grey">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui
+              rhoncus auctor.
+            </p>
           </div>
           <form className="flex flex-col gap-5">
-            <TextInput 
+            <TextInput
               text="Untuk Posisi"
               name="position"
               placeholder="Fulltime Frontend Developer"
@@ -83,7 +82,7 @@ const Hire = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Hire
+export default Hire;
