@@ -6,10 +6,17 @@ export const authLogin = (credentials) => {
   return async (dispatch) => {
     dispatch({ type: 'POST_LOGIN_REQUEST' });
     try {
-      const response = await axios.post(apiUrl + '/auth', credentials);
+      const response = await axios.post(apiUrl + '/auth', credentials, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        }
+      });
       dispatch({ type: 'POST_LOGIN_SUCCESS', payload: response.data });
     } catch (error) {
-      dispatch({ type: 'POST_LOGIN_FAILURE', payload: error });
+      dispatch({ 
+        type: 'POST_LOGIN_FAILURE', 
+        payload: error?.response?.data?.messages ?? "Login Error"
+      });
     }
   };
 };
@@ -18,7 +25,12 @@ export const authRegister = (userData) => {
   return async (dispatch) => {
     dispatch({ type: 'POST_REGISTER_REQUEST' });
     try {
-      const response = await axios.post(apiUrl + '/auth/create', userData);
+
+      const response = await axios.post(apiUrl + '/auth/create', userData, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        }
+      });
       dispatch({ type: 'POST_REGISTER_SUCCESS', payload: response.data });
     } catch (error) {
       dispatch({ type: 'POST_REGISTER_FAILURE', payload: error });
@@ -42,7 +54,7 @@ export const inputOTP = (otp) => {
   return async (dispatch) => {
     dispatch({ type: 'POST_INPUTOTP_REQUEST' });
     try {
-      const response = await axios.post(apiUrl + '/auth/otp', otp);
+      const response = await axios.post(apiUrl + '/auth/inputotp', otp);
       dispatch({ type: 'POST_INPUTOTP_SUCCESS', payload: response.data });
     } catch (error) {
       dispatch({ type: 'POST_INPUTOTP_FAILURE', payload: error });
@@ -52,12 +64,12 @@ export const inputOTP = (otp) => {
 
 export const setPassword = (dataPassword) => {
   return async (dispatch) => {
-    dispatch({ type: 'POST_INPUTOTP_REQUEST' });
+    dispatch({ type: 'SET_PASSWORD_REQUEST' });
     try {
       const response = await axios.post(apiUrl + '/auth/otp', dataPassword);
-      dispatch({ type: 'POST_INPUTOTP_SUCCESS', payload: response.data });
+      dispatch({ type: 'SET_PASSWORD_SUCCESS', payload: response.data });
     } catch (error) {
-      dispatch({ type: 'POST_INPUTOTP_FAILURE', payload: error });
+      dispatch({ type: 'SET_PASSWORD_FAILURE', payload: error });
     }
   };
 };

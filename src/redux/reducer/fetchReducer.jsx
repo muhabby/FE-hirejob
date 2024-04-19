@@ -1,6 +1,7 @@
 const initialState = {
   userData: null,
   profileData: null,
+  workExperienceData: null,
   portfolioData: null,
   skillsData: null,
   loading: false,
