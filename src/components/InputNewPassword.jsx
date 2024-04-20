@@ -1,19 +1,10 @@
 import { useEffect, useState } from 'react';
 import photoAuth from '../../../assets/photo-auth.svg';
 import { Button } from '../../../components/Button';
-import { useNavigate } from 'react-router-dom';
 import { PasswordInput } from '../../../components/Input';
-import { useDispatch, useSelector } from 'react-redux';
-import { setPassword } from '../../../redux/action/auth';
-import { AlertSubmit, Alert } from '../../../components/Alert';
+import Alert from '../../../components/Alert';
 
 const InputNewPassword = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const inputOTPData = useSelector((state) => state.inputOTP.data);
-  const isError = useSelector((state) => state.setPassword.error);
-  const isLoading = useSelector((state) => state.setPassword.loading);
-  const isSuccess = useSelector((state) => state.setPassword.data?.message);
   const [formData, setFormData] = useState({
     password: '',
     confirmPassword: ''
@@ -27,7 +18,6 @@ const InputNewPassword = () => {
       [name]: value
     }));
   };
-
   useEffect(() => {
     if (formData.password !== '' && formData.confirmPassword !== '') {
       if (formData.password !== formData.confirmPassword) {
@@ -37,14 +27,7 @@ const InputNewPassword = () => {
       }
     }
   }, [formData]);
-  // console.log(userData)
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const token = inputOTPData.token;
-    const role = inputOTPData.userData.role
-    dispatch(setPassword(formData, token, role, navigate));
-  };
-  localStorage.clear('root')
+
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
       <div className="w-1/2 hidden md:flex md:justify-center">
@@ -58,9 +41,8 @@ const InputNewPassword = () => {
             auctor.
           </p>
         </div>
-        <AlertSubmit isError={isError} isSuccess={isSuccess} />
         <Alert error={error} isError="Password tidak cocok !" isSuccess="Password cocok !" />
-        <form onSubmit={handleSubmit} id="formSubmit" className="flex flex-col gap-14">
+        <form id="formSubmit" className="flex flex-col gap-14">
           <PasswordInput
             text="New Password"
             name="password"
@@ -76,9 +58,7 @@ const InputNewPassword = () => {
             autoComplete="current-confirmPassword"
           />
           <div>
-            <Button className="bg-yellow hover:bg-[#db9709]" isLoading={isLoading}>
-              Reset Password
-            </Button>
+            <Button className="bg-yellow hover:bg-[#db9709]">Reset Password</Button>
           </div>
         </form>
       </div>

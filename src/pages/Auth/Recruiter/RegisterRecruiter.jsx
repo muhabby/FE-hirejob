@@ -5,24 +5,27 @@ import { Button } from '../../../components/Button';
 import { EmailInput, PasswordInput, TextInput } from '../../../components/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { authRegister } from '../../../redux/action/auth';
-import Alert from '../../../components/Alert';
+import { AlertSubmit, Alert } from '../../../components/Alert';
 
 const RegisterRecruiter = () => {
   const rolePage = 'recruiter';
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.register);
+  const isError = useSelector((state) => state.register.error);
+  const isLoading = useSelector((state) => state.register.loading);
+  const isSuccess = useSelector((state) => state.register.data?.message);
   const [formData, setFormData] = useState({
-    name:"",
-    phone:"",
-    email:"",
-    password:"",
-    confirmPassword:"",
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
     role: rolePage,
-    company_name:"",
-    position: "" 
-  })
+    company_name: '',
+    position: ''
+  });
   const [error, setError] = useState();
-  
+
   const onChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
@@ -43,9 +46,9 @@ const RegisterRecruiter = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData)
-    dispatch(authRegister(formData))
-  }
+    console.log(formData);
+    dispatch(authRegister(formData, rolePage, navigate));
+  };
 
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
@@ -61,6 +64,7 @@ const RegisterRecruiter = () => {
             auctor.
           </p>
         </div>
+        <AlertSubmit isError={isError} isSuccess={isSuccess} />
         <form id="formSubmit" onSubmit={handleSubmit} className="flex flex-col gap-8">
           <TextInput
             text="Name"
@@ -97,7 +101,7 @@ const RegisterRecruiter = () => {
             autoComplete="current-phone"
             onChange={onChange}
           />
-          <Alert error={error} isError="Password tidak sama !" isSuccess="Password sama !" />
+          <Alert error={error} isSuccess='Password sama' isError='Password tidak sama' />
           <PasswordInput
             text="Kata Sandi"
             name="password"
@@ -118,7 +122,9 @@ const RegisterRecruiter = () => {
             </Link>
           </div>
           <div className="">
-            <Button className="bg-yellow hover:bg-[#db9709]">Daftar</Button>
+            <Button className="bg-yellow hover:bg-[#db9709]" isLoading={isLoading}>
+              Daftar
+            </Button>
           </div>
         </form>
         <div className="text-center">

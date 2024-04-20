@@ -1,17 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import photoAuth from '../../../assets/photo-auth.svg';
 import { Button } from '../../../components/Button';
+import { useNavigate } from 'react-router-dom';
 import { EmailInput } from '../../../components/Input';
-import Alert from '../../../components/Alert';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestOTP } from '../../../redux/action/auth';
+import { AlertSubmit } from '../../../components/Alert';
 
 const RequestReset = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isError = useSelector((state) => state.requestOTP.error);
+  const isLoading = useSelector((state) => state.requestOTP.loading);
+  const isSuccess = useSelector((state) => state.register.data?.message);
   const [formData, setFormData] = useState({
     email: ''
   });
-  const users = {
-    email: 'rikiprimus33@gmail.com'
-  };
-  const [error, setError] = useState();
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -23,12 +27,8 @@ const RequestReset = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    if (formData.email !== users.email) {
-      setError(true);
-    } else {
-      setError(false);
-    }
+    console.log(formData);
+    dispatch(requestOTP(formData, navigate));
   };
 
   return (
@@ -44,11 +44,7 @@ const RequestReset = () => {
             auctor.
           </p>
         </div>
-        <Alert
-          error={error}
-          isError="Data email tidak terdaftar !"
-          isSuccess="Data OTP sudah dikirim !"
-        />
+        <AlertSubmit isError={isError} isSuccess={isSuccess} />
         <form onSubmit={handleSubmit} id="formSubmit" className="flex flex-col gap-14">
           <EmailInput
             text="Email"
@@ -58,7 +54,9 @@ const RequestReset = () => {
             autoComplete="current-email"
           />
           <div className="">
-            <Button className="bg-yellow hover:bg-[#db9709]">Send password reset email</Button>
+            <Button className="bg-yellow hover:bg-[#db9709]" isLoading={isLoading}>
+              Send password reset 
+            </Button>
           </div>
         </form>
       </div>
