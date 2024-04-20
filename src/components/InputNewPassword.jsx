@@ -1,17 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import photoAuth from '../../../assets/photo-auth.svg';
 import { Button } from '../../../components/Button';
-import { TextInput } from '../../../components/Input';
+import { PasswordInput } from '../../../components/Input';
 import Alert from '../../../components/Alert';
-import { useDispatch, useSelector } from 'react-redux';
-import { inputOTP } from '../../../redux/action/auth';
 
-const InputOtp = () => {
-  const dispatch = useDispatch();
-  const emailData = useSelector((state) => state.requestOTP.data.email);
+const InputNewPassword = () => {
   const [formData, setFormData] = useState({
-    email: emailData,
-    otp: '',
+    password: '',
+    confirmPassword: ''
   });
   const [error, setError] = useState();
 
@@ -22,13 +18,15 @@ const InputOtp = () => {
       [name]: value
     }));
   };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData)
-    dispatch(inputOTP(formData))
-  };
-  
+  useEffect(() => {
+    if (formData.password !== '' && formData.confirmPassword !== '') {
+      if (formData.password !== formData.confirmPassword) {
+        setError(true);
+      } else {
+        setError(false);
+      }
+    }
+  }, [formData]);
 
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
@@ -43,16 +41,24 @@ const InputOtp = () => {
             auctor.
           </p>
         </div>
-        <form onSubmit={handleSubmit} id="formSubmit" className="flex flex-col gap-14">
-          <TextInput
-            text="Otp"
-            name="otp"
-            placeholder="Masukan OTP"
+        <Alert error={error} isError="Password tidak cocok !" isSuccess="Password cocok !" />
+        <form id="formSubmit" className="flex flex-col gap-14">
+          <PasswordInput
+            text="New Password"
+            name="password"
+            placeholder="Masukan Password"
             onChange={onChange}
-            autoComplete="current-otp"
+            autoComplete="current-password"
+          />
+          <PasswordInput
+            text="Confirmation Password"
+            name="confirmPassword"
+            placeholder="Masukan New Password"
+            onChange={onChange}
+            autoComplete="current-confirmPassword"
           />
           <div>
-            <Button className="bg-yellow hover:bg-[#db9709]">Go To Change Password</Button>
+            <Button className="bg-yellow hover:bg-[#db9709]">Reset Password</Button>
           </div>
         </form>
       </div>
@@ -60,4 +66,4 @@ const InputOtp = () => {
   );
 };
 
-export default InputOtp;
+export default InputNewPassword;

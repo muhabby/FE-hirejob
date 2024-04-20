@@ -33,7 +33,10 @@ export const authRegister = (userData) => {
       });
       dispatch({ type: 'POST_REGISTER_SUCCESS', payload: response.data });
     } catch (error) {
-      dispatch({ type: 'POST_REGISTER_FAILURE', payload: error });
+      dispatch({ 
+        type: 'POST_REGISTER_FAILURE', 
+        payload: error?.response?.data?.messages ?? "Register Error"
+      });
     }
   };
 };
@@ -42,10 +45,17 @@ export const requestOTP = (email) => {
   return async (dispatch) => {
     dispatch({ type: 'POST_OTP_REQUEST' });
     try {
-      const response = await axios.post(apiUrl + '/auth/otp', email);
+      const response = await axios.post(apiUrl + '/auth/otp', email, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        }
+      });
       dispatch({ type: 'POST_OTP_SUCCESS', payload: response.data });
     } catch (error) {
-      dispatch({ type: 'POST_OTP_FAILURE', payload: error });
+      dispatch({ 
+        type: 'POST_OTP_FAILURE', 
+        payload: error?.response?.data?.messages ?? "Request OTP Error"
+      });
     }
   };
 };
@@ -54,22 +64,39 @@ export const inputOTP = (otp) => {
   return async (dispatch) => {
     dispatch({ type: 'POST_INPUTOTP_REQUEST' });
     try {
-      const response = await axios.post(apiUrl + '/auth/inputotp', otp);
+      const response = await axios.post(apiUrl + '/auth/inputotp', otp, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        }
+      });
       dispatch({ type: 'POST_INPUTOTP_SUCCESS', payload: response.data });
     } catch (error) {
-      dispatch({ type: 'POST_INPUTOTP_FAILURE', payload: error });
+      dispatch({ 
+        type: 'POST_INPUTOTP_FAILURE', 
+        payload: error?.response?.data?.messages ?? "Input OTP Error"
+      });
     }
   };
 };
 
-export const setPassword = (dataPassword) => {
+export const setPassword = (password, token) => {
   return async (dispatch) => {
     dispatch({ type: 'SET_PASSWORD_REQUEST' });
     try {
-      const response = await axios.post(apiUrl + '/auth/otp', dataPassword);
+      // const formDataEncoded = querystring.stringify(password);
+      console.log(password)
+      const response = await axios.post(apiUrl + '/auth/passwordreset', password, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Authorization": `Bearer ${token}`,
+        }
+      });
       dispatch({ type: 'SET_PASSWORD_SUCCESS', payload: response.data });
     } catch (error) {
-      dispatch({ type: 'SET_PASSWORD_FAILURE', payload: error });
+      dispatch({ 
+        type: 'SET_PASSWORD_FAILURE', 
+        payload: error?.response?.data?.messages ?? "Set Password Error"
+      });
     }
   };
 };

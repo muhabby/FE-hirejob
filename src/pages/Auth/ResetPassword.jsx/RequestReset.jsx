@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import photoAuth from '../../../assets/photo-auth.svg';
 import { Button } from '../../../components/Button';
 import { EmailInput } from '../../../components/Input';
 import Alert from '../../../components/Alert';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestOTP } from '../../../redux/action/auth';
+
 
 const RequestReset = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.register);
   const [formData, setFormData] = useState({
     email: ''
   });
-  const users = {
-    email: 'rikiprimus33@gmail.com'
-  };
   const [error, setError] = useState();
 
   const onChange = (event) => {
@@ -23,12 +25,8 @@ const RequestReset = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    if (formData.email !== users.email) {
-      setError(true);
-    } else {
-      setError(false);
-    }
+    console.log(formData)
+    dispatch(requestOTP(formData))
   };
 
   return (
@@ -44,11 +42,7 @@ const RequestReset = () => {
             auctor.
           </p>
         </div>
-        <Alert
-          error={error}
-          isError="Data email tidak terdaftar !"
-          isSuccess="Data OTP sudah dikirim !"
-        />
+        
         <form onSubmit={handleSubmit} id="formSubmit" className="flex flex-col gap-14">
           <EmailInput
             text="Email"

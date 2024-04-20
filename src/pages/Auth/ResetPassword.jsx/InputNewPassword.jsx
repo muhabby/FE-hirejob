@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react';
 import photoAuth from '../../../assets/photo-auth.svg';
 import { Button } from '../../../components/Button';
 import { PasswordInput } from '../../../components/Input';
+import { useDispatch, useSelector } from 'react-redux';
 import Alert from '../../../components/Alert';
+import { setPassword } from '../../../redux/action/auth';
 
 const InputNewPassword = () => {
+  const dispatch = useDispatch();
+  const inputOTPData = useSelector((state) => state.inputOTP.data);
   const [formData, setFormData] = useState({
     password: '',
     confirmPassword: ''
@@ -27,7 +31,14 @@ const InputNewPassword = () => {
       }
     }
   }, [formData]);
-  // console.log(formData)
+  // console.log(userData)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const token = inputOTPData.token
+    dispatch(setPassword(formData, token))
+  };
+  console.log(formData)
+  
 
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
@@ -43,7 +54,7 @@ const InputNewPassword = () => {
           </p>
         </div>
         <Alert error={error} isError="Password tidak cocok !" isSuccess="Password cocok !" />
-        <form id="formSubmit" className="flex flex-col gap-14">
+        <form onSubmit={handleSubmit} id="formSubmit" className="flex flex-col gap-14">
           <PasswordInput
             text="New Password"
             name="password"
