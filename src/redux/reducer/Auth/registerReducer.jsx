@@ -22,7 +22,7 @@ const register = (state = initialState, action) => {
         loading: false,
         error: null
       };
-    case 'POST_LOGIN_FAILURE':
+    case 'POST_REGISTER_FAILURE':
       return {
         ...state,
         isLoggedIn: false,

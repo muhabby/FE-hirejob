@@ -1,20 +1,24 @@
 import { useState } from 'react';
 import photoAuth from '../../../assets/photo-auth.svg';
 import { Button } from '../../../components/Button';
+import { useNavigate } from 'react-router-dom';
 import { TextInput } from '../../../components/Input';
-import Alert from '../../../components/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { inputOTP } from '../../../redux/action/auth';
+import { AlertSubmit } from '../../../components/Alert';
 
 const InputOtp = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const emailData = useSelector((state) => state.requestOTP.data.email);
+  const isError = useSelector((state) => state.inputOTP.error);
+  const isLoading = useSelector((state) => state.inputOTP.loading);
+  const isSuccess = useSelector((state) => state.inputOTP.data?.message);
   const [formData, setFormData] = useState({
     email: emailData,
-    otp: '',
+    otp: ''
   });
-  const [error, setError] = useState();
-
+  
   const onChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
@@ -25,11 +29,10 @@ const InputOtp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData)
-    dispatch(inputOTP(formData))
+    console.log(formData);
+    dispatch(inputOTP(formData, navigate));
   };
   
-
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
       <div className="w-1/2 hidden md:flex md:justify-center">
@@ -43,6 +46,7 @@ const InputOtp = () => {
             auctor.
           </p>
         </div>
+        <AlertSubmit isError={isError} isSuccess={isSuccess} />
         <form onSubmit={handleSubmit} id="formSubmit" className="flex flex-col gap-14">
           <TextInput
             text="Otp"
@@ -52,7 +56,9 @@ const InputOtp = () => {
             autoComplete="current-otp"
           />
           <div>
-            <Button className="bg-yellow hover:bg-[#db9709]">Go To Change Password</Button>
+            <Button className="bg-yellow hover:bg-[#db9709]" isLoading={isLoading}>
+              Go To Change Password
+            </Button>
           </div>
         </form>
       </div>

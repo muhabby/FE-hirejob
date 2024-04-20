@@ -4,18 +4,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/Button';
 import { EmailInput, PasswordInput } from '../../../components/Input';
 import { useDispatch, useSelector } from 'react-redux';
-import { authLogin, authRegister } from '../../../redux/action/auth';
-import Alert from '../../../components/Alert';
+import { authLogin } from '../../../redux/action/auth';
+import { AlertSubmit } from '../../../components/Alert';
 
 const LoginRecruiter = () => {
-  const rolePage = 'recruiter';
+  // const rolePage = 'recruiter';
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const errorData = useSelector((state) => state.login.error);
+  const isError = useSelector((state) => state.login.error);
+  const isLoading = useSelector((state) => state.login.loading);
   const [formData, setFormData] = useState({
-    email:"",
-    password:""
-  })
-  const [error, setError] = useState();
+    email: '',
+    password: ''
+  });
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -27,10 +28,10 @@ const LoginRecruiter = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData)
-    dispatch(authLogin(formData))
-  }
-  console.log(errorData)
+    console.log(formData);
+    dispatch(authLogin(formData, navigate));
+  };
+
 
   return (
     <div className="h-auto flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
@@ -45,7 +46,7 @@ const LoginRecruiter = () => {
             auctor.
           </p>
         </div>
-        
+        <AlertSubmit isError={isError} />
         <form id="formSubmit" onSubmit={handleSubmit} className="flex flex-col gap-8">
           <EmailInput
             text="Email"
@@ -67,7 +68,9 @@ const LoginRecruiter = () => {
             </Link>
           </div>
           <div className="">
-            <Button className="bg-yellow hover:bg-[#db9709]">Masuk</Button>
+            <Button className="bg-yellow hover:bg-[#db9709]" isLoading={isLoading}>
+              Masuk
+            </Button>
           </div>
         </form>
         <div className="text-center">
