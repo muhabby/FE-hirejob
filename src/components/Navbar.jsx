@@ -16,20 +16,17 @@ const Navbar = () => {
         <div className="flex flex-row gap-6 items-center justify-center text-grey">
           <Link
             to="/"
-            className="p-2 m-2 rounded-full bg-white hover:bg-primary hover:text-white hover:shadow-lg active:shadow-inner"
-          >
+            className="p-2 m-2 rounded-full bg-white hover:bg-primary hover:text-white hover:shadow-lg active:shadow-inner">
             <FiBell size={20} className="transition duration-300 ease-in-out active:scale-75" />
           </Link>
           <Link
             to="/"
-            className="p-2 m-2 rounded-full bg-white hover:bg-primary hover:text-white hover:shadow-lg active:shadow-inner"
-          >
+            className="p-2 m-2 rounded-full bg-white hover:bg-primary hover:text-white hover:shadow-lg active:shadow-inner">
             <FiMail size={20} className="transition duration-300 ease-in-out active:scale-75" />
           </Link>
           <Link
             to="/"
-            className="rounded-full hover:drop-shadow-xl hover:shadow-purple active:shadow-inner"
-          >
+            className="rounded-full hover:drop-shadow-xl hover:shadow-purple active:shadow-inner">
             <img
               src={NavbarPhoto}
               className="w-8 rounded-full transition duration-300 ease-in-out active:scale-75"

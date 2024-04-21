@@ -41,8 +41,7 @@ const EditProfileWorker = () => {
                   <label
                     htmlFor="inputEdit"
                     type="submit"
-                    className="text-[#9EA0A5] font-semibold lg:text-lg pl-1"
-                  >
+                    className="text-[#9EA0A5] font-semibold lg:text-lg pl-1">
                     Edit
                   </label>
                 </form>
@@ -69,14 +68,12 @@ const EditProfileWorker = () => {
             <div className="space-y-5">
               <button
                 type="submit"
-                className="w-full h-[50px] bg-[#5E50A1] text-2xl text-white rounded-md shadow-md hover:bg-yellow"
-              >
+                className="w-full h-[50px] bg-[#5E50A1] text-2xl text-white rounded-md shadow-md hover:bg-yellow">
                 Simpan
               </button>
               <button
                 type="submit"
-                className="w-full h-[50px] text-2xl text-[#5E50A1] rounded-md shadow-md hover:bg-grey-white outline outline-offset-1 outline-[#5E50A1] outline-1 "
-              >
+                className="w-full h-[50px] text-2xl text-[#5E50A1] rounded-md shadow-md hover:bg-grey-white outline outline-offset-1 outline-[#5E50A1] outline-1 ">
                 Batal
               </button>
             </div>
@@ -226,8 +223,7 @@ const EditProfileWorker = () => {
                     />
                     <label
                       htmlFor="inputFile"
-                      className=" flex flex-col space-y-9 cursor-pointer outline-dashed rounded-md outline-offset-2 outline-[#9EA0A5] outline-3 h-[348px]  justify-center items-center"
-                    >
+                      className=" flex flex-col space-y-9 cursor-pointer outline-dashed rounded-md outline-offset-2 outline-[#9EA0A5] outline-3 h-[348px]  justify-center items-center">
                       <img src={uploadLogo} alt="" />
                       <p className="text-lg">Drag & Drop untuk Upload Gambar Aplikasi Mobile</p>
                       <p className="">Atau cari untuk mengupload file dari direktorimu.</p>
@@ -287,8 +283,7 @@ const EditProfileWorker = () => {
                   <label
                     htmlFor="inputEdit"
                     type="submit"
-                    className="text-[#9EA0A5] font-semibold md:text-xl pl-1"
-                  >
+                    className="text-[#9EA0A5] font-semibold md:text-xl pl-1">
                     Edit
                   </label>
                 </form>
@@ -315,14 +310,12 @@ const EditProfileWorker = () => {
             <div className="space-y-5 w-full">
               <button
                 type="submit"
-                className="w-full h-[50px] bg-[#5E50A1] sm:text-xl text-white rounded-md shadow-md hover:bg-yellow"
-              >
+                className="w-full h-[50px] bg-[#5E50A1] sm:text-xl text-white rounded-md shadow-md hover:bg-yellow">
                 Simpan
               </button>
               <button
                 type="submit"
-                className="w-full h-[50px] sm:text-xl text-[#5E50A1] rounded-md shadow-md hover:bg-grey-white outline outline-offset-1 outline-[#5E50A1] outline-1 "
-              >
+                className="w-full h-[50px] sm:text-xl text-[#5E50A1] rounded-md shadow-md hover:bg-grey-white outline outline-offset-1 outline-[#5E50A1] outline-1 ">
                 Batal
               </button>
             </div>
@@ -459,8 +452,7 @@ const EditProfileWorker = () => {
                     />
                     <label
                       htmlFor="inputFile"
-                      className=" flex w-full flex-col sm:space-y-4 cursor-pointer outline-dashed rounded-md outline-offset-2 outline-[#9EA0A5] outline-3 h-[348px]  justify-center items-center sm:px-2"
-                    >
+                      className=" flex w-full flex-col sm:space-y-4 cursor-pointer outline-dashed rounded-md outline-offset-2 outline-[#9EA0A5] outline-3 h-[348px]  justify-center items-center sm:px-2">
                       <img src={uploadLogo} alt="" className="sm:w-20 md:w-36" />
                       <p className="sm:text-sm md:text-base text-center ">
                         Drag & Drop untuk Upload Gambar Aplikasi Mobile
