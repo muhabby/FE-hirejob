@@ -9,6 +9,7 @@ import section2 from '../assets/image/sectionLanding.png';
 import cardPhoto1 from '../assets/image/card1.png';
 import cardPhoto2 from '../assets/image/card2.png';
 import cardPhoto3 from '../assets/image/card3.png';
+import { Link } from 'react-router-dom';
 
 const SLIDES = [
   {
@@ -39,8 +40,12 @@ const LandingPage = () => {
         <nav className="flex items-center justify-between mt-5 lg:mx-5">
           <img src={logo} alt="" />
           <div className="flex space-x-10">
-            <ButtonWhite text="Masuk Untuk Pekerja" />
-            <ButtonPurple text="Masuk Untuk Perekrut" />
+            <Link to={'/login/worker'}>
+              <ButtonWhite text="Masuk Untuk Pekerja" />
+            </Link>
+            <Link to={'/login/recruiter'}>
+              <ButtonPurple text="Masuk Untuk Perekrut" />
+            </Link>
           </div>
         </nav>
         <body className=" my-20 lg:mx-12 2xl:mx-28">
@@ -56,8 +61,7 @@ const LandingPage = () => {
               </p>
               <button
                 type="submit"
-                className="mt-12 w-52 h-16 rounded-md bg-[#5E50A1] text-white hover:bg-[#483d7e] transition duration-300 ease-in-out active:scale-75 "
-              >
+                className="mt-12 w-52 h-16 rounded-md bg-[#5E50A1] text-white hover:bg-[#483d7e] transition duration-300 ease-in-out active:scale-75 ">
                 Mulai Dari Sekarang
               </button>
             </div>
@@ -153,8 +157,7 @@ const LandingPage = () => {
               {SLIDES.map((data, index) => (
                 <div
                   key={index}
-                  className="w-[339px] h-[437px] flex flex-col items-center shadow-xl"
-                >
+                  className="w-[339px] h-[437px] flex flex-col items-center shadow-xl">
                   <div className="">
                     <img
                       src={data.imgSrc}
@@ -216,8 +219,7 @@ const LandingPage = () => {
             </p>
             <button
               type="submit"
-              className="mt-9 md:mt-5 w-52 h-16 rounded-md bg-[#5E50A1] text-white hover:bg-[#483d7e] transition duration-300 ease-in-out active:scale-75 "
-            >
+              className="mt-9 md:mt-5 w-52 h-16 rounded-md bg-[#5E50A1] text-white hover:bg-[#483d7e] transition duration-300 ease-in-out active:scale-75 ">
               Mulai Dari Sekarang
             </button>
           </header>
@@ -317,8 +319,7 @@ const LandingPage = () => {
               {SLIDES.map((item, index) => (
                 <div
                   key={index}
-                  className="h-[437px] md:w-11/12 flex flex-col items-center shadow-xl"
-                >
+                  className="h-[437px] md:w-11/12 flex flex-col items-center shadow-xl">
                   <div className="">
                     <img
                       src={item.imgSrc}
