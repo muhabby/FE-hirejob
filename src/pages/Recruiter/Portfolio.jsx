@@ -19,7 +19,7 @@ const Portfolio = () => {
   const portfolioDataById  = useSelector((state) => state.fetchReducer.portfoliobyidData?.data);
   const experienceDataById  = useSelector((state) => state.fetchReducer.experiencebyidData?.data);
   const cityDataById  = useSelector((state) => state.fetchReducer.citybyidData?.data);
-  const contactDataById  = useSelector((state) => state.fetchReducer.contactbyidData?.data);
+  const contactDataById  = useSelector((state) => state.fetchReducer.contactbyidData?.data[0]);
   useEffect(() => {
     dispatch(fetchDataById('worker', 'workerbyid', id));
     dispatch(fetchDataById('skills', 'skillsbyid', id));
@@ -29,9 +29,9 @@ const Portfolio = () => {
     dispatch(fetchDataById('contact', 'contactbyid', id));
     // localStorage.clear()
   }, [dispatch, id]);
-  const skillData = skillsDataById.skill_name.split(', ');
+  const skillData = skillsDataById?.skill_name.split(', ');
 
-  console.log(skillData)
+  console.log(id)
   console.log("workerDataById")
   console.log(workerDataById)
   console.log("skillsDataById")
@@ -78,7 +78,7 @@ const Portfolio = () => {
     }
   ];
 
-  const experiencesWithDates = experience.map((exp) => {
+  const experiencesWithDates = experience?.map((exp) => {
     const startDate = new Date(Number(exp.start_work) * 1000);
     const endDate = new Date(Number(exp.end_work) * 1000);
 
@@ -115,22 +115,22 @@ const Portfolio = () => {
         <div className="w-full md:w-1/3 bg-white rounded-md p-6 mt-4 flex flex-col gap-20 ">
           <div className="flex flex-col items-start gap-4 mb-10">
             <div className="w-full flex flex-row justify-center">
-              <img src={workerDataById.photo} className="w-40 h-40 rounded-full" />
+              <img src="" className="w-40 h-40 rounded-full" />
             </div>
-            <h1 className="text-2xl font-semibold">{workerDataById.name}</h1>
-            <p className="text-grey">{workerDataById.job_desk}</p>
+            <h1 className="text-2xl font-semibold">{workerDataById?.name}</h1>
+            <p className="text-grey">{workerDataById?.job_desk}</p>
             <div className="flex flex-row items-center gap-3 text-grey">
               <HiOutlineLocationMarker size={25} />
-              <p>{cityDataById.city_name}, {cityDataById.province_name}</p>
+              <p>{cityDataById?.city_name}, {cityDataById?.province_name}</p>
             </div>
             <p className="text-grey">
-              {workerDataById.bio}
+              {workerDataById?.bio}
             </p>
           </div>
           <div className="flex flex-col gap-4">
             <h1 className="text-2xl font-semibold">Skill</h1>
             <div className="flex flex-wrap gap-4 items-center">
-              {skillData.map((item, index) => (
+              {skillData?.map((item, index) => (
                 <label
                   key={index}
                   className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5"
@@ -143,19 +143,19 @@ const Portfolio = () => {
           <div className="flex flex-col gap-8">
             <div className="flex flex-row items-center gap-5 text-grey">
               <FiMail size={30} />
-              <p>{contactDataById.email}</p>
+              <p>{contactDataById?.email}</p>
             </div>
             <div className="flex flex-row items-center gap-5 text-grey">
               <FiInstagram size={30} />
-              <p>{contactDataById.instagram}</p>
+              <p>{contactDataById?.instagram}</p>
             </div>
             <div className="flex flex-row items-center gap-5 text-grey">
               <FiGithub size={30} />
-              <p>{contactDataById.github}</p>
+              <p>{contactDataById?.github}</p>
             </div>
             <div className="flex flex-row items-center gap-5 text-grey">
               <FiGitlab size={30} />
-              <p>{contactDataById.gitlab}</p>
+              <p>{contactDataById?.gitlab}</p>
             </div>
           </div>
           <Link to={`/hire/${id}`}>
@@ -171,10 +171,10 @@ const Portfolio = () => {
               <hr className="bg-primary h-1 rounded-full mt-2" />
             </h1>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-4">
-              {portfolioDataById.map((item, index) => (
+              {portfolioDataById?.map((item, index) => (
                 <div key={index} className="flex flex-col items-center gap-2">
-                  <img src={item.photo} alt="..." className="w-80 rounded-md" />
-                  <Link to={item.link_repo} className='hover:text-primary'>{item.type}</Link>
+                  <img src={item?.photo} alt="..." className="w-80 rounded-md" />
+                  <Link to={item?.link_repo} className='hover:text-primary'>{item.type}</Link>
                 </div>
               ))}
             </div>
@@ -186,17 +186,17 @@ const Portfolio = () => {
               <hr className="bg-primary h-1 rounded-full mt-2" />
             </h1>
             <div className="flex flex-col gap-4 mt-8">
-              {experiencesWithDates.map((item, index) => (
+              {experienceDataById?.map((item, index) => (
                 <div key={index} className="flex flex-col gap-4 md:flex-row md:gap-8">
                   <div className="min-w-32">
-                    <img src={item.image} alt="..." className="w-20 md:w-28 ml-2" />
+                    <img src={item.photo} alt="..." className="w-20 md:w-28 ml-2" />
                   </div>
                   <div className="flex flex-col gap-4 md:gap-8">
                     <div className="flex flex-col gap-2">
                       <h1 className="font-semibold text-xl md:text-2xl">{item.position}</h1>
-                      <p className="font-base text-lg md:text-xl">{item.job_place}</p>
+                      <p className="font-base text-lg md:text-xl">{item.company_name}</p>
                       <label className="font-base text-base md:text-lg text-grey flex flex-col md:flex-row gap-2 md:gap-8">
-                        {item.start_work} - {item.end_work} <p>{item.duration}</p>
+                        {item.working_start_at} - {item.working_end_at} <p>6 month</p>
                       </label>
                     </div>
                     <p className="text-base md:text-lg">{item.description}</p>
