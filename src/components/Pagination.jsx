@@ -13,7 +13,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, handlePagePrev, han
 
   // Fungsi untuk membuat array dari halaman yang akan ditampilkan
   const pages = [...Array(Math.min(maxPagesToShow, totalPages)).keys()].map((i) => startPage + i);
-  console.log(currentPage);
+  // console.log(currentPage);
 
   return (
     <nav className="flex justify-center my-4">

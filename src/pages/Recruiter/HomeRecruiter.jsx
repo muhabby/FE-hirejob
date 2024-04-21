@@ -1,51 +1,47 @@
+import React, { useEffect, useState, useRef } from "react";
 import { FiSearch } from 'react-icons/fi';
 import { MdArrowDropDown } from 'react-icons/md';
 import { Button } from '../../components/Button';
-import Navbar from '../../components/Navbar';
-import { useState } from 'react';
 import { Transition } from '@headlessui/react';
+import Navbar from '../../components/Navbar';
 import HomeCard from '../../components/HomeCard';
 import Pagination from '../../components/Pagination';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import PhotoProfile from '../../assets/photo-profile.svg';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../../redux/action/fetchAction";
+
 
 const HomeRecruiter = () => {
-  const user_worker = [
-    {
-      image: PhotoProfile,
-      name: 'Louis Tomlinson',
-      position: 'Web developer',
-      province: 'Jawa Tengah',
-      city: 'Purwokerto',
-      skill: 'PHP, Javascript, React, NextJS, Tailwind, PostgreSQL, MySQL'
-    },
-    {
-      image: PhotoProfile,
-      name: 'Kijaru',
-      position: 'Front-End Web',
-      province: 'DKI Jakarta',
-      city: 'Jakarta Timur',
-      skill: 'Javascript, React, NextJS, Tailwind, PostgreSQL'
-    },
-    {
-      image: PhotoProfile,
-      name: 'Tom Holland',
-      position: 'Full-stack Developer',
-      province: 'DKI Jakarta',
-      city: 'Jakarta Barat',
-      skill: 'PHP, Javascript, React, Tailwind, PostgreSQL'
-    },
-    {
-      image: PhotoProfile,
-      name: 'Viky Ranbasi',
-      position: 'Back-end Developer',
-      province: 'Jawa Barat',
-      city: 'Bandung',
-      skill: 'PHP, Tailwind, PostgreSQL'
+  
+  const dispatch = useDispatch();
+  const workerData  = useSelector((state) => state.fetchReducer.workerData?.data);
+  // const paginationData  = useSelector((state) => state.recipes_get.pagination);
+  const searchInput = useRef(null);
+  const [params, setParams] = useState({
+    search: "",
+    sort: "ASC",
+    sortBy: "createdAt",
+    limit: 4,
+    page: 1,
+  });
+  console.log(workerData)
+  useEffect(() => {
+    dispatch(fetchData('worker', params));
+  }, [dispatch, params]);
+  
+  localStorage.clear()
+  const handleSearch = () => {
+    setParams({ ...params, search: searchInput.current.value, page: 1 });
+  };
+  
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
     }
-  ];
-
+  };
+  
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,7 +49,7 @@ const HomeRecruiter = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    // Tambahkan logika untuk memuat data sesuai halaman yang dipilih
+    dispatch(fetchData('worker', params));
   };
 
   const handlePagePrev = () => {
@@ -168,15 +164,16 @@ const HomeRecruiter = () => {
         {/* Content  */}
         <div className="w-full bg-white shadow rounded-lg">
           <div>
-            {user_worker.map((item, index) => (
+            {workerData?.map((item, index) => (
               <div key={index}>
                 <HomeCard
-                  photo={item.image}
+                  to={`/portfolio/${item.user_id}`}
+                  photo={item.photo}
                   name={item.name}
-                  position={item.position}
-                  province={item.province}
-                  city={item.city}
-                  skill={item.skill}
+                  position={item.job_desk}
+                  province={item.province_name}
+                  city={item.city_name}
+                  skill={item.skill_name}
                 />
                 <div className="w-full border border-light-grey"></div>
               </div>

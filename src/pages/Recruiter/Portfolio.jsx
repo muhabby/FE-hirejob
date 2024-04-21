@@ -1,48 +1,62 @@
 import Navbar from '../../components/Navbar';
 import PhotoProfile from '../../assets/photo-profile.svg';
+import Portfolio1 from '../../assets/portfolio1.svg';
+import Tokped from '../../assets/tokped.svg';
+import React, {useState, useEffect} from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { FiInstagram, FiGithub, FiGitlab, FiMail } from 'react-icons/fi';
 import Footer from '../../components/Footer';
-// import { BoxInput, TextInput } from "../../components/Input";
 import { Button } from '../../components/Button';
-import Portfolio1 from '../../assets/portfolio1.svg';
-import Tokped from '../../assets/tokped.svg';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDataById } from "../../redux/action/fetchAction";
 
 const Portfolio = () => {
+  const dispatch = useDispatch();
+  const { id } = useParams()
+  const workerDataById  = useSelector((state) => state.fetchReducer.workerbyidData?.data);
+  const skillsDataById  = useSelector((state) => state.fetchReducer.skillsbyidData?.data);
+  const portfolioDataById  = useSelector((state) => state.fetchReducer.portfoliobyidData?.data);
+  const experienceDataById  = useSelector((state) => state.fetchReducer.experiencebyidData?.data);
+  const cityDataById  = useSelector((state) => state.fetchReducer.citybyidData?.data);
+  const contactDataById  = useSelector((state) => state.fetchReducer.contactbyidData?.data);
+  useEffect(() => {
+    dispatch(fetchDataById('worker', 'workerbyid', id));
+    dispatch(fetchDataById('skills', 'skillsbyid', id));
+    dispatch(fetchDataById('portofolio', 'portfoliobyid', id));
+    dispatch(fetchDataById('workExperience', 'experiencebyid', id));
+    dispatch(fetchDataById('city', 'citybyid', workerDataById?.city_id));
+    dispatch(fetchDataById('contact', 'contactbyid', id));
+    // localStorage.clear()
+  }, [dispatch, id]);
+  const skillData = skillsDataById.skill_name.split(', ');
+
+  console.log(skillData)
+  console.log("workerDataById")
+  console.log(workerDataById)
+  console.log("skillsDataById")
+  console.log(skillsDataById)
+  console.log("portfolioDataById")
+  console.log(portfolioDataById)
+  console.log("experienceDataById")
+  console.log(experienceDataById)
+  console.log("cityDataById")
+  console.log(cityDataById)
+  console.log("contactDataById")
+  console.log(contactDataById)
+
+
+
+
+
+
+
+
+
+
+
   // Dummy Data
-  const skill = ['PHP', 'Javascript', 'React', 'NextJS', 'Tailwind', 'PostgreSQL'];
-  const contact = {
-    email: 'Louistommo@gmail.com',
-    instagram: '@Louist91',
-    github: '@Louistommo',
-    gitlab: '@Louistommo91'
-  };
-  const portfolio = [
-    {
-      image: Portfolio1,
-      name: 'Reminder app'
-    },
-    {
-      image: Portfolio1,
-      name: 'Consider app'
-    },
-    {
-      image: Portfolio1,
-      name: 'Jobless app'
-    },
-    {
-      image: Portfolio1,
-      name: 'Parameter app'
-    },
-    {
-      image: Portfolio1,
-      name: 'Cincai app'
-    },
-    {
-      image: Portfolio1,
-      name: 'Toko app'
-    }
-  ];
+  
   const experience = [
     {
       image: Tokped,
@@ -101,23 +115,22 @@ const Portfolio = () => {
         <div className="w-full md:w-1/3 bg-white rounded-md p-6 mt-4 flex flex-col gap-20 ">
           <div className="flex flex-col items-start gap-4 mb-10">
             <div className="w-full flex flex-row justify-center">
-              <img src={PhotoProfile} className="w-40 h-40 rounded-full" />
+              <img src={workerDataById.photo} className="w-40 h-40 rounded-full" />
             </div>
-            <h1 className="text-2xl font-semibold">Louis Tomlinson</h1>
-            <p className="text-grey">Web developer</p>
+            <h1 className="text-2xl font-semibold">{workerDataById.name}</h1>
+            <p className="text-grey">{workerDataById.job_desk}</p>
             <div className="flex flex-row items-center gap-3 text-grey">
               <HiOutlineLocationMarker size={25} />
-              <p>Purwokerto, Jawa Tengah</p>
+              <p>{cityDataById.city_name}, {cityDataById.province_name}</p>
             </div>
             <p className="text-grey">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis
-              nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.
+              {workerDataById.bio}
             </p>
           </div>
           <div className="flex flex-col gap-4">
             <h1 className="text-2xl font-semibold">Skill</h1>
             <div className="flex flex-wrap gap-4 items-center">
-              {skill.map((item, index) => (
+              {skillData.map((item, index) => (
                 <label
                   key={index}
                   className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5"
@@ -130,22 +143,24 @@ const Portfolio = () => {
           <div className="flex flex-col gap-8">
             <div className="flex flex-row items-center gap-5 text-grey">
               <FiMail size={30} />
-              <p>{contact.email}</p>
+              <p>{contactDataById.email}</p>
             </div>
             <div className="flex flex-row items-center gap-5 text-grey">
               <FiInstagram size={30} />
-              <p>{contact.instagram}</p>
+              <p>{contactDataById.instagram}</p>
             </div>
             <div className="flex flex-row items-center gap-5 text-grey">
               <FiGithub size={30} />
-              <p>{contact.github}</p>
+              <p>{contactDataById.github}</p>
             </div>
             <div className="flex flex-row items-center gap-5 text-grey">
               <FiGitlab size={30} />
-              <p>{contact.gitlab}</p>
+              <p>{contactDataById.gitlab}</p>
             </div>
           </div>
-          <Button className="bg-primary hover:bg-[#483d7e]">Hire</Button>
+          <Link to={`/hire/${id}`}>
+            <Button className="bg-primary hover:bg-[#483d7e]">Hire</Button>
+          </Link>
         </div>
         {/* Content Right  */}
         <div className="w-full bg-white rounded-md px-6 py-10 flex flex-col gap-20">
@@ -156,10 +171,10 @@ const Portfolio = () => {
               <hr className="bg-primary h-1 rounded-full mt-2" />
             </h1>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-4">
-              {portfolio.map((item, index) => (
+              {portfolioDataById.map((item, index) => (
                 <div key={index} className="flex flex-col items-center gap-2">
-                  <img src={item.image} alt="..." className="w-80 rounded-md" />
-                  <p>{item.name}</p>
+                  <img src={item.photo} alt="..." className="w-80 rounded-md" />
+                  <Link to={item.link_repo} className='hover:text-primary'>{item.type}</Link>
                 </div>
               ))}
             </div>

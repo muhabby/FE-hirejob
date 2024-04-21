@@ -1,21 +1,28 @@
 import Navbar from '../../components/Navbar';
 import PhotoProfile from '../../assets/photo-profile.svg';
-import { HiOutlineLocationMarker } from 'react-icons/hi';
 import Footer from '../../components/Footer';
+import React, {useState, useEffect} from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { BoxInput, TextInput } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDataById } from "../../redux/action/fetchAction";
 
 const Hire = () => {
-  const profile_worker = {
-    image: PhotoProfile,
-    name: 'Louis Tomlinson',
-    position: 'Web developer',
-    province: 'Jawa Tengah',
-    city: 'Purwokerto',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.'
-  };
-  const skill = ['PHP', 'Javascript', 'React', 'NextJS', 'Tailwind', 'PostgreSQL'];
+  const dispatch = useDispatch();
+  const { id } = useParams()
+  const workerDataById  = useSelector((state) => state.fetchReducer.workerbyidData?.data);
+  const skillsDataById  = useSelector((state) => state.fetchReducer.skillsbyidData?.data);
+  const cityDataById  = useSelector((state) => state.fetchReducer.citybyidData?.data);
+  useEffect(() => {
+    dispatch(fetchDataById('worker', 'workerbyid', id));
+    dispatch(fetchDataById('skills', 'skillsbyid', id));
+    dispatch(fetchDataById('city', 'citybyid', workerDataById?.city_id));
+    dispatch(fetchDataById('contact', 'contactbyid', id));
+  }, [dispatch, id, workerDataById]);
+
+  const skillData = skillsDataById?.skill_name.split(', ');
 
   return (
     <div>
@@ -23,23 +30,23 @@ const Hire = () => {
       <div className="flex flex-col md:flex-row bg-grey-white gap-28 px-5 pt-8 pb-[200px] lg:px-16 md:pt-16 md:pb-[700px] 2xl:px-48">
         <div className="w-full md:w-1/3 bg-white rounded-md p-6 flex flex-col gap-8 ">
           <div className="w-full flex flex-row justify-center">
-            <img src={[profile_worker.image]} className="w-28 h-28 rounded-full" />
+            <img src={workerDataById.photo} className="w-28 h-28 rounded-full" />
           </div>
           <div className="flex flex-col items-start gap-4">
-            <h1 className="text-2xl font-semibold">{profile_worker.name}</h1>
-            <p className="text-grey">{profile_worker.position}</p>
+            <h1 className="text-2xl font-semibold">{workerDataById.name}</h1>
+            <p className="text-grey">{workerDataById.job_desk}</p>
             <div className="flex flex-row items-center gap-3 text-grey">
               <HiOutlineLocationMarker size={25} />
               <p>
-                {profile_worker.city}, {profile_worker.province}
+                {cityDataById.city_name}, {cityDataById.province_name}
               </p>
             </div>
-            <p className="text-grey">{profile_worker.description}</p>
+            <p className="text-grey">{workerDataById.bio}</p>
           </div>
           <div className="flex flex-col gap-4">
             <h1 className="text-2xl font-semibold">Skill</h1>
             <div className="flex flex-wrap gap-4 items-center">
-              {skill.map((item, index) => (
+              {skillData.map((item, index) => (
                 <label
                   key={index}
                   className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5"
