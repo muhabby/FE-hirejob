@@ -64,7 +64,7 @@ const LoginWorker = () => {
             onChange={onChange}
           />
           <div className="text-end min-w-0">
-            <Link to="/" className="hover:text-primary">
+            <Link to="/resetpassword" className="hover:text-primary">
               Lupa kata sandi ?
             </Link>
           </div>
