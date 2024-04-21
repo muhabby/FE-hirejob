@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 
-const HomeCard = ({ photo, name, position, province, city, skill }) => {
+const HomeCard = ({ photo, name, position, province, city, skill, to }) => {
   const skillData = skill.split(', ');
-  console.log(skillData);
+  // console.log(skillData);
   return (
     <div>
       <div className="flex flex-col justify-between items-start gap-5 mx-5 my-5 md:my-16 md:flex-row md:items-center">
@@ -43,7 +44,9 @@ const HomeCard = ({ photo, name, position, province, city, skill }) => {
           ))}
         </div>
         <div className="mr-14 w-full md:w-40">
-          <Button className="bg-primary hover:bg-[#483d7e]">Lihat Profile</Button>
+          <Link to={to}>
+            <Button className="bg-primary hover:bg-[#483d7e]">Lihat Profile</Button>
+          </Link>
         </div>
       </div>
     </div>

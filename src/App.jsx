@@ -44,8 +44,10 @@ function App() {
 
         {/* Perusahaan / Recruiter  */}
         <Route path="/home" element={<HomeRecruiter />} />
-        <Route path="/Hire" exact element={<Hire />} />
+        <Route path="/hire" exact element={<Hire />} />
+        <Route path="/hire/:id" exact element={<Hire />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portfolio/:id" element={<Portfolio />} />
         <Route path="/editworker" element={<EditProfileWorker />} />
         <Route path="/editcompany" element={<EditProfileCompany />} />
         <Route path="/notification" element={<Notifikasipage />} />
