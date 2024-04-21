@@ -10,7 +10,7 @@ import { AlertSubmit } from '../../../components/Alert';
 const InputOtp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const emailData = useSelector((state) => state.requestOTP.data.email);
+  const emailData = useSelector((state) => state.requestOTP.data?.email);
   const isError = useSelector((state) => state.inputOTP.error);
   const isLoading = useSelector((state) => state.inputOTP.loading);
   const isSuccess = useSelector((state) => state.inputOTP.data?.message);
