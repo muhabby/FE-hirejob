@@ -21,7 +21,7 @@ const HomeRecruiter = () => {
   const searchInput = useRef(null);
   const [params, setParams] = useState({
     search: "",
-    sort: "ASC",
+    sort: "DESC",
     sortBy: "createdAt",
     limit: 4,
     page: 1,

@@ -1,4 +1,5 @@
 const initialState = {
+  workerbyidData: null,
   userData: null,
   workerData: null,
   profileData: null,
