@@ -9,6 +9,7 @@ export const fetchData = (dataType, params) => {
       const response = await axios.get(apiUrl +`/${dataType}/detail`, {
         params: params
       });
+      console.log(params)
       dispatch({ type: 'FETCH_DATA_SUCCESS', payload: { dataType, data: response.data } });
     } catch (error) {
       dispatch({ type: 'FETCH_DATA_FAILURE', payload: error });

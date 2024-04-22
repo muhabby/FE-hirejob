@@ -23,7 +23,7 @@ const Hire = () => {
   }, [dispatch, id, workerDataById]);
 
   const skillData = skillsDataById?.skill_name.split(', ');
-
+  window.scroll(0,0)
   return (
     <div>
       <Navbar />
