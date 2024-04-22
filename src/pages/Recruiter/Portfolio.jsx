@@ -27,9 +27,9 @@ const Portfolio = () => {
     dispatch(fetchDataById('workExperience', 'experiencebyid', id));
     dispatch(fetchDataById('city', 'citybyid', workerDataById?.city_id));
     dispatch(fetchDataById('contact', 'contactbyid', id));
-    // localStorage.clear()
   }, [dispatch, id]);
   const skillData = skillsDataById?.skill_name.split(', ');
+  // localStorage.clear()
 
   console.log(id)
   console.log("workerDataById")
@@ -115,7 +115,7 @@ const Portfolio = () => {
         <div className="w-full md:w-1/3 bg-white rounded-md p-6 mt-4 flex flex-col gap-20 ">
           <div className="flex flex-col items-start gap-4 mb-10">
             <div className="w-full flex flex-row justify-center">
-              <img src="" className="w-40 h-40 rounded-full" />
+              <img src={workerDataById?.photo} className="w-40 h-40 rounded-full" />
             </div>
             <h1 className="text-2xl font-semibold">{workerDataById?.name}</h1>
             <p className="text-grey">{workerDataById?.job_desk}</p>

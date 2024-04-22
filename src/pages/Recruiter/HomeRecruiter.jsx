@@ -17,16 +17,21 @@ const HomeRecruiter = () => {
   
   const dispatch = useDispatch();
   const workerData  = useSelector((state) => state.fetchReducer.workerData?.data);
-  // const paginationData  = useSelector((state) => state.recipes_get.pagination);
+  const paginationData  = useSelector((state) => state.fetchReducer.workerData?.pagination);
   const searchInput = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 10;
   const [params, setParams] = useState({
     search: "",
-    sort: "DESC",
+    sort: "ASC",
     sortBy: "createdAt",
     limit: 4,
     page: 1,
   });
   console.log(workerData)
+  console.log(paginationData)
   useEffect(() => {
     dispatch(fetchData('worker', params));
   }, [dispatch, params]);
@@ -42,13 +47,10 @@ const HomeRecruiter = () => {
     }
   };
   
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 10;
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    setParams({ ...params, page: currentPage });
     dispatch(fetchData('worker', params));
   };
 
@@ -61,8 +63,7 @@ const HomeRecruiter = () => {
   };
 
   const handlePageNext = () => {
-    if (currentPage == 10) {
-      // ubah 10 ini jadi total page
+    if (currentPage == paginationData.page_total) {
       setCurrentPage(currentPage);
     } else {
       setCurrentPage(currentPage + 1);
@@ -77,7 +78,7 @@ const HomeRecruiter = () => {
     setSelectedOption(option);
     setIsOpen(false);
   };
-
+  console.log(currentPage)
   return (
     <div>
       {/* Navbar  */}
@@ -89,8 +90,11 @@ const HomeRecruiter = () => {
           <div className="w-full relative">
             <input
               type="text"
+              name="search"
               placeholder="Search for any skill"
               className="w-full p-3 placeholder:text-grey"
+              onKeyPress={handleKeyPress}
+              ref={searchInput}
             />
             <FiSearch size={25} className="absolute right-3 top-3 text-grey" />
           </div>
@@ -158,7 +162,7 @@ const HomeRecruiter = () => {
                 </div>
               </Transition>
             </div>
-            <Button className="bg-primary hover:bg-[#483d7e]">Search</Button>
+            <Button className="bg-primary hover:bg-[#483d7e]" onClick={handleSearch}>Search</Button>
           </div>
         </div>
         {/* Content  */}

@@ -1,11 +1,12 @@
 import { Loading } from './Loading';
 
-const Button = ({ children, className, isLoading }) => {
+const Button = ({ children, className, isLoading, onClick }) => {
   return (
     <div>
       <button
         type="submit"
-        className={`md:min-w-24 w-full p-3 font-semibold text-white rounded-md transition duration-300 ease-in-out active:scale-75 ${className}`}>
+        className={`md:min-w-24 w-full p-3 font-semibold text-white rounded-md transition duration-300 ease-in-out active:scale-75 ${className}`}
+        onClick={onClick}>
         {isLoading ? (
           <div className="flex flex-row items-center justify-center">
             <Loading type="bubbles" color="white" height={30} width={30} />
