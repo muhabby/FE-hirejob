@@ -28,7 +28,7 @@ const Portfolio = () => {
     dispatch(fetchDataById('city', 'citybyid', workerDataById?.city_id));
     dispatch(fetchDataById('contact', 'contactbyid', id));
   }, [dispatch, id]);
-  const skillData = skillsDataById?.skill_name.split(', ');
+  const skillData = skillsDataById?.skill_name?.split(', ');
   // localStorage.clear()
 
   console.log(id)

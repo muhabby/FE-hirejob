@@ -9,7 +9,7 @@ const Chat = () => {
   return (
     <main>
       <Navbar />
-      <body className=" mx-48 my-7 flex justify-between">
+      <section className=" mx-48 my-7 flex justify-between">
         <section className="w-[450px] h-[800px] shadow-lg rounded-sm ">
           <h1 className="text-[#1f2a36] text-xl font-semibold m-5">Messages</h1>
           <hr className="text-[#E2E5ED] shadow-2xl" />
@@ -99,7 +99,7 @@ const Chat = () => {
             </div>
           </div>
         </section>
-      </body>
+      </section>
       <Footer />
     </main>
   );

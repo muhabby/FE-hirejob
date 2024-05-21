@@ -19,6 +19,7 @@ import EditProfileCompany from './pages/Recruiter/EditProfile';
 import EditProfileWorker from './pages/Worker/EditProfile';
 import ProtectedRoute from './components/ProtectedRoute';
 import Forbidden from './pages/Forbidden';
+import MyChat from './pages/MyChat';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" exact element={<LandingPage />} />
 
         {/* Chat */}
+        <Route path="/mychat" element={<MyChat />} />
         <Route path="/chat" element={<Chat />} />
 
         {/* Login */}

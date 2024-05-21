@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const userRole = useSelector((state) => state.login.user.userData.role);
+  const userRole = useSelector((state) => state.login?.user?.userData?.role);
   console.log(userRole)
   const [isOpen, setIsOpen] = useState(false);
 

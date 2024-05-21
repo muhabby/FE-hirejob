@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { MdArrowDropDown } from 'react-icons/md';
 import { Button } from '../../components/Button';
@@ -8,65 +8,70 @@ import HomeCard from '../../components/HomeCard';
 import Pagination from '../../components/Pagination';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import PhotoProfile from '../../assets/photo-profile.svg';
-import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../redux/action/fetchAction";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData } from '../../redux/action/fetchAction';
 
 const HomeRecruiter = () => {
-  
   const dispatch = useDispatch();
-  const workerData  = useSelector((state) => state.fetchReducer.workerData?.data);
-  const paginationData  = useSelector((state) => state.fetchReducer.workerData?.pagination);
+  const workerData = useSelector((state) => state.fetchReducer.workerData?.data);
+  const paginationData = useSelector((state) => state.fetchReducer.workerData?.pagination);
+  console.log(paginationData)
   const searchInput = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState('createdAt');
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 10;
   const [params, setParams] = useState({
-    search: "",
-    sort: "ASC",
-    sortBy: "createdAt",
+    search: '',
+    sort: 'ASC',
+    sortBy: 'createdAt',
     limit: 4,
-    page: 1,
+    page: 1
   });
-  console.log(workerData)
-  console.log(paginationData)
+
   useEffect(() => {
     dispatch(fetchData('worker', params));
   }, [dispatch, params]);
-  
-  localStorage.clear()
+
+  localStorage.clear();
+
   const handleSearch = () => {
     setParams({ ...params, search: searchInput.current.value, page: 1 });
   };
-  
+
   const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       handleSearch();
     }
   };
-  
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    setParams({ ...params, page: currentPage });
-    dispatch(fetchData('worker', params));
+    setParams((prevParams) => ({
+      ...prevParams,
+      page: page
+    }));
   };
 
   const handlePagePrev = () => {
-    if (currentPage == 1) {
-      setCurrentPage(currentPage);
-    } else {
-      setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      const prevPage = currentPage - 1;
+      setCurrentPage(prevPage);
+      setParams((prevParams) => ({
+        ...prevParams,
+        page: prevPage
+      }));
     }
   };
 
   const handlePageNext = () => {
-    if (currentPage == paginationData.page_total) {
-      setCurrentPage(currentPage);
-    } else {
-      setCurrentPage(currentPage + 1);
+    if (currentPage !== paginationData.page_total) {
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      setParams((prevParams) => ({
+        ...prevParams,
+        page: nextPage
+      }));
     }
   };
 
@@ -76,9 +81,14 @@ const HomeRecruiter = () => {
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
+    setParams((prevParams) => ({
+      ...prevParams,
+      sortBy: option,
+      page: 1, // reset to page 1 when sorting changes
+    }));
     setIsOpen(false);
   };
-  console.log(currentPage)
+
   return (
     <div>
       {/* Navbar  */}
@@ -111,10 +121,9 @@ const HomeRecruiter = () => {
                   onClick={toggleDropdown}
                   aria-haspopup="true"
                   aria-expanded={isOpen ? 'true' : 'false'}
-                  className="w-full md:w-28 py-2 flex flex-row items-center justify-center gap-1 text-grey"
-                >
+                  className="w-full md:w-28 py-2 flex flex-row items-center justify-center gap-1 text-grey">
                   <MdArrowDropDown size={25} />
-                  Sort
+                  Sort by
                 </button>
               </div>
               {/* option  */}
@@ -125,44 +134,32 @@ const HomeRecruiter = () => {
                 enterTo="opacity-100 translate-y-0"
                 leave="transition ease-in duration-75 transform"
                 leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 translate-y-1"
-              >
+                leaveTo="opacity-0 translate-y-1">
                 <div
-                  className="absolute mt-6 left-1/2 transform -translate-x-1/2 w-56 rounded-md shadow-lg bg-white"
+                  className="absolute mt-2 w-56 rounded-md shadow-lg bg-white"
                   role="menu"
                   aria-orientation="vertical"
-                  aria-labelledby="options-menu"
-                >
+                  aria-labelledby="options-menu">
                   <div className="py-1" role="none">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-light-grey"
+                    <button
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-light-grey"
                       role="menuitem"
-                      onClick={() => handleOptionSelect('Pilihan 1')}
-                    >
-                      Pilihan 1
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-light-grey"
+                      onClick={() => handleOptionSelect('name')}>
+                      Sortir berdasarkan Name
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-light-grey"
                       role="menuitem"
-                      onClick={() => handleOptionSelect('Pilihan 2')}
-                    >
-                      Pilihan 2
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-light-grey"
-                      role="menuitem"
-                      onClick={() => handleOptionSelect('Pilihan 3')}
-                    >
-                      Pilihan 3
-                    </a>
+                      onClick={() => handleOptionSelect('createdAt')}>
+                      Sortir berdasarkan Tanggal
+                    </button>
                   </div>
                 </div>
               </Transition>
             </div>
-            <Button className="bg-primary hover:bg-[#483d7e]" onClick={handleSearch}>Search</Button>
+            <Button className="bg-primary hover:bg-[#483d7e]" onClick={handleSearch}>
+              Search
+            </Button>
           </div>
         </div>
         {/* Content  */}
@@ -188,7 +185,7 @@ const HomeRecruiter = () => {
         {/* Pagination  */}
         <Pagination
           currentPage={currentPage}
-          totalPages={totalPages}
+          totalPages={paginationData.pageTotal}
           onPageChange={handlePageChange}
           handlePagePrev={handlePagePrev}
           handlePageNext={handlePageNext}

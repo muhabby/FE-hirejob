@@ -12,13 +12,14 @@ const Pagination = ({ currentPage, totalPages, onPageChange, handlePagePrev, han
   }
 
   // Fungsi untuk membuat array dari halaman yang akan ditampilkan
-  const pages = [...Array(Math.min(maxPagesToShow, totalPages)).keys()].map((i) => startPage + i);
-  // console.log(currentPage);
+  const pages = totalPages <= maxPagesToShow
+    ? [...Array(totalPages).keys()].map((i) => i + 1)
+    : [...Array(Math.min(maxPagesToShow, totalPages)).keys()].map((i) => startPage + i);
 
   return (
     <nav className="flex justify-center my-4">
       <ul className="pagination flex space-x-2 items-center">
-        {currentPage == 1 ? null : (
+        {currentPage > 1 && (
           <button
             className="px-3 py-3 rounded-md text-dark-grey bg-white border-2 border-light-grey hover:bg-primary hover:text-white"
             onClick={handlePagePrev}
@@ -40,7 +41,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, handlePagePrev, han
             </button>
           </li>
         ))}
-        {currentPage == 10 ? null : ( // ubah angka 10 nanti menjadi total page
+        {currentPage < totalPages && (
           <button
             className="px-3 py-3 rounded-md text-dark-grey bg-white border-2 border-light-grey hover:bg-primary hover:text-white"
             onClick={handlePageNext}
