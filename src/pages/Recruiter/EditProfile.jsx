@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { putData } from '../../redux/action/putAction';
 
 const EditProfileCompany = () => {
-  const authDataRecruiter = useSelector((state) => state.auth.data);
+  const authDataRecruiter = useSelector((state) => state.auth?.data);
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ const EditProfileCompany = () => {
     <main>
       <Navbar />
       {/* Media Screen LG - 2XL */}
-      <body className=" hidden lg:flex lg:justify-center mb-10 lg:mx-4">
+      <section className=" hidden lg:flex lg:justify-center mb-10 lg:mx-4">
         <div className="bg-[#5E50A1] w-full h-[500px] -z-10 absolute"></div>
         <form
           onSubmit={updateData}
@@ -257,10 +257,10 @@ const EditProfileCompany = () => {
             </div>
           </div>
         </form>
-      </body>
+      </section>
 
       {/* Media Screen SM - MD */}
-      <body className="lg:hidden mb-10 w-screen flex justify-center ">
+      <section className="lg:hidden mb-10 w-screen flex justify-center ">
         <div className="bg-[#5E50A1] sm:w-full h-[500px] sm:-z-10 sm:absolute"></div>
         <section className="sm:flex flex-col justify-between items-center w-full ">
           <div className="sm:w-[300px] h-[450px] mt-48 space-y-5 bg-white rounded-lg  ">
@@ -393,7 +393,7 @@ const EditProfileCompany = () => {
             </form>
           </div>
         </section>
-      </body>
+      </section>
       <Footer />
     </main>
   );

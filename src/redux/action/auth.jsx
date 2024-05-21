@@ -13,7 +13,7 @@ export const authLogin = (credentials, navigate) => {
       });
       dispatch({ type: 'POST_LOGIN_SUCCESS', payload: response.data });
       if (response.data.userData.role === 'worker') {
-        navigate('/');
+        navigate('/editworker');
       } else {
         navigate('/home');
       }

@@ -17,6 +17,8 @@ import LandingPage from './pages/LandingPage';
 import Chat from './pages/Chat';
 import EditProfileCompany from './pages/Recruiter/EditProfile';
 import EditProfileWorker from './pages/Worker/EditProfile';
+import ProtectedRoute from './components/ProtectedRoute';
+import Forbidden from './pages/Forbidden';
 
 function App() {
   return (
@@ -42,15 +44,74 @@ function App() {
         <Route path="/otp" element={<InputOtp />} />
         <Route path="/newpassword" element={<InputNewPassword />} />
 
-        {/* Perusahaan / Recruiter  */}
-        <Route path="/home" element={<HomeRecruiter />} />
-        <Route path="/hire" exact element={<Hire />} />
-        <Route path="/hire/:id" exact element={<Hire />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/portfolio/:id" element={<Portfolio />} />
-        <Route path="/editworker" element={<EditProfileWorker />} />
-        <Route path="/editcompany" element={<EditProfileCompany />} />
-        <Route path="/notification" element={<Notifikasipage />} />
+        {/* Perusahaan / Recruiter Routes */}
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute allowedRoles={['recruiter']}>
+              <HomeRecruiter />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/hire"
+          element={
+            <ProtectedRoute allowedRoles={['recruiter']}>
+              <Hire />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/hire/:id"
+          element={
+            <ProtectedRoute allowedRoles={['recruiter']}>
+              <Hire />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/portfolio"
+          element={
+            <ProtectedRoute allowedRoles={['recruiter']}>
+              <Portfolio />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/portfolio/:id"
+          element={
+            <ProtectedRoute allowedRoles={['recruiter']}>
+              <Portfolio />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/editcompany"
+          element={
+            <ProtectedRoute allowedRoles={['recruiter']}>
+              <EditProfileCompany />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/notification"
+          element={
+            <ProtectedRoute allowedRoles={['recruiter']}>
+              <Notifikasipage />
+            </ProtectedRoute>
+          }
+        />
+        {/* Worker Routes */}
+        <Route
+          path="/editworker"
+          element={
+            <ProtectedRoute allowedRoles={['worker']}>
+              <EditProfileWorker />
+            </ProtectedRoute>
+          }
+        />
+        {/* Forbidden Route */}
+        <Route path="/forbidden" element={<Forbidden />} />
       </Routes>
     </BrowserRouter>
   );

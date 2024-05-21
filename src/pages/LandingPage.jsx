@@ -48,7 +48,7 @@ const LandingPage = () => {
             </Link>
           </div>
         </nav>
-        <body className=" my-20 lg:mx-12 2xl:mx-28">
+        <section className=" my-20 lg:mx-12 2xl:mx-28">
           <header className="flex justify-between items-center w-full">
             <div className="lg:flex flex-col justify-between">
               <h1 className="text-[#1F2A36] lg:text-4xl 2xl:text-6xl 2xl:leading-normal">
@@ -185,7 +185,7 @@ const LandingPage = () => {
               <button className="font-bold text-base text-[#796EAF]">Mulai Dari Sekarang</button>
             </div>
           </section>
-        </body>
+        </section>
       </div>
 
       {/* Media Screen SM - MD*/}
@@ -203,7 +203,7 @@ const LandingPage = () => {
             />
           </div>
         </nav>
-        <body className=" my-20 mx-5 md:mx-10 ">
+        <section className=" my-20 mx-5 md:mx-10 ">
           <header className="sm:flex flex-col justify-between w-full">
             <div className="md:flex md:items-center ">
               <h1 className="text-[#1F2A36] text-3xl sm:leading-9 md:text-3xl">
@@ -349,7 +349,7 @@ const LandingPage = () => {
               </button>
             </div>
           </section>
-        </body>
+        </section>
       </div>
       <Footer />
     </main>
