@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 const Navbar = () => {
   const navigate = useNavigate();
   const userRole = useSelector((state) => state.login?.user?.userData?.role);
-  console.log(userRole)
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
@@ -32,7 +31,7 @@ const Navbar = () => {
   return (
     <>
       <div className="flex flex-row justify-between items-center px-5 py-4 lg:px-16 md:py-5 2xl:px-48">
-        <Link to="/" className="py-2">
+        <Link to="/home" className="py-2">
           <img
             src={LogoPurple}
             className="w-28 text-center transition duration-300 ease-in-out active:scale-75"
@@ -40,12 +39,12 @@ const Navbar = () => {
         </Link>
         <div className="flex flex-row gap-6 items-center justify-center text-grey">
           <Link
-            to="/"
+            to="/home"
             className="p-2 m-2 rounded-full bg-white hover:bg-primary hover:text-white hover:shadow-lg active:shadow-inner">
             <FiBell size={20} className="transition duration-300 ease-in-out active:scale-75" />
           </Link>
           <Link
-            to="/"
+            to="/home"
             className="p-2 m-2 rounded-full bg-white hover:bg-primary hover:text-white hover:shadow-lg active:shadow-inner">
             <FiMail size={20} className="transition duration-300 ease-in-out active:scale-75" />
           </Link>
