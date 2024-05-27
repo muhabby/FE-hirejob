@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
-const TextInput = ({ text, name, placeholder, onChange, autoComplete, className }) => {
+const TextInput = ({ text, name, placeholder, onChange, autoComplete, className, value }) => {
   return (
     <div className="flex flex-col gap-1">
       <label htmlFor={name} className="pl-1 text-grey text-sm">
@@ -15,6 +15,7 @@ const TextInput = ({ text, name, placeholder, onChange, autoComplete, className 
         className={`bg-white border border-light-grey rounded-md p-3 placeholder:text-[#858D96] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300" ${className}`}
         onChange={onChange}
         autoComplete={autoComplete}
+        value={value}
         required
       />
     </div>

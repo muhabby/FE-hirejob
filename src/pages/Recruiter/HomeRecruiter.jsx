@@ -15,12 +15,10 @@ const HomeRecruiter = () => {
   const dispatch = useDispatch();
   const workerData = useSelector((state) => state.fetchReducer.workerData?.data);
   const paginationData = useSelector((state) => state.fetchReducer.workerData?.pagination);
-  console.log(paginationData)
   const searchInput = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('createdAt');
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 10;
   const [params, setParams] = useState({
     search: '',
     sort: 'ASC',
@@ -185,7 +183,7 @@ const HomeRecruiter = () => {
         {/* Pagination  */}
         <Pagination
           currentPage={currentPage}
-          totalPages={paginationData.pageTotal}
+          totalPages={paginationData?.pageTotal || 10}
           onPageChange={handlePageChange}
           handlePagePrev={handlePagePrev}
           handlePageNext={handlePageNext}

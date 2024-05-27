@@ -1,29 +1,63 @@
 import Navbar from '../../components/Navbar';
 import PhotoProfile from '../../assets/photo-profile.svg';
 import Footer from '../../components/Footer';
-import React, {useState, useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { BoxInput, TextInput } from '../../components/Input';
 import { Button } from '../../components/Button';
-import { useDispatch, useSelector } from "react-redux";
-import { fetchDataById } from "../../redux/action/fetchAction";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataById } from '../../redux/action/fetchAction';
+import { postData } from '../../redux/action/postAction';
 
 const Hire = () => {
   const dispatch = useDispatch();
-  const { id } = useParams()
-  const workerDataById  = useSelector((state) => state.fetchReducer.workerbyidData?.data);
-  const skillsDataById  = useSelector((state) => state.fetchReducer.skillsbyidData?.data);
-  const cityDataById  = useSelector((state) => state.fetchReducer.citybyidData?.data);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const userLogin = useSelector((state) => state.login?.user);
+  const workerDataById = useSelector((state) => state.fetchReducer.workerbyidData?.data);
+  const skillsDataById = useSelector((state) => state.fetchReducer.skillsbyidData?.data);
+  const cityDataById = useSelector((state) => state.fetchReducer.citybyidData?.data);
+  const id_messagedetail = useSelector((state) => state.postReducer?.messagedetailData?.data.id_messagedetail);
+  const [room, setRoom] = useState({
+    position: "",
+    id_user: id,
+  });
+  const [message, setMessage] = useState({
+    id_messagedetail: "" || id_messagedetail,
+    message_value: "",
+  });
+
   useEffect(() => {
     dispatch(fetchDataById('worker', 'workerbyid', id));
     dispatch(fetchDataById('skills', 'skillsbyid', id));
     dispatch(fetchDataById('city', 'citybyid', workerDataById?.city_id));
     dispatch(fetchDataById('contact', 'contactbyid', id));
-  }, [dispatch, id, workerDataById]);
+  }, [id]);
 
   const skillData = skillsDataById?.skill_name.split(', ');
-  window.scroll(0,0)
+
+  const handleChange = async () => {
+    const { name, value } = event.target;
+    if (name === "position") {
+      setRoom((prevState) => ({
+        ...prevState,
+        [name]: value
+      }));
+    } else {
+      setMessage((prevState) => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
+  }
+
+  const handleSubmit = async () => {
+    dispatch(postData('messagedetail', room, userLogin?.token))
+    dispatch(postData('message', message, userLogin?.token))
+    navigate('/mychat')
+  }
+  window.scroll(0, 0);
   return (
     <div>
       <Navbar />
@@ -49,8 +83,7 @@ const Hire = () => {
               {skillData?.map((item, index) => (
                 <label
                   key={index}
-                  className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5"
-                >
+                  className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
                   {item}
                 </label>
               ))}
@@ -70,20 +103,23 @@ const Hire = () => {
               text="Untuk Posisi"
               name="position"
               placeholder="Fulltime Frontend Developer"
-              // onChange={}
+              onChange={handleChange}
               autoComplete="current-position"
             />
             <BoxInput
               text="Deskripsi"
-              name="message"
+              name="message_value"
               placeholder="Berikan pesan kepada talent"
-              // onChange={}
+              onChange={handleChange}
               autoComplete="current-position"
             />
-            <div className="mt-10">
-              <Button className="bg-yellow hover:bg-[#db9709]">Hire</Button>
-            </div>
           </form>
+          <Button 
+            className="bg-yellow hover:bg-[#db9709]"
+            onClick={handleSubmit}
+          >
+            Hire
+          </Button>
         </div>
       </div>
 

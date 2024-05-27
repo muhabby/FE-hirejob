@@ -14,7 +14,6 @@ import Notifikasipage from './components/Notifikasipage';
 import Hire from './pages/Recruiter/Hire';
 import Portfolio from './pages/Recruiter/Portfolio';
 import LandingPage from './pages/LandingPage';
-import Chat from './pages/Chat';
 import EditProfileCompany from './pages/Recruiter/EditProfile';
 import EditProfileWorker from './pages/Worker/EditProfile';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -31,7 +30,6 @@ function App() {
 
         {/* Chat */}
         <Route path="/mychat" element={<MyChat />} />
-        <Route path="/chat" element={<Chat />} />
 
         {/* Login */}
         <Route path="/login/recruiter" element={<LoginRecruiter />} />
