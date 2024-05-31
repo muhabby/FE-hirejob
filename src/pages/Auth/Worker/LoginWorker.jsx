@@ -9,7 +9,7 @@ import { AlertSubmit } from '../../../components/Alert';
 // import { AlertSubmit } from '../../../components/Alert';
 
 const LoginWorker = () => {
-  // const rolePage = 'worker';
+  const rolePage = 'worker';
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isError = useSelector((state) => state.login.error);
@@ -29,7 +29,6 @@ const LoginWorker = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     dispatch(authLogin(formData, navigate));
   };
   // localStorage.removeItem('root', register)
@@ -77,7 +76,6 @@ const LoginWorker = () => {
         <div className="text-center">
           Anda belum punya akun?
           <Link to="/register/worker" className="text-yellow hover:text-primary">
-            {' '}
             Daftar disini
           </Link>
         </div>

@@ -18,7 +18,7 @@ const InputOtp = () => {
     email: emailData,
     otp: ''
   });
-  
+
   const onChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
@@ -29,10 +29,9 @@ const InputOtp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     dispatch(inputOTP(formData, navigate));
   };
-  
+
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
       <div className="w-1/2 hidden md:flex md:justify-center">

@@ -4,7 +4,6 @@ import { HiOutlineLocationMarker } from 'react-icons/hi';
 
 const HomeCard = ({ photo, name, position, province, city, skill, to }) => {
   const skillData = skill.split(', ');
-  // console.log(skillData);
   return (
     <div>
       <div className="flex flex-col justify-between items-start gap-5 mx-5 my-5 md:my-16 md:flex-row md:items-center">
@@ -25,8 +24,7 @@ const HomeCard = ({ photo, name, position, province, city, skill, to }) => {
               {skillData.map((item, index) => (
                 <label
                   key={index}
-                  className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-sm text-center rounded-lg py-1 px-5"
-                >
+                  className="min-w-14 bg-yellow bg-opacity-60 border-2 border-yellow text-white text-sm text-center rounded-lg py-1 px-5">
                   {item}
                 </label>
               ))}
@@ -37,8 +35,7 @@ const HomeCard = ({ photo, name, position, province, city, skill, to }) => {
           {skillData.map((item, index) => (
             <label
               key={index}
-              className="min-w-8 text-sm bg-yellow bg-opacity-60 border-1 border-yellow text-white text-center rounded-lg py-1 px-4"
-            >
+              className="min-w-8 text-sm bg-yellow bg-opacity-60 border-1 border-yellow text-white text-center rounded-lg py-1 px-4">
               {item}
             </label>
           ))}

@@ -18,14 +18,16 @@ const Hire = () => {
   const workerDataById = useSelector((state) => state.fetchReducer.workerbyidData?.data);
   const skillsDataById = useSelector((state) => state.fetchReducer.skillsbyidData?.data);
   const cityDataById = useSelector((state) => state.fetchReducer.citybyidData?.data);
-  const id_messagedetail = useSelector((state) => state.postReducer?.messagedetailData?.data.id_messagedetail);
+  const id_messagedetail = useSelector(
+    (state) => state.postReducer?.messagedetailData?.data.id_messagedetail
+  );
   const [room, setRoom] = useState({
-    position: "",
-    id_user: id,
+    position: '',
+    id_user: id
   });
   const [message, setMessage] = useState({
-    id_messagedetail: "" || id_messagedetail,
-    message_value: "",
+    id_messagedetail: '' || id_messagedetail,
+    message_value: ''
   });
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const Hire = () => {
 
   const handleChange = async () => {
     const { name, value } = event.target;
-    if (name === "position") {
+    if (name === 'position') {
       setRoom((prevState) => ({
         ...prevState,
         [name]: value
@@ -50,13 +52,13 @@ const Hire = () => {
         [name]: value
       }));
     }
-  }
+  };
 
   const handleSubmit = async () => {
-    dispatch(postData('messagedetail', room, userLogin?.token))
-    dispatch(postData('message', message, userLogin?.token))
-    navigate('/mychat')
-  }
+    dispatch(postData('messagedetail', room, userLogin?.token));
+    dispatch(postData('message', message, userLogin?.token));
+    navigate('/mychat');
+  };
   window.scroll(0, 0);
   return (
     <div>
@@ -114,10 +116,7 @@ const Hire = () => {
               autoComplete="current-position"
             />
           </form>
-          <Button 
-            className="bg-yellow hover:bg-[#db9709]"
-            onClick={handleSubmit}
-          >
+          <Button className="bg-yellow hover:bg-[#db9709]" onClick={handleSubmit}>
             Hire
           </Button>
         </div>

@@ -28,10 +28,8 @@ const LoginRecruiter = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     dispatch(authLogin(formData, navigate));
   };
-
 
   return (
     <div className="h-auto flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">

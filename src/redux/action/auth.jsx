@@ -37,10 +37,10 @@ export const authRegister = (userData, role, navigate) => {
       });
       dispatch({ type: 'POST_REGISTER_SUCCESS', payload: response.data });
       if (role === 'worker') {
-        localStorage.clear()
+        localStorage.clear();
         navigate('/login/worker');
       } else {
-        localStorage.clear()
+        localStorage.clear();
         navigate('/login/recruiter');
       }
     } catch (error) {
@@ -62,7 +62,7 @@ export const requestOTP = (email, navigate) => {
         }
       });
       dispatch({ type: 'POST_OTP_SUCCESS', payload: response.data });
-      navigate('/otp')
+      navigate('/otp');
     } catch (error) {
       dispatch({
         type: 'POST_OTP_FAILURE',
@@ -82,7 +82,7 @@ export const inputOTP = (otp, navigate) => {
         }
       });
       dispatch({ type: 'POST_INPUTOTP_SUCCESS', payload: response.data });
-      navigate('/newpassword')
+      navigate('/newpassword');
     } catch (error) {
       dispatch({
         type: 'POST_INPUTOTP_FAILURE',
@@ -97,7 +97,6 @@ export const setPassword = (password, token, role, navigate) => {
     dispatch({ type: 'SET_PASSWORD_REQUEST' });
     try {
       // const formDataEncoded = querystring.stringify(password);
-      console.log(password);
       const response = await axios.post(apiUrl + '/auth/passwordreset', password, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -106,10 +105,10 @@ export const setPassword = (password, token, role, navigate) => {
       });
       dispatch({ type: 'SET_PASSWORD_SUCCESS', payload: response.data });
       if (role === 'worker') {
-        localStorage.clear()
+        localStorage.clear();
         navigate('/login/worker');
       } else {
-        localStorage.clear()
+        localStorage.clear();
         navigate('/login/recruiter');
       }
     } catch (error) {

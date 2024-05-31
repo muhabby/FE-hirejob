@@ -46,7 +46,6 @@ const RegisterRecruiter = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     dispatch(authRegister(formData, rolePage, navigate));
   };
 
@@ -101,7 +100,7 @@ const RegisterRecruiter = () => {
             autoComplete="current-phone"
             onChange={onChange}
           />
-          <Alert error={error} isSuccess='Password sama' isError='Password tidak sama' />
+          <Alert error={error} isSuccess="Password sama" isError="Password tidak sama" />
           <PasswordInput
             text="Kata Sandi"
             name="password"

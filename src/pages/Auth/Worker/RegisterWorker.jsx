@@ -45,10 +45,8 @@ const RegisterWorker = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     dispatch(authRegister(formData, navigate));
   };
-  console.log(isSuccess);
 
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
@@ -100,7 +98,7 @@ const RegisterWorker = () => {
             autoComplete="current-confirmPassword"
             onChange={onChange}
           />
-          <Alert error={error} isSuccess='Password sama' isError='Password tidak sama' />
+          <Alert error={error} isSuccess="Password sama" isError="Password tidak sama" />
           <div className="text-end min-w-0">
             <Link to="/resetpassword" className="hover:text-primary">
               Lupa kata sandi ?
