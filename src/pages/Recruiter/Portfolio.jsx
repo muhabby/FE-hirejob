@@ -2,24 +2,24 @@ import Navbar from '../../components/Navbar';
 import PhotoProfile from '../../assets/photo-profile.svg';
 import Portfolio1 from '../../assets/portfolio1.svg';
 import Tokped from '../../assets/tokped.svg';
-import React, {useState, useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { FiInstagram, FiGithub, FiGitlab, FiMail } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import { Button } from '../../components/Button';
-import { useDispatch, useSelector } from "react-redux";
-import { fetchDataById } from "../../redux/action/fetchAction";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataById } from '../../redux/action/fetchAction';
 
 const Portfolio = () => {
   const dispatch = useDispatch();
-  const { id } = useParams()
-  const workerDataById  = useSelector((state) => state.fetchReducer.workerbyidData?.data);
-  const skillsDataById  = useSelector((state) => state.fetchReducer.skillsbyidData?.data);
-  const portfolioDataById  = useSelector((state) => state.fetchReducer.portfoliobyidData?.data);
-  const experienceDataById  = useSelector((state) => state.fetchReducer.experiencebyidData?.data);
-  const cityDataById  = useSelector((state) => state.fetchReducer.citybyidData?.data);
-  const contactDataById  = useSelector((state) => state.fetchReducer.contactbyidData?.data[0]);
+  const { id } = useParams();
+  const workerDataById = useSelector((state) => state.fetchReducer.workerbyidData?.data);
+  const skillsDataById = useSelector((state) => state.fetchReducer.skillsbyidData?.data);
+  const portfolioDataById = useSelector((state) => state.fetchReducer.portfoliobyidData?.data);
+  const experienceDataById = useSelector((state) => state.fetchReducer.experiencebyidData?.data);
+  const cityDataById = useSelector((state) => state.fetchReducer.citybyidData?.data);
+  const contactDataById = useSelector((state) => state.fetchReducer.contactbyidData?.data[0]);
   useEffect(() => {
     dispatch(fetchDataById('worker', 'workerbyid', id));
     dispatch(fetchDataById('skills', 'skillsbyid', id));
@@ -29,34 +29,7 @@ const Portfolio = () => {
     dispatch(fetchDataById('contact', 'contactbyid', id));
   }, [dispatch, id]);
   const skillData = skillsDataById?.skill_name?.split(', ');
-  // localStorage.clear()
 
-  console.log(id)
-  console.log("workerDataById")
-  console.log(workerDataById)
-  console.log("skillsDataById")
-  console.log(skillsDataById)
-  console.log("portfolioDataById")
-  console.log(portfolioDataById)
-  console.log("experienceDataById")
-  console.log(experienceDataById)
-  console.log("cityDataById")
-  console.log(cityDataById)
-  console.log("contactDataById")
-  console.log(contactDataById)
-
-
-
-
-
-
-
-
-
-
-
-  // Dummy Data
-  
   const experience = [
     {
       image: Tokped,
@@ -121,11 +94,11 @@ const Portfolio = () => {
             <p className="text-grey">{workerDataById?.job_desk}</p>
             <div className="flex flex-row items-center gap-3 text-grey">
               <HiOutlineLocationMarker size={25} />
-              <p>{cityDataById?.city_name}, {cityDataById?.province_name}</p>
+              <p>
+                {cityDataById?.city_name}, {cityDataById?.province_name}
+              </p>
             </div>
-            <p className="text-grey">
-              {workerDataById?.bio}
-            </p>
+            <p className="text-grey">{workerDataById?.bio}</p>
           </div>
           <div className="flex flex-col gap-4">
             <h1 className="text-2xl font-semibold">Skill</h1>
@@ -133,8 +106,7 @@ const Portfolio = () => {
               {skillData?.map((item, index) => (
                 <label
                   key={index}
-                  className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5"
-                >
+                  className="w-auto bg-yellow bg-opacity-60 border-yellow text-white text-sm text-center rounded-lg border py-2 px-5">
                   {item}
                 </label>
               ))}
@@ -174,7 +146,9 @@ const Portfolio = () => {
               {portfolioDataById?.map((item, index) => (
                 <div key={index} className="flex flex-col items-center gap-2">
                   <img src={item?.photo} alt="..." className="w-80 rounded-md" />
-                  <Link to={item?.link_repo} className='hover:text-primary'>{item.type}</Link>
+                  <Link to={item?.link_repo} className="hover:text-primary">
+                    {item.type}
+                  </Link>
                 </div>
               ))}
             </div>

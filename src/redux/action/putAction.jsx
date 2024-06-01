@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// const baseUrl= import.meta.env.VITE_BASE_URL;
+const baseUrl = import.meta.env.VITE_BASE_URL;
 export const putData = (dataType, id, data, navigate) => {
   return async (dispatch) => {
     dispatch({ type: 'PUT_DATA_REQUEST' });
@@ -17,6 +17,81 @@ export const putData = (dataType, id, data, navigate) => {
       window.scrollTo(0, 0);
     } catch (error) {
       dispatch({ type: 'PUT_DATA_FAILURE', payload: error });
+    }
+  };
+};
+
+export const UpdateWorker = (data, token) => {
+  return async (dispatch) => {
+    dispatch({ type: 'PUT_DATA_REQUEST' });
+    try {
+      const response = await axios({
+        method: 'put',
+        url: `${baseUrl}/worker`,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
+        },
+        data: data
+      });
+      dispatch({ type: 'PUT_DATA_SUCCESS', payload: response.data });
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: 'PUT_DATA_FAILURE',
+        payload: error?.response?.data?.messages ?? 'create Error'
+      });
+    }
+  };
+};
+
+export const UpdateCompany = (data, token, navigate) => {
+  return async (dispatch) => {
+    dispatch({ type: 'PUT_DATA_REQUEST' });
+    try {
+      const response = await axios({
+        method: 'put',
+        url: `${baseUrl}/recruiter`,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
+        },
+        data: data
+      });
+      dispatch({ type: 'PUT_DATA_SUCCESS', payload: response.data });
+      navigate('/home');
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: 'PUT_DATA_FAILURE',
+        payload: error?.response?.data?.messages ?? 'create Error'
+      });
+    }
+  };
+};
+
+export const UpdateSkill = (data, token, skillId) => {
+  return async (dispatch) => {
+    dispatch({ type: 'PUT_DATA_REQUEST' });
+    try {
+      const response = await axios({
+        method: 'put',
+        url: `${baseUrl}/skills/${skillId}`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Authorization: `Bearer ${token}`
+        },
+        data: data
+      });
+      dispatch({ type: 'PUT_DATA_SUCCESS', payload: response.data });
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: 'PUT_DATA_FAILURE',
+        payload: error?.response?.data?.messages ?? 'create Error'
+      });
     }
   };
 };

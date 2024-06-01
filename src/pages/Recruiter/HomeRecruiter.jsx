@@ -82,7 +82,7 @@ const HomeRecruiter = () => {
     setParams((prevParams) => ({
       ...prevParams,
       sortBy: option,
-      page: 1, // reset to page 1 when sorting changes
+      page: 1 // reset to page 1 when sorting changes
     }));
     setIsOpen(false);
   };

@@ -27,7 +27,6 @@ const RequestReset = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     dispatch(requestOTP(formData, navigate));
   };
 
@@ -55,7 +54,7 @@ const RequestReset = () => {
           />
           <div className="">
             <Button className="bg-yellow hover:bg-[#db9709]" isLoading={isLoading}>
-              Send password reset 
+              Send password reset
             </Button>
           </div>
         </form>

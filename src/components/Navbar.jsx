@@ -22,7 +22,7 @@ const Navbar = () => {
   const [isOpenNotification, setIsOpenNotification] = useState(false);
 
   useEffect(() => {
-    console.log(userRole)
+    console.log(userRole);
     if (userRole === 'recruiter') {
       dispatch(fetchDataById('recruiter', 'recruiterbyid', id));
     } else if (userRole === 'worker') {
@@ -85,10 +85,7 @@ const Navbar = () => {
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="options-menu">
-                <img
-                  src={NoNotification}
-                  className="w-[150px]"
-                />
+                <img src={NoNotification} className="w-[150px]" />
                 <p>Belum ada Notifikasi !</p>
               </div>
             </Transition>
@@ -110,10 +107,7 @@ const Navbar = () => {
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="options-menu">
-                <img
-                  src={NoMessage}
-                  className="w-[150px]"
-                />
+                <img src={NoMessage} className="w-[150px]" />
                 <p>Belum ada Message !</p>
               </div>
             </Transition>

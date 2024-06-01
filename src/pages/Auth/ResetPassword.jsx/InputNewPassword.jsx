@@ -37,14 +37,14 @@ const InputNewPassword = () => {
       }
     }
   }, [formData]);
-  // console.log(userData)
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const token = inputOTPData.token;
-    const role = inputOTPData.userData.role
+    const role = inputOTPData.userData.role;
     dispatch(setPassword(formData, token, role, navigate));
   };
-  localStorage.clear('root')
+  localStorage.clear('root');
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
       <div className="w-1/2 hidden md:flex md:justify-center">
