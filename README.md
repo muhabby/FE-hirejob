@@ -7,7 +7,7 @@
   <h3 align="center">Peworld Hire Job</h3>
 
   <a href="">
-    <img src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717530475/hirejob-peworld-logo/Logo-bg-white_lccbcc.png" alt="Logo" width="250px">
+    <img src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717530475/hirejob-peworld-logo/Logo-bg-white_lccbcc.png" alt="Logo" width="200px">
   </a>
 
   <p align="center">
@@ -40,7 +40,7 @@
     <li><a href="#screenshoots">Screenshots</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#related-project">Related Project</a></li>
-    <li><a href="#our-team">Contact</a></li>
+    <li><a href="#team">Team</a></li>
   </ol>
 </details>
 
@@ -160,7 +160,7 @@ Contributions are what make the open source community such an amazing place to b
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Our Team
+## Team
 
 <center>
   <table>
