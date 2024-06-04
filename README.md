@@ -74,7 +74,7 @@ Before going to the installation stage there are some software that must be inst
 - Clone the repo
 
 ```sh
-git clone https://github.com/NisrinaNataraharja/FE-Cafein.git
+git clone https://github.com/rikiprimus/FE-hirejob.git
 
 ```
 
