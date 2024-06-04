@@ -9,7 +9,7 @@ const HomeCard = ({ photo, name, position, province, city, skill, to }) => {
       <div className="flex flex-col justify-between items-start gap-5 mx-5 my-5 md:my-16 md:flex-row md:items-center">
         <div className="flex flex-row items-center gap-10">
           <div>
-            <img src={photo} className="w-28 h-28 rounded-full" />
+            <img src={photo? photo: `https://res.cloudinary.com/dpasid4jl/image/upload/v1717426859/general-assets/3_fuibe7.jpg`} className="w-28 h-28 rounded-full" />
           </div>
           <div className="flex flex-col items-start gap-3">
             <h1 className="text-2xl font-semibold">{name}</h1>

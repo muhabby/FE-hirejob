@@ -69,10 +69,8 @@ const EditProfileCompany = () => {
       {/* Media Screen LG - 2XL */}
       <section className=" hidden lg:flex lg:justify-center mb-10 lg:mx-4">
         <div className="bg-[#5E50A1] w-full h-[500px] -z-10 absolute"></div>
-        <form
-          onSubmit={updateData}
-          className="lg:flex justify-center items-start space-x-10 w-full">
-          <div className="lg:w-[300px] 2xl:w-[500px] lg:h-[400px] 2xl:h-[600px] mt-48 space-y-5">
+        <form onSubmit={updateData} className="lg:flex justify-center items-start space-x-5 w-full">
+          <div className="lg:w-[300px] 2xl:w-[500px] lg:h-[500px] 2xl:h-[600px] mt-48 space-y-5">
             <div className="flex flex-col bg-white rounded-md shadow-md w-full lg:h-full">
               <div className="flex flex-col items-center justify-center pt-16">
                 <div className="flex pt-4 items-center">
@@ -85,15 +83,21 @@ const EditProfileCompany = () => {
                   />
                   <label htmlFor="inputFile" className="w-40 cursor-pointer rounded-full">
                     {photoDataDiri ? (
-                      <img
-                        src={inputData?.photo}
-                        className=" w-44 h-40 rounded-full cursor-pointer"
-                      />
+                      <div
+                        className="bg-yellow w-40 h-40 rounded-full cursor-pointer"
+                        style={{
+                          backgroundImage: `url(${inputData?.photo})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center'
+                        }}></div>
                     ) : (
-                      <img
-                        src={authDataRecruiter?.photo}
-                        className=" w-40 h-40 rounded-full cursor-pointer"
-                      />
+                      <div
+                        className="bg-yellow w-40 h-40 rounded-full cursor-pointer"
+                        style={{
+                          backgroundImage: `url(${authDataRecruiter?.photo})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center'
+                        }}></div>
                     )}
                     <span className="flex text-grey items-center justify-center text-2xl pt-2">
                       <HiOutlinePencil className="" />
@@ -102,22 +106,22 @@ const EditProfileCompany = () => {
                   </label>
                 </div>
               </div>
-              <div className="lg:pt-10 2xl:pt-20 mx-14">
-                <div className="flex flex-col">
-                  <h1 className="lg:text-base 2xl:text-4xl">{authDataRecruiter?.company_name}</h1>
-                  <h2 className="lg:text-sm 2xl:text-2xl lg:pt-2 2xl:pt-3">
-                    {authDataRecruiter?.position}
-                  </h2>
-                  <p className="flex items-center pt-3 text-[#9EA0A5] lg:text-xs 2xl:text-base">
+              <div className="lg:pt-10 2xl:pt-20 mx-10">
+                <div className="flex flex-col  gap-3">
+                  <h1 className="text-xl">{authDataRecruiter?.company_name}</h1>
+                  <h5 className="text-[#8d8d8d] ">{authDataRecruiter?.position}</h5>
+                  <p className="flex items-center text-[#61abff] lg:text-xs ">
                     <span className="pr-3">
                       <HiOutlineLocationMarker
                         style={{
-                          color: '#9EA0A5',
-                          fontSize: 20
+                          color: '#61abff',
+                          fontSize: 25
                         }}
                       />
                     </span>
-                    {authDataRecruiter?.city}, {authDataRecruiter?.province}
+                    <div style={{ fontSize: 15 }}>
+                      {authDataRecruiter?.city}, {authDataRecruiter?.province}
+                    </div>
                   </p>
                 </div>
               </div>
@@ -126,28 +130,29 @@ const EditProfileCompany = () => {
               <button
                 type="submit"
                 onClick={handdleButtonClick}
-                className="w-full h-[50px] bg-[#5E50A1] text-2xl text-white rounded-md shadow-md hover:bg-yellow">
+                className="w-full h-[50px] bg-[#5E50A1] text-xl text-white rounded-md shadow-md hover:bg-[#473c81]">
                 Simpan
               </button>
               <button
                 type="submit"
-                className="w-full h-[50px] text-2xl text-[#5E50A1] rounded-md shadow-md hover:bg-grey-white outline outline-offset-1 outline-[#5E50A1] outline-1 ">
+                className="w-full h-[50px] text-xl text-[#5E50A1] rounded-md shadow-md hover:bg-grey-white outline outline-offset-1 outline-[#5E50A1] outline-1 ">
                 Batal
               </button>
             </div>
           </div>
-          <div className="w-[900px] h-[1508px] shadow-md bg-white mt-48 rounded-md">
-            <div className="m-10">
+          <div className="w-[900px] h-[1300px] shadow-md bg-white mt-48 rounded-md">
+            <div className="mx-10 my-7">
               <h1 className="font-semibold text-2xl  text-[#1F2A36]">Data diri</h1>
             </div>
             <hr className="w-full" />
-            <div className="m-10 space-y-12">
+            <div className="m-10 space-y-7">
               <div className="space-y-3">
-                <h1 className="font-normal text-base text-[#9EA0A5]">Nama Perushaan</h1>
+                <h1 className="font-normal text-base text-[#9EA0A5]">Nama Perusahaan</h1>
                 <input
                   type="text"
                   name="company_name"
-                  placeholder={authDataRecruiter?.company_name}
+                  placeholder="Masukan nama perusahaan"
+                  defaultValue={authDataRecruiter?.company_name}
                   onChange={onChange}
                   className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
                 />
@@ -157,7 +162,8 @@ const EditProfileCompany = () => {
                 <input
                   type="text"
                   name="company_field"
-                  placeholder={authDataRecruiter?.company_field}
+                  placeholder="Masukan bidang perusahaan"
+                  defaultValue={authDataRecruiter?.company_field}
                   onChange={onChange}
                   className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
                 />
@@ -167,7 +173,8 @@ const EditProfileCompany = () => {
                 <input
                   type="text"
                   name="province"
-                  placeholder={authDataRecruiter?.province}
+                  placeholder="Masukan provinsi"
+                  defaultValue={authDataRecruiter?.province}
                   onChange={onChange}
                   className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
                 />
@@ -177,7 +184,8 @@ const EditProfileCompany = () => {
                 <input
                   type="text"
                   name="city"
-                  placeholder={authDataRecruiter?.city}
+                  placeholder="Masukan kota"
+                  defaultValue={authDataRecruiter?.city}
                   onChange={onChange}
                   className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
                 />
@@ -186,7 +194,8 @@ const EditProfileCompany = () => {
                 <h1 className="font-normal text-base text-[#9EA0A5]">Deskripsi Singkat</h1>
                 <textarea
                   name="company_info"
-                  placeholder={authDataRecruiter?.company_info}
+                  placeholder="Masukan deskripsi perusahaan"
+                  defaultValue={authDataRecruiter?.company_info}
                   onChange={onChange}
                   rows={4}
                   cols={50}
@@ -198,17 +207,19 @@ const EditProfileCompany = () => {
                 <input
                   type="text"
                   name="email"
-                  placeholder={authDataRecruiter?.email}
+                  placeholder="Masukan email pribadi"
+                  defaultValue={authDataRecruiter?.email}
                   onChange={onChange}
                   className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
                 />
               </div>
               <div className="space-y-3">
-                <h1 className="font-normal text-base text-[#9EA0A5]">Email Perushaan</h1>
+                <h1 className="font-normal text-base text-[#9EA0A5]">Email Perusahaan</h1>
                 <input
                   type="text"
                   name="company_email"
-                  placeholder={authDataRecruiter?.company_email}
+                  placeholder="Masukan email perusahaan"
+                  defaultValue={authDataRecruiter?.company_email}
                   onChange={onChange}
                   className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
                 />
@@ -218,7 +229,8 @@ const EditProfileCompany = () => {
                 <input
                   type="text"
                   name="company_phone"
-                  placeholder={authDataRecruiter?.company_phone}
+                  placeholder="Masukan nomor telepon perusahaan"
+                  defaultValue={authDataRecruiter?.company_phone}
                   onChange={onChange}
                   className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
                 />
@@ -228,7 +240,8 @@ const EditProfileCompany = () => {
                 <input
                   type="text"
                   name="linkedin"
-                  placeholder={authDataRecruiter?.linkedin}
+                  placeholder="Masukan linkedin perusahaan"
+                  defaultValue={authDataRecruiter?.linkedin}
                   onChange={onChange}
                   className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
                 />

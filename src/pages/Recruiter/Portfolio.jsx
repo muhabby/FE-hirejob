@@ -95,7 +95,7 @@ const Portfolio = () => {
             <div className="flex flex-row items-center gap-3 text-grey">
               <HiOutlineLocationMarker size={25} />
               <p>
-                {cityDataById?.city_name}, {cityDataById?.province_name}
+                {workerDataById?.city}, {workerDataById?.province}
               </p>
             </div>
             <p className="text-grey">{workerDataById?.bio}</p>

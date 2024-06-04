@@ -120,7 +120,11 @@ export const setPassword = (password, token, role, navigate) => {
   };
 };
 
-export const authLogout = () => {
-  localStorage.clear();
-  return { type: 'LOGOUT' };
+// export const authLogout = () => {
+// localStorage.clear();
+//   return { type: 'LOGOUT' };
+// };
+
+export const authLogout = () => async (dispatch, getState) => {
+  dispatch({ type: 'LOGOUT' });
 };

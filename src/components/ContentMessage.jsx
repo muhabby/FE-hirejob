@@ -67,8 +67,8 @@ const ContentMessage = ({ room, initialMessages }) => {
   return (
     <section className="w-full h-[800px] bg-white rounded-xl overflow-clip">
       <div className="flex justify-between items-center px-3 bg-white h-[75px]">
-        <div className="flex items-center space-x-3">
-          <img src={room.photo || company} alt="" width={55} className="rounded-full" />
+        <div className="flex items-center space-x-3 p-5">
+          {/* <img src={room.photo || company} alt="" width={45} className="rounded-full" /> */}
           <h1>{room.name}</h1>
         </div>
         <h1 className="text-[#9B9B9B]">{room.position}</h1>

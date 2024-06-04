@@ -15,20 +15,20 @@ const SLIDES = [
   {
     imgSrc: `${cardPhoto1}`,
     title: 'Harry Styles',
-    label: 'Web Developer',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.'
+    label: 'CEO',
+    text: 'Peworld telah membantu kami menemukan talenta terbaik dengan cepat dan efisien.'
   },
   {
     imgSrc: `${cardPhoto2}`,
     title: 'Niall Horan',
-    label: 'Web Developer',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    label: 'Manajer HR',
+    text: 'Sangat terbantu dengan jaringan profesional luas dan pendekatan personalisasi peworld.'
   },
   {
     imgSrc: `${cardPhoto3}`,
     title: 'Louis Tomlinson',
-    label: 'Web Developer',
-    text: 'Lorem ipsum dolor sit amet, consectetur'
+    label: 'CTO',
+    text: 'Dukungan berkelanjutan dari peworld benar-benar luar biasa.'
   }
 ];
 
@@ -37,8 +37,8 @@ const LandingPage = () => {
     <main>
       {/* Media Screen LG - 2xl */}
       <div className="hidden lg:block lg:mx-5 2xl:mx-20 ">
-        <nav className="flex items-center justify-between mt-5 lg:mx-5">
-          <img src={logo} alt="" />
+        <nav className="flex items-center justify-between px-5 mt-10 lg:mx-5">
+          <img src={logo} alt="" width={150} />
           <div className="flex space-x-10">
             <Link to={'/login/worker'}>
               <ButtonWhite text="Masuk Untuk Pekerja" />
@@ -52,13 +52,13 @@ const LandingPage = () => {
           <header className="flex justify-between items-center w-full">
             <div className="lg:flex flex-col justify-between">
               <h1 className="text-[#1F2A36] lg:text-4xl 2xl:text-6xl 2xl:leading-normal">
-                Talenta terbaik negri <br /> untuk perubahan <br />
+                Talenta terbaik negeri <br /> untuk perubahan <br />
                 revolusi 4.0
               </h1>
-              <p className="mt-5 lg:text-base 2xl:text-lg 2xl:font-normal">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In <br />
-                euismod ipsum et dui rhoncus auctor.
-              </p>
+              <h3 className="mt-5 lg:text-xl 2xl:text-lg 2xl:font-normal">
+                Bergabunglah dengan kami untuk menciptakan masa depan cerah <br />
+                di era teknologi yang berkembang saat ini.
+              </h3>
               <button
                 type="submit"
                 className="mt-12 w-52 h-16 rounded-md bg-[#5E50A1] text-white hover:bg-[#483d7e] transition duration-300 ease-in-out active:scale-75 ">
@@ -75,36 +75,35 @@ const LandingPage = () => {
             </div>
             <div className="mt-10 lg:mr-0 lg:flex flex-col justify-start lg:space-y-7 2xl:space-y-14">
               <h1 className="font-semibold lg:text-[3vh] 2xl:text-5xl 2xl:leading-tight">
-                Kenapa harus mencari tallent <br />
-                di peworld
+                Kenapa harus mencari talent <br />
+                di Peworld
               </h1>
               <div className="flex space-x-5 items-center">
                 <img src={tick} alt="" width={24} />
-                <p className="text-base text-[#46505C] font-normal">Lorem ipsum dolor sit amet.</p>
+                <p className="text-base text-[#46505C] font-normal">Kandidat Terbaik</p>
               </div>
               <div className="flex space-x-5 items-center">
                 <img src={tick} alt="" width={24} />
-                <p className="text-base text-[#46505C] font-normal">Lorem ipsum dolor sit amet.</p>
+                <p className="text-base text-[#46505C] font-normal">Proses Rekrutmen Efisien</p>
               </div>
               <div className="flex space-x-5 items-center">
                 <img src={tick} alt="" width={24} />
-                <p className="text-base text-[#46505C] font-normal">Lorem ipsum dolor sit amet.</p>
+                <p className="text-base text-[#46505C] font-normal">Pendekatan Personalisasi</p>
               </div>
               <div className="flex space-x-5 items-center">
                 <img src={tick} alt="" width={24} />
-                <p className="text-base text-[#46505C] font-normal">Lorem ipsum dolor sit amet.</p>
+                <p className="text-base text-[#46505C] font-normal">Jaringan Profesional Luas</p>
               </div>
             </div>
           </section>
           <section className="flex justify-around mt-24">
             <div className="lg:mt-10 2xl:mt-20">
               <h1 className="font-semibold lg:text-4xl 2xl:text-5xl text-[#1F2A36]">
-                Skill Tallent
+                Skill Talent
               </h1>
               <p className="font-normal pt-3 lg:text-base 2xl:text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In{' '}
-                <br className="lg:hidden 2xl:block" />
-                euismod ipsum et dui rhoncus auctor.
+                Menjadi wadah para talenta dengan beragam kompetensi dan pengalaman yang dibutuhkan
+                perusahaan.
               </p>
               <div className="flex space-x-20 pt-10">
                 <div className="space-y-5">
@@ -178,7 +177,7 @@ const LandingPage = () => {
           <section className="flex items-center justify-between lg:w-full 2xl:w-[1150px] h-[227px] bg-[#5E50A1] mt-60 mb-32 2xl:mx-48 rounded-tl-[40px] rounded-tr-[8px] rounded-bl-[8px] rounded-br-[40px]">
             <div className="ml-20">
               <h1 className="text-4xl font-semibold text-white leading-normal">
-                Lorem ipsum <br /> dolor sit amet
+                Temukan talenta <br /> terbaikmu di sini
               </h1>
             </div>
             <div className="mr-20 w-[210px] h-[63.11px] shadow-md rounded-md bg-white flex justify-center hover:bg-light-grey">
@@ -214,8 +213,8 @@ const LandingPage = () => {
               </div>
             </div>
             <p className="text-lg font-normal md:mt-10">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In <br />
-              euismod ipsum et dui rhoncus auctor.
+              Bergabunglah dengan kami untuk menciptakan masa depan cerah <br />
+              di era teknologi yang berkembang saat ini.
             </p>
             <button
               type="submit"
@@ -234,21 +233,15 @@ const LandingPage = () => {
               <div className="space-y-5 md:space-y-0 md:flex md:items-center ">
                 <div className="flex space-x-5 items-center">
                   <img src={tick} alt="" width={24} />
-                  <p className="text-base text-[#46505C] font-normal">
-                    Lorem ipsum dolor sit amet.
-                  </p>
+                  <p className="text-base text-[#46505C] font-normal">Kandidat Terbaik</p>
                 </div>
                 <div className="flex space-x-5 items-center">
                   <img src={tick} alt="" width={24} />
-                  <p className="text-base text-[#46505C] font-normal">
-                    Lorem ipsum dolor sit amet.
-                  </p>
+                  <p className="text-base text-[#46505C] font-normal">Proses Rekrutmen Efisien</p>
                 </div>
                 <div className="flex space-x-5 items-center">
                   <img src={tick} alt="" width={24} />
-                  <p className="text-base text-[#46505C] font-normal">
-                    Lorem ipsum dolor sit amet.
-                  </p>
+                  <p className="text-base text-[#46505C] font-normal">Pendekatan Personalisasi</p>
                 </div>
                 <div className="flex space-x-5 items-center">
                   <img src={tick} alt="" width={24} />
@@ -263,8 +256,8 @@ const LandingPage = () => {
             <div className="">
               <h1 className="font-semibold text-3xl text-[#1F2A36] md:text-start">Skill Tallent</h1>
               <p className="font-normal text-lg pt-3 md:text-start">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In <br />
-                euismod ipsum et dui rhoncus auctor.
+                Menjadi wadah para talenta dengan beragam kompetensi dan pengalaman yang dibutuhkan
+                perusahaan.
               </p>
               <div className="flex space-x-20 pt-8 md:justify-start">
                 <div className="space-y-5">
@@ -328,7 +321,7 @@ const LandingPage = () => {
                       className="outline outline-offset-1 outline-[#FBB0175E] outline-8 rounded-full"
                     />
                   </div>
-                  <div className="flex flex-col items-center text-center pt-5 gap-2">
+                  <div className="flex flex-col items-center text-center pt-5 gap-2 p-3">
                     <h1 className="font-semibold text-3xl text-[#1F2A36]">{item.title}</h1>
                     <h2 className="text-lg font-normal text-[#9EA0A5]">{item.label}</h2>
                     <p className=" font-normal text-lg text-[#46505C]">{item.text}</p>
@@ -340,7 +333,7 @@ const LandingPage = () => {
           <section className="flex flex-col items-center justify-around h-[227px] bg-[#5E50A1] mt-32 mb-32 rounded-tl-[40px] rounded-tr-[8px] rounded-bl-[8px] rounded-br-[40px]">
             <div className="">
               <h1 className="text-3xl font-semibold text-white leading-normal">
-                Lorem ipsum <br /> dolor sit amet
+                Temukan talenta <br /> terbaikmu di sini
               </h1>
             </div>
             <div className="h-[63.11px] shadow-md rounded-md bg-white flex justify-center hover:bg-light-grey">

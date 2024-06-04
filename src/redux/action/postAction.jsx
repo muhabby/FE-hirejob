@@ -57,6 +57,7 @@ export const CreateWorkExperience = (data, tokenUser, navigate) => {
         data: data
       });
       dispatch({ type: 'POST_DATA_SUCCESS', payload: response.data });
+      window.location.reload();
     } catch (error) {
       dispatch({
         type: 'POST_DATA_FAILURE',
@@ -80,6 +81,7 @@ export const CreatePortofolio = (data, token, navigate) => {
         data: data
       });
       dispatch({ type: 'POST_DATA_SUCCESS', payload: response.data });
+      window.location.reload();
     } catch (error) {
       dispatch({
         type: 'POST_DATA_FAILURE',

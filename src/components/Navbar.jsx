@@ -9,6 +9,8 @@ import PhotoDefault from '../assets/image/default_profile.png';
 import NoNotification from '../assets/nothing-notif.svg';
 import NoMessage from '../assets/nothing-chat.svg';
 import { fetchDataById } from '../redux/action/fetchAction';
+import { authLogout } from '../redux/action/auth';
+import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -31,7 +33,7 @@ const Navbar = () => {
   }, [userRole, id]);
 
   const handleLogout = () => {
-    localStorage.clear();
+    dispatch(authLogout());
     navigate('/');
   };
 
@@ -150,7 +152,7 @@ const Navbar = () => {
             aria-haspopup="true"
             aria-expanded={isOpenNotification ? 'true' : 'false'}
             className="p-2 m-2 rounded-full bg-white hover:bg-primary hover:text-white hover:shadow-lg active:shadow-inner">
-            <FiBell size={20} className="transition duration-300 ease-in-out active:scale-75" />
+            <FiBell size={22} className="transition duration-300 ease-in-out active:scale-75" />
           </button>
           <button
             type="button"
@@ -158,18 +160,19 @@ const Navbar = () => {
             aria-haspopup="true"
             aria-expanded={isOpenMessage ? 'true' : 'false'}
             className="p-2 m-2 rounded-full bg-white hover:bg-primary hover:text-white hover:shadow-lg active:shadow-inner">
-            <FiMail size={20} className="transition duration-300 ease-in-out active:scale-75" />
+            <FiMail size={22} className="transition duration-300 ease-in-out active:scale-75" />
           </button>
           <button
             type="button"
             onClick={toggleDropdownProfile}
             aria-haspopup="true"
             aria-expanded={isOpenProfile ? 'true' : 'false'}
-            className="rounded-full hover:drop-shadow-xl hover:shadow-purple active:shadow-inner">
-            <img
+            className="p-2 m-2 rounded-full bg-white hover:bg-primary hover:text-white hover:shadow-lg active:shadow-inner">
+            <CgProfile size={22} className="transition duration-300 ease-in-out active:scale-75" />
+            {/* <img
               src={recruiterPhoto || workerPhoto || PhotoDefault}
               className="w-8 rounded-full transition duration-300 ease-in-out active:scale-75"
-            />
+            /> */}
           </button>
         </div>
       </div>

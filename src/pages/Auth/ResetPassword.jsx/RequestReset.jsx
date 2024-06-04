@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import photoAuth from '../../../assets/photo-auth.svg';
 import { Button } from '../../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import { EmailInput } from '../../../components/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestOTP } from '../../../redux/action/auth';
 import { AlertSubmit } from '../../../components/Alert';
+import photoAuth from '../../../assets/photo-auth.svg';
+import LeftContentAuth from '../../../components/LeftContentAuth';
 
 const RequestReset = () => {
   const navigate = useNavigate();
@@ -33,14 +34,13 @@ const RequestReset = () => {
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
       <div className="w-1/2 hidden md:flex md:justify-center">
-        <img src={photoAuth} />
+        <LeftContentAuth />
       </div>
       <div className="w-full md:w-1/2 flex flex-col gap-5">
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl text-dark ">Halo, Pewpeople</h1>
           <p className="text-xl text-dark-grey tracking-wide ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus
-            auctor.
+            Silahkan masukkan email untuk menerima OTP
           </p>
         </div>
         <AlertSubmit isError={isError} isSuccess={isSuccess} />

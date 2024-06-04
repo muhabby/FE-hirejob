@@ -100,7 +100,7 @@ const BoxInput = ({ text, name, placeholder, onChange, autoComplete, className }
 
 const TimeInput = ({ text, name, placeholder, onChange, autoComplete, className, label }) => {
   return (
-    <div>
+    <div className='space-y-3'>
       <label htmlFor={name} className=" text-grey text-sm">
         {text}
       </label>

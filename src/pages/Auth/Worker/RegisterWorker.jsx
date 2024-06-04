@@ -6,6 +6,7 @@ import { EmailInput, PasswordInput, TextInput } from '../../../components/Input'
 import { useDispatch, useSelector } from 'react-redux';
 import { authRegister } from '../../../redux/action/auth';
 import { Alert, AlertSubmit } from '../../../components/Alert';
+import LeftContentAuth from '../../../components/LeftContentAuth';
 
 const RegisterWorker = () => {
   const rolePage = 'worker';
@@ -45,20 +46,19 @@ const RegisterWorker = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(authRegister(formData, navigate));
+    dispatch(authRegister(formData, rolePage, navigate));
   };
 
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
-      <div className="w-1/2 hidden md:flex md:justify-center">
-        <img src={photoAuth} />
+      <div className="w-1/2 hidden md:flex md:justify-center" style={{height: 1000}}>
+        <LeftContentAuth />
       </div>
       <div className="w-full md:w-1/2 flex flex-col gap-10">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           <h1 className="text-4xl text-dark ">Halo, Pewpeople</h1>
-          <p className="text-xl text-dark-grey tracking-wide ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus
-            auctor.
+          <p className="text-2xl text-dark-grey tracking-wide ">
+          Silahkan daftar sebagai <b>Pekerja</b>
           </p>
         </div>
         <AlertSubmit isError={isError} isSuccess={isSuccess} />

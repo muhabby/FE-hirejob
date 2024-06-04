@@ -32,7 +32,7 @@ const MyChat = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-col md:flex-row bg-grey-white gap-20 px-5 pt-8 pb-[200px] lg:px-16 md:pt-16 md:pb-[700px] 2xl:px-48">
+      <div className="flex flex-col md:flex-row bg-grey-white gap-20 px-5 pt-8 pb-[100px] lg:px-16 md:pt-16 2xl:px-48">
         {/* List of user messages */}
         <section className="w-[450px] h-[800px] bg-white shadow-lg rounded-xl">
           <h1 className="text-[#1f2a36] text-xl font-semibold mx-5 my-6">Messages</h1>
@@ -48,7 +48,7 @@ const MyChat = () => {
                 <img src={item.photo || company} alt="" width={60} className="rounded-full" />
                 <div>
                   <h1 className="font-semibold text-start">{item.name}</h1>
-                  <p className="text-[#9B9B9B]">{item.position}</p>
+                  <p className="text-start text-[#9B9B9B]">{item.position}</p>
                 </div>
               </button>
             ))}

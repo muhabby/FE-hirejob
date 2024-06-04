@@ -16,10 +16,15 @@ import {
 } from '../../redux/action/postAction';
 import { UpdateSkill, UpdateWorker } from '../../redux/action/putAction';
 import { fetchDataById } from '../../redux/action/fetchAction';
+import { deleteWorkExperience } from '../../redux/action/deleteAction';
+import { deletePortofolio } from '../../redux/action/deleteAction';
+import { IoIosClose } from 'react-icons/io';
 
 const EditProfileWorker = () => {
   const dataDiri = useSelector((state) => state?.fetchReducer?.workerbyidData?.data);
   const skillsById = useSelector((state) => state?.fetchReducer?.skillsDataData?.data);
+  const experienceDataById = useSelector((state) => state.fetchReducer.experiencebyidData);
+  const portofolioDataById = useSelector((state) => state.fetchReducer.portfoliobyidData);
   const tokenUser = useSelector((state) => state?.login?.user?.token);
   const userData = useSelector((state) => state?.login?.user?.userData);
   const userId = userData?.id_user;
@@ -30,6 +35,8 @@ const EditProfileWorker = () => {
   useEffect(() => {
     dispatch(fetchDataById('worker', 'workerbyid', userId));
     dispatch(fetchDataById('skills', 'skillsData', userId));
+    dispatch(fetchDataById('workExperience', 'experiencebyid', userId));
+    dispatch(fetchDataById('portofolio', 'portfoliobyid', userId));
   }, [dispatch, userId]);
 
   // Data diri
@@ -184,7 +191,7 @@ const EditProfileWorker = () => {
             <div className="flex flex-col space-y-5 w-4/12">
               <div className="bg-white rounded-md shadow-md h-2/3">
                 <div className="flex flex-col items-center justify-center pt-16">
-                  <img src={userData?.photo} alt="" className="rounded-full w-[200px]" />
+                  {/* <img src={userData?.photo} alt="" className="rounded-full w-[200px]" /> */}
                   <div className="flex pt-4 items-center">
                     <input
                       type="file"
@@ -195,15 +202,21 @@ const EditProfileWorker = () => {
                     />
                     <label htmlFor="inputFile" className="w-40 cursor-pointer rounded-full">
                       {photoDataDiri ? (
-                        <img
-                          src={inputDataDiri?.photo}
+                        <div
                           className="bg-yellow w-40 h-40 rounded-full cursor-pointer"
-                        />
+                          style={{
+                            backgroundImage: `url(${inputDataDiri?.photo})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                          }}></div>
                       ) : (
-                        <img
-                          src={dataDiri?.photo}
+                        <div
                           className="bg-yellow w-40 h-40 rounded-full cursor-pointer"
-                        />
+                          style={{
+                            backgroundImage: `url(${dataDiri?.photo})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                          }}></div>
                       )}
                       <span className="flex text-grey items-center justify-center text-2xl pt-2">
                         <HiOutlinePencil className="" />
@@ -212,23 +225,25 @@ const EditProfileWorker = () => {
                     </label>
                   </div>
                 </div>
-                <div className="pt-20 pl-10">
-                  <div className="flex flex-col lg:space-y-2">
+                <div className="pt-10 pl-10">
+                  <div className="flex flex-col lg:space-y-2 gap-3">
                     <h1 className="text-2xl">{dataDiri?.name}</h1>
-                    <h2 className="text-xl">{dataDiri?.last_work}</h2>
-                    <p className="flex items-center text-[#9EA0A5] lg:text-xs ">
+                    <h5 className="text-[#8d8d8d] ">{dataDiri?.last_work}</h5>
+                    <p className="flex items-center text-[#61abff] lg:text-xs ">
                       <span className="pr-3">
                         <HiOutlineLocationMarker
                           style={{
-                            color: '#9EA0A5',
+                            color: '#61abff',
                             fontSize: 25
                           }}
                         />
                       </span>
-                      {dataDiri?.city}, {dataDiri?.province}
+                      <div style={{ fontSize: 15 }}>
+                        {dataDiri?.city}, {dataDiri?.province}
+                      </div>
                     </p>
-                    <p className=" text-[#9EA0A5] font-normal lg:text-sm 2xl:text-lg ">
-                      {dataDiri?.job_desk}
+                    <p className=" text-[#000000] font-normal lg:text-sm 2xl:text-lg ">
+                      <div style={{ fontSize: 15 }}>{dataDiri?.job_desk}</div>
                     </p>
                   </div>
                 </div>
@@ -236,10 +251,10 @@ const EditProfileWorker = () => {
               <div className="space-y-5">
                 <button
                   type="submit"
-                  className="w-full h-[50px] bg-[#5E50A1] text-2xl text-white rounded-md shadow-md hover:bg-yellow">
+                  className="w-full h-[50px] bg-[#5E50A1] text-xl text-white rounded-md shadow-md hover:bg-[#473c81]">
                   Simpan
                 </button>
-                <button className="w-full h-[50px] text-2xl text-[#5E50A1] rounded-md shadow-md hover:bg-grey-white outline outline-offset-1 outline-[#5E50A1] outline-1 ">
+                <button className="w-full h-[50px] text-xl text-[#5E50A1] rounded-md shadow-md hover:bg-grey-white outline outline-offset-1 outline-[#5E50A1] outline-1 ">
                   Batal
                 </button>
               </div>
@@ -339,21 +354,51 @@ const EditProfileWorker = () => {
                 </div>
                 <hr className="w-full text-[#C4C4C4]" />
                 <form onSubmit={editSkill} className="m-10 space-y-5">
-                  <div className="space-x-12 flex">
-                    <input
-                      onChange={onChangeEditSkill}
-                      type="text"
-                      placeholder={skillsById?.skill_name}
-                      className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
-                    />
-                    <ButtonYellow
-                      text={'Simpan'}
-                      type="submit"
-                      className={
-                        'w-[100px] h-[50px] bg-[#FBB017] rounded-md text-white flex justify-center items-center font-bold text-base'
-                      }
-                    />
-                  </div>
+                  {skillsById.skill_name ? (
+                    <div className="flex flex-col gap-3">
+                      <div className="space-x-12 flex flex-row">
+                        <input
+                          onChange={onChangeEditSkill}
+                          type="text"
+                          defaultValue={skillsById?.skill_name}
+                          placeholder="Masukkan Skill"
+                          className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+                        />
+                        <ButtonYellow
+                          text={'Update'}
+                          type="submit"
+                          className={
+                            'w-[100px] h-[50px] bg-[#FBB017] rounded-md text-white flex justify-center items-center font-bold text-base'
+                          }
+                        />
+                      </div>
+                      <p className="text-[#c45124]" style={{ fontSize: 14 }}>
+                        Pisahkan skill dengan koma dan spasi ", "
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-3">
+                      <div className="space-x-12 flex flex-row">
+                        <input
+                          onChange={onChangeEditSkill}
+                          type="text"
+                          defaultValue={skillsById?.skill_name}
+                          placeholder="Masukkan Skill"
+                          className="w-full h-[50px] p-3 rounded-sm outline outline-offset-2 outline-1 outline-[#E2E5ED] hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+                        />
+                        <ButtonYellow
+                          text={'Submit'}
+                          type="submit"
+                          className={
+                            'w-[100px] h-[50px] bg-[#FBB017] rounded-md text-white flex justify-center items-center font-bold text-base'
+                          }
+                        />
+                      </div>
+                      <p className="text-[#c45124]" style={{ fontSize: 14 }}>
+                        Pisahkan skill dengan koma dan spasi ", "
+                      </p>
+                    </div>
+                  )}
                 </form>
               </div>
             </section>
@@ -366,42 +411,91 @@ const EditProfileWorker = () => {
                   <h1 className="font-semibold text-2xl text-[#1F2A36]">Pengalaman Kerja</h1>
                 </div>
                 <hr className="w-full text-[#C4C4C4]" />
-                <form onSubmit={createWorkExp} className="w-full p-10 space-y-10">
-                  <div className="space-y-3">
-                    <input
-                      type="file"
-                      id="photoWorkExp"
-                      onChange={onChangePhoto}
-                      style={{ display: 'none' }}
-                    />
-                    <label htmlFor="photoWorkExp">
-                      {photoWorkExperience ? (
-                        <div className="w-full h-60 flex justify-center">
-                          <img src={inputWorkExperience?.photo} />
+                <div className="px-10 pt-10 space-y-5">
+                  {experienceDataById.data && experienceDataById.data.length > 0 ? (
+                    experienceDataById.data.map((item, index) => {
+                      return (
+                        <div
+                          className="flex flex-col justify-center p-10 bg-[#e8e4ff]"
+                          key={index}
+                          style={{
+                            height: 100,
+                            width: '100%',
+                            borderRadius: 10
+                          }}>
+                          <div className="flex flex-row justify-between items-center" style={{}}>
+                            <div
+                              className="flex flex-col"
+                              style={{
+                                width: '75%'
+                              }}>
+                              <p>{item.company_name}</p>
+                              <p>{item.position}</p>
+                            </div>
+                            <div className="flex flex-col" style={{}}>
+                              <button
+                                onClick={() => dispatch(deletePortofolio(item.id, tokenUser))}>
+                                <IoIosClose className="text-4xl text-[#9b3d3d]" />
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      ) : (
-                        <div className="bg-white border-2 border-dashed border-grey w-full h-32 flex justify-center items-center space-x-3">
-                          <FiUpload className="text-4xl text-grey" />
-                          <h1 className="text-grey">Click For Upload</h1>
-                        </div>
-                      )}
-                    </label>
-                    <h1 className="font-normal text-base text-[#9EA0A5]">Posisi</h1>
-                    <TextInput
-                      onChange={onChangeDataWorkExp}
-                      name="position"
-                      placeholder={'Web Developer'}
-                    />
-                  </div>
-                  <div className="w-full space-y-3">
-                    <h1 className="font-normal text-base text-[#9EA0A5]">Nama Perushaan</h1>
-                    <div className="w-full lg:flex flex-col items-start lg:space-y-5">
+                      );
+                    })
+                  ) : (
+                    <div
+                      className="flex flex-col items-center justify-center p-10 bg-[#fbffbc]"
+                      style={{
+                        height: 100,
+                        width: '100%',
+                        borderRadius: 10
+                      }}>
+                      <p className="text-[#646464]">Tidak ada pengalaman kerja</p>
+                    </div>
+                  )}
+                </div>
+                <form onSubmit={createWorkExp} className="w-full p-10 space-y-5">
+                  <div className="space-y-5">
+                    <div>
+                      <h1 className="mb-3 font-normal text-base text-[#9EA0A5]">Photo</h1>
+                      <input
+                        type="file"
+                        id="photoWorkExp"
+                        onChange={onChangePhoto}
+                        style={{ display: 'none' }}
+                      />
+                      <label htmlFor="photoWorkExp">
+                        {photoWorkExperience ? (
+                          <div className="w-full h-60 flex justify-center">
+                            <img src={inputWorkExperience?.photo} />
+                          </div>
+                        ) : (
+                          <div className="bg-white border-2 border-dashed border-grey w-full h-32 flex justify-center items-center space-x-3">
+                            <FiUpload className="text-4xl text-grey" />
+                            <h1 className="text-grey">Click For Upload</h1>
+                          </div>
+                        )}
+                      </label>
+                    </div>
+                    <div>
+                      <h1 className="font-normal text-base text-[#9EA0A5]">Posisi</h1>
+                      <TextInput
+                        onChange={onChangeDataWorkExp}
+                        name="position"
+                        placeholder={'Web Developer'}
+                      />
+                    </div>
+                    <div>
+                      <h1 className="font-normal text-base text-[#9EA0A5]">Nama Perusahaan</h1>
                       <TextInput
                         onChange={onChangeDataWorkExp}
                         name="company_name"
                         placeholder={'PT Harus bisa'}
-                        className={'w-96'}
                       />
+                    </div>
+                  </div>
+                  <div className="w-full">
+                    <div className="w-full lg:flex flex-col items-start lg:space-y-3">
                       <TimeInput
                         onChange={onChangeDataWorkExp}
                         name="working_start_at"
@@ -425,7 +519,7 @@ const EditProfileWorker = () => {
                   <hr className="text-[#C4C4C4]" />
                   <button
                     type="submit"
-                    className="bg-white border-2 border-[#FBB017] rounded w-full h-10 text-[#FBB017] font-semibold hover:text-lg focus:bg-dark-grey ">
+                    className="bg-white border-2 border-[#FBB017] rounded w-full h-10 text-[#FBB017] font-semibold hover:text-lg focus:bg-[#fff2d8] ">
                     Tambah pengalaman kerja
                   </button>
                 </form>
@@ -435,12 +529,55 @@ const EditProfileWorker = () => {
 
             {/* Portofolio */}
             <section className="flex justify-end">
-              <div className="w-[54%] h-auto shadow-md rounded-md py-5">
+              <div className="w-[54%] h-auto shadow-md rounded-md">
                 <div className="mx-10 py-5 ">
                   <h1 className="font-semibold text-2xl text-[#1F2A36]">Portofolio</h1>
                 </div>
                 <hr className="w-full text-[#C4C4C4]" />
-                <form onSubmit={createPorto} className="m-10 space-y-10">
+                <div className="px-10 pt-10 space-y-5">
+                  {portofolioDataById.data && portofolioDataById.data.length > 0 ? (
+                    portofolioDataById.data.map((item, index) => {
+                      return (
+                        <div
+                          className="flex flex-col justify-center p-10 bg-[#e8e4ff]"
+                          key={index}
+                          style={{
+                            height: 100,
+                            width: '100%',
+                            borderRadius: 10
+                          }}>
+                          <div className="flex flex-row justify-between items-center" style={{}}>
+                            <div
+                              className="flex flex-col"
+                              style={{
+                                width: '75%'
+                              }}>
+                              <p>{item.porto_name}</p>
+                              <p>{item.type}</p>
+                            </div>
+                            <div className="flex flex-col" style={{}}>
+                              <button
+                                onClick={() => dispatch(deletePortofolio(item.id, tokenUser))}>
+                                <IoIosClose className="text-4xl text-[#9b3d3d]" />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <div
+                      className="flex flex-col items-center justify-center p-10 bg-[#fbffbc]"
+                      style={{
+                        height: 100,
+                        width: '100%',
+                        borderRadius: 10
+                      }}>
+                      <p className="text-[#646464]">Tidak ada portofolio</p>
+                    </div>
+                  )}
+                </div>
+                <form onSubmit={createPorto} className="m-10 space-y-5">
                   <div className="space-y-3">
                     <h1 className="font-normal text-base text-[#9EA0A5]">Nama Aplikasi</h1>
                     <TextInput
@@ -479,10 +616,10 @@ const EditProfileWorker = () => {
                             <img src={inputPorto?.photo} />
                           </div>
                         ) : (
-                          <div className="flex flex-col space-y-3 cursor-pointer outline-dashed rounded-md outline-offset-2 outline-[#9EA0A5] outline-3 h-[348px]  justify-center items-center">
+                          <div className="flex flex-col space-y-3 cursor-pointer outline-dashed outline-offset-2 outline-[#9EA0A5] outline-2 h-[348px]  justify-center items-center">
                             <IoMdCloudUpload className="text-8xl text-[#9EA0A5]" />
                             <p className="text-sm text-[#9EA0A5]">
-                              Drag & Drop untuk Upload Gambar Aplikasi Mobile
+                              Drag & Drop untuk Upload Gambar
                             </p>
                             <p className="text-xs text-[#9EA0A5]">
                               Atau cari untuk mengupload file dari direktorimu.
@@ -509,7 +646,7 @@ const EditProfileWorker = () => {
                   <hr className="text-[#C4C4C4]" />
                   <button
                     type="submit"
-                    className="bg-white border-2 border-[#FBB017] rounded w-full h-10 text-[#FBB017] font-semibold hover:text-lg focus:bg-dark-grey ">
+                    className="bg-white border-2 border-[#FBB017] rounded w-full h-10 text-[#FBB017] font-semibold hover:text-lg focus:bg-[#fff2d8] ">
                     Tambah Portofolio
                   </button>
                 </form>

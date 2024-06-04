@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
-import photoAuth from '../../../assets/photo-auth.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../../../components/Button';
 import { EmailInput, PasswordInput, TextInput } from '../../../components/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { authRegister } from '../../../redux/action/auth';
 import { AlertSubmit, Alert } from '../../../components/Alert';
+import { useState, useEffect } from 'react';
+import photoAuth from '../../../assets/photo-auth.svg';
+import LeftContentAuth from '../../../components/LeftContentAuth';
 
 const RegisterRecruiter = () => {
   const rolePage = 'recruiter';
@@ -51,16 +52,17 @@ const RegisterRecruiter = () => {
 
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
-      <div className="w-auto hidden md:flex md:justify-center fixed top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-50">
+      {/* <div className="w-auto hidden md:flex md:justify-center fixed top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-50">
         <img src={photoAuth} className="md:w-2/3 lg:w-4/5 2xl:w-auto" />
+      </div> */}
+      <div className="w-1/2 hidden md:flex md:justify-center" style={{ height: 1200 }}>
+        <LeftContentAuth />
       </div>
-      <div className="w-1/2 hidden md:flex"></div>
       <div className="w-full md:w-1/2 flex flex-col gap-10">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           <h1 className="text-4xl text-dark ">Halo, Pewpeople</h1>
-          <p className="text-xl text-dark-grey tracking-wide ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus
-            auctor.
+          <p className="text-2xl text-dark-grey tracking-wide ">
+            Silahkan daftar sebagai <b>Perekrut</b>
           </p>
         </div>
         <AlertSubmit isError={isError} isSuccess={isSuccess} />
@@ -100,7 +102,6 @@ const RegisterRecruiter = () => {
             autoComplete="current-phone"
             onChange={onChange}
           />
-          <Alert error={error} isSuccess="Password sama" isError="Password tidak sama" />
           <PasswordInput
             text="Kata Sandi"
             name="password"
@@ -115,6 +116,7 @@ const RegisterRecruiter = () => {
             autoComplete="current-confirmPassword"
             onChange={onChange}
           />
+          <Alert error={error} isSuccess="Password sama" isError="Password tidak sama" />
           <div className="text-end min-w-0">
             <Link to="/resetpassword" className="hover:text-primary">
               Lupa kata sandi ?
