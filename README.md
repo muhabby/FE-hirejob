@@ -1,13 +1,11 @@
 <div id="top"></div>
 
-<!-- PROJECT LOGO -->
-
 <br />
 <div align="center">
   <h3 align="center">Peworld Hire Job</h3>
 
   <a href="">
-    <img src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717530475/hirejob-peworld-logo/Logo-bg-white_lccbcc.png" alt="Logo" width="200px">
+    <img src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717530475/peworld-hirejob-assets/logo/Logo-bg-white_lccbcc.png" alt="Logo" width="200px">
   </a>
 
   <p align="center">
@@ -17,12 +15,9 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-
 ## Table of Contents
 
-<details>
-  <summary>Table of Contents</summary>
+<div>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -38,11 +33,11 @@
       </ul>
     </li>
     <li><a href="#screenshoots">Screenshots</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#contribution">Contribution</a></li>
     <li><a href="#related-project">Related Project</a></li>
     <li><a href="#team">Team</a></li>
   </ol>
-</details>
+</div>
 
 ## About The Project
 
@@ -50,11 +45,7 @@
 
 ### Built With
 
-This app was built with some technologies below:
-
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [Javascript](https://www.javascript.com/)
-- [React](https://reactjs.org/)
+- [React.Js](https://reactjs.org/)
 - [Axios](https://axios-http.com/)
 - [Vite](https://vitejs.dev/)
 - [React Redux](https://react-redux.js.org/introduction/getting-started)
@@ -65,82 +56,70 @@ This app was built with some technologies below:
 
 Before going to the installation stage there are some software that must be installed first.
 
-- [NodeJs](https://nodejs.org/en/download/)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+- [Node.Js](https://nodejs.org/en/download/)
 
 ### Installation
 
-- Clone the repo
-
+- Clone Repository
 ```sh
 git clone https://github.com/rikiprimus/FE-hirejob.git
-
 ```
 
 - Install Module
-
 ```sh
 npm install
-
 ```
 
 - Setup .env
-
 ```sh
-VITE_BASE_URL = your database url
-
+VITE_BASE_URL = "api url"
 ```
 
 - Start Project
-
 ```sh
 npm run dev
-
 ```
 
 ## Screenshoots
 
 <p align="center" display=flex>
     <table>
-        <tr>
+        <tr align="center">
             <td>Login Page</td>
             <td>Register Page</td>
         </tr>
-        <tr>
+        <tr align="center">
             <td><image src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717531092/hirejob-peworld-logo/Login_gsfuyb.png" alt="Login Page" width=100%></td>
             <td><image src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717531092/hirejob-peworld-logo/Regist_x5g2fe.png" alt="Register Page" width=100%/></td>
         </tr>
-        <tr>
+        <tr align="center">
             <td>Landing Page</td>
             <td>Home Perekrut</td>
         </tr>
-        <tr>
+        <tr align="center">
             <td><image src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717531093/hirejob-peworld-logo/Landing_xj7lpl.png" alt="Landing Page" width=100%></td>
             <td><image src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717531089/hirejob-peworld-logo/Home_Perekrut_ghte5p.png" alt="Home Recruiter" width=100%/></td>
         </tr>
-        <tr>
+        <tr align="center">
             <td>Edit Profile Pekerja </td>
             <td>Profile Talent</td>
         </tr>
-        <tr>
+        <tr align="center">
             <td><image src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717531088/hirejob-peworld-logo/Edit_Profile_evvo2x.png" alt="Edit Profile Pekerja" width=100%></td>
             <td><image src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717531090/hirejob-peworld-logo/Profile_Talent_choj9j.png" alt="Profile Talent" width=100%/></td>
         </tr>
-        <tr>
+        <tr align="center">
             <td>Hiring</td>
             <td>Chat</td>
         </tr>
-        <tr>
+        <tr align="center">
             <td><image src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717531089/hirejob-peworld-logo/Hiring_am4xsu.png" alt="Hiring" width=100%></td>
             <td><image src="https://res.cloudinary.com/dpasid4jl/image/upload/v1717531088/hirejob-peworld-logo/Chat_wwn3m8.png" alt="Chat" width=100%/></td>
         </tr>
     </table>  
 </p>
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Contributing
+## Contribution
 
 Contributions that make the open source community the best place to learn and create. Every contribution you make is valuable.
 
@@ -150,15 +129,10 @@ Contributions that make the open source community the best place to learn and cr
 4. Push to the Branch (`git push origin feature/yourbranch`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ## Related Project
 
-- [`Peworld Hirejob Web Demo`](https://hirejob-project.vercel.app/)
-- [`Peworld Hirejob Web Frontend Repository`](https://github.com/rikiprimus/FE-hirejob)
-- [`Peworld Hirejob Web Backend Repository`](https://github.com/habibir7/BE-hirejob)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+- [Peworld Hirejob Web Demo](https://hirejob-project.vercel.app/)
+- [Peworld Hirejob Web Backend Repository](https://github.com/habibir7/BE-hirejob)
 
 ## Team
 
