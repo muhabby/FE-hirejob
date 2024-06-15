@@ -61,9 +61,12 @@ const LoginRecruiter = () => {
             onChange={onChange}
           />
           <div className="text-end min-w-0">
-            <Link to="/resetpassword" className="hover:text-primary">
+            {/* <Link to="/resetpassword" className="hover:text-primary">
               Lupa kata sandi ?
-            </Link>
+            </Link> */}
+            <span>
+              Lupa kata sandi ?
+            </span>
           </div>
           <div className="">
             <Button className="bg-yellow hover:bg-[#db9709]" isLoading={isLoading}>

@@ -117,11 +117,6 @@ const RegisterRecruiter = () => {
             onChange={onChange}
           />
           <Alert error={error} isSuccess="Password sama" isError="Password tidak sama" />
-          <div className="text-end min-w-0">
-            <Link to="/resetpassword" className="hover:text-primary">
-              Lupa kata sandi ?
-            </Link>
-          </div>
           <div className="">
             <Button className="bg-yellow hover:bg-[#db9709]" isLoading={isLoading}>
               Daftar

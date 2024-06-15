@@ -21,10 +21,10 @@ import { deletePortofolio } from '../../redux/action/deleteAction';
 import { IoIosClose } from 'react-icons/io';
 
 const EditProfileWorker = () => {
-  const dataDiri = useSelector((state) => state.fetchReducer.workerbyidData.data);
-  const skillsById = useSelector((state) => state.fetchReducer.skillsDataData.data);
-  const experienceDataById = useSelector((state) => state.fetchReducer.experiencebyidData);
-  const portofolioDataById = useSelector((state) => state.fetchReducer.portfoliobyidData);
+  const dataDiri = useSelector((state) => state?.fetchReducer?.workerbyidData?.data);
+  const skillsById = useSelector((state) => state?.fetchReducer?.skillsDataData?.data);
+  const experienceDataById = useSelector((state) => state?.fetchReducer?.experiencebyidData);
+  const portofolioDataById = useSelector((state) => state?.fetchReducer?.portfoliobyidData);
   const tokenUser = useSelector((state) => state?.login?.user?.token);
   const userData = useSelector((state) => state?.login?.user?.userData);
   const userId = userData?.id_user;
@@ -412,8 +412,8 @@ const EditProfileWorker = () => {
                 </div>
                 <hr className="w-full text-[#C4C4C4]" />
                 <div className="px-10 pt-10 space-y-5">
-                  {experienceDataById?.data && experienceDataById?.data.length > 0 ? (
-                    experienceDataById?.data.map((item, index) => {
+                  {experienceDataById?.data && experienceDataById?.data?.length > 0 ? (
+                    experienceDataById?.data?.map((item, index) => {
                       return (
                         <div
                           className="flex flex-col justify-center p-10 bg-[#e8e4ff]"
@@ -434,7 +434,7 @@ const EditProfileWorker = () => {
                             </div>
                             <div className="flex flex-col" style={{}}>
                               <button
-                                onClick={() => dispatch(deletePortofolio(item.id, tokenUser))}>
+                                onClick={() => dispatch(deleteWorkExperience(item.id, tokenUser))}>
                                 <IoIosClose className="text-4xl text-[#9b3d3d]" />
                               </button>
                             </div>
@@ -535,8 +535,8 @@ const EditProfileWorker = () => {
                 </div>
                 <hr className="w-full text-[#C4C4C4]" />
                 <div className="px-10 pt-10 space-y-5">
-                  {portofolioDataById?.data && portofolioDataById?.data.length > 0 ? (
-                    portofolioDataById?.data.map((item, index) => {
+                  {portofolioDataById?.data && portofolioDataById?.data?.length > 0 ? (
+                    portofolioDataById?.data?.map((item, index) => {
                       return (
                         <div
                           className="flex flex-col justify-center p-10 bg-[#e8e4ff]"

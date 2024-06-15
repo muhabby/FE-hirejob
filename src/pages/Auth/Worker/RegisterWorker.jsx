@@ -51,14 +51,14 @@ const RegisterWorker = () => {
 
   return (
     <div className="flex flex-row items-center md:gap-16 px-8 md:px-16 py-14 bg-grey-white">
-      <div className="w-1/2 hidden md:flex md:justify-center" style={{height: 1000}}>
+      <div className="w-1/2 hidden md:flex md:justify-center" style={{ height: 1000 }}>
         <LeftContentAuth />
       </div>
       <div className="w-full md:w-1/2 flex flex-col gap-10">
         <div className="flex flex-col gap-5">
           <h1 className="text-4xl text-dark ">Halo, Pewpeople</h1>
           <p className="text-2xl text-dark-grey tracking-wide ">
-          Silahkan daftar sebagai <b>Pekerja</b>
+            Silahkan daftar sebagai <b>Pekerja</b>
           </p>
         </div>
         <AlertSubmit isError={isError} isSuccess={isSuccess} />
@@ -99,11 +99,6 @@ const RegisterWorker = () => {
             onChange={onChange}
           />
           <Alert error={error} isSuccess="Password sama" isError="Password tidak sama" />
-          <div className="text-end min-w-0">
-            <Link to="/resetpassword" className="hover:text-primary">
-              Lupa kata sandi ?
-            </Link>
-          </div>
           <div className="">
             <Button className="bg-yellow hover:bg-[#db9709]" isLoading={isLoading}>
               Daftar
