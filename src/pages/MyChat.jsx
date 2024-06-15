@@ -21,7 +21,7 @@ const MyChat = () => {
   // Fetch messages when room changes
   useEffect(() => {
     if (room?.id_messagedetail) {
-      dispatch(fetchDataById('message', 'messagebyid', room.id_messagedetail, userLogin.token));
+      dispatch(fetchDataById('message', 'messagebyid', room?.id_messagedetail, userLogin.token));
     }
   }, [room, dispatch, userLogin]);
 

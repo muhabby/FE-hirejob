@@ -15,11 +15,11 @@ const Hire = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const userLogin = useSelector((state) => state.login?.user);
-  const workerDataById = useSelector((state) => state.fetchReducer.workerbyidData?.data);
-  const skillsDataById = useSelector((state) => state.fetchReducer.skillsbyidData?.data);
-  const cityDataById = useSelector((state) => state.fetchReducer.citybyidData?.data);
+  const workerDataById = useSelector((state) => state.fetchReducer?.workerbyidData?.data);
+  const skillsDataById = useSelector((state) => state.fetchReducer?.skillsbyidData?.data);
+  const cityDataById = useSelector((state) => state.fetchReducer?.citybyidData?.data);
   const id_messagedetail = useSelector(
-    (state) => state.postReducer?.messagedetailData?.data.id_messagedetail
+    (state) => state.postReducer?.messagedetailData?.data?.id_messagedetail
   );
   const [room, setRoom] = useState({
     position: '',
@@ -96,7 +96,8 @@ const Hire = () => {
           <div className="flex flex-col gap-5">
             <h1 className="text-4xl font-semibold">Hubungi Talent</h1>
             <p className="text-xl text-grey">
-              Masukkan posisi yang ditawarkan kepada talent serta deskripsi terkait tahapan recruitment.
+              Masukkan posisi yang ditawarkan kepada talent serta deskripsi terkait tahapan
+              recruitment.
             </p>
           </div>
           <form className="flex flex-col gap-5">
