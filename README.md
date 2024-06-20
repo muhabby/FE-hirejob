@@ -49,6 +49,7 @@
 - [Axios](https://axios-http.com/)
 - [Vite](https://vitejs.dev/)
 - [React Redux](https://react-redux.js.org/introduction/getting-started)
+- [Tailwind CSS](https://tailwindcss.com/)
 
 ## Getting Started
 
